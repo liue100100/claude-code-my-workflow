@@ -1,0 +1,8 @@
+station,per_interval_P,per_direction_hit_any,mean_frac_piv
+bips,0,0,0
+dry_creek,0.243,0.138,0.054
+mintaro,0.497,0.488,0.236
+osborne_gt_st,0.003,0.071,0.003
+pelican_point_gt,0.604,0.586,0.397
+quarantine_5,0.33,0.311,0.126
+torrens_island_b,0.648,0.703,0.399

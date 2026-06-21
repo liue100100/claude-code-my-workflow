@@ -1,0 +1,13 @@
+station,reason2,n_intervals,P_pivotal,P_pivotal_ex
+bips,security_generic,599,0,0
+bips,voltage,33,0,0
+dry_creek,security_generic,1298,0.243,0
+mintaro,security_generic,34791,0.508,0
+mintaro,voltage,4976,0.418,0
+osborne_gt_st,security_generic,3602,0.003,0.005
+pelican_point_gt,security_generic,1671,0.394,0.041
+pelican_point_gt,voltage,1444,0.846,0
+quarantine_5,security_generic,5321,0.334,0
+quarantine_5,voltage,144,0.174,0
+torrens_island_b,security_generic,138475,0.631,0.02
+torrens_island_b,voltage,48162,0.694,0.032

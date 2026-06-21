@@ -1,0 +1,19 @@
+# Direction/ — regenerable data caches and scratch are NEVER committed.
+# (nem_cache ~156 GB raw AEMO zips, bid_cache ~1.1 GB extracted .rds — both
+#  rebuildable via 00_data_spine/run_all.R from the cache, so they stay local.)
+
+nem_cache/
+bid_cache/
+extract_tmp/
+torrb_slices/
+
+# IDE / R session
+.Rproj.user/
+.Rhistory
+.RData
+
+# logs and temp artifacts
+logs/*.log
+logs/*.err
+*.tmp
+*.rds.tmp

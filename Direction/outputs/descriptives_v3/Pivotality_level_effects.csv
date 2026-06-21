@@ -1,0 +1,5 @@
+treatment,sample,coef,se,t,n
+pivotal,all,0.1284,0.0108,11.8,2298009
+pivotal,undirected,0.1106,0.0118,9.4,2094334
+pivotal_ex,all,0.1427,0.0366,3.9,2298009
+pivotal_ex,undirected,0.1395,0.0465,3,2094334

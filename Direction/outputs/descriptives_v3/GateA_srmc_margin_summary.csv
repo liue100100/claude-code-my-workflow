@@ -1,0 +1,13 @@
+duid,tech_label,n_months,mths_dt_above_srmc_marg,pre_exit_margin_marg,post_exit_margin_marg,mths_dt_above_srmc_allin,pre_exit_margin_allin,post_exit_margin_allin
+PPCCGT,CCGT (Pelican Pt),35,34,147.9,108.6,34,147.9,108.6
+BARKIPS1,Recip. (Barker Inlet),35,34,133.4,97.4,34,133.4,97.4
+OSB-AG,Cogen (Osborne),35,34,133,98.6,34,133,98.6
+QPS5,OCGT (Quarantine),35,34,132,96.6,33,82.4,63.2
+TORRB1,Gas-steam (Torrens B),35,33,102.1,78.3,33,88,68.8
+TORRB2,Gas-steam (Torrens B),35,33,102.1,78.3,33,88,68.8
+TORRB3,Gas-steam (Torrens B),35,33,102.1,78.3,33,88,68.8
+TORRB4,Gas-steam (Torrens B),35,33,102.1,78.3,33,88,68.8
+MINTARO,OCGT (Mintaro),35,33,91.5,68.1,27,41.7,34.6
+DRYCGT1,OCGT (Dry Creek),35,33,77.6,60,25,27.8,26.6
+DRYCGT2,OCGT (Dry Creek),35,33,77.6,60,25,27.8,26.6
+DRYCGT3,OCGT (Dry Creek),35,33,77.6,60,25,27.8,26.6

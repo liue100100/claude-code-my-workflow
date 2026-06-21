@@ -1,0 +1,13 @@
+station,reason2,n_directions,perdir_hit_any,perdir_hit_issue,mean_frac_piv
+bips,security_generic,20,0,0,0
+bips,voltage,3,0,0,0
+dry_creek,security_generic,29,0.138,0.138,0.054
+mintaro,security_generic,191,0.487,0.372,0.234
+mintaro,voltage,22,0.5,0.5,0.252
+osborne_gt_st,security_generic,28,0.071,0,0.003
+pelican_point_gt,security_generic,18,0.5,0.278,0.298
+pelican_point_gt,voltage,11,0.727,0.545,0.558
+quarantine_5,security_generic,44,0.295,0.205,0.124
+quarantine_5,voltage,1,1,1,0.174
+torrens_island_b,security_generic,569,0.666,0.501,0.372
+torrens_island_b,voltage,114,0.886,0.693,0.531

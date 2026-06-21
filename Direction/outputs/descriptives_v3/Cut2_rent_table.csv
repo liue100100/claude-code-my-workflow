@@ -1,0 +1,7 @@
+dt_tercile,synchronise,mean_rent,median_rent,pct_positive,n_intervals,instruction
+Low d_t,0,134.1,134.4,96,32905,Remain
+Low d_t,1,126.3,128.3,96.4,56081,Synchronise
+Mid d_t,0,170.9,209.6,96.3,39837,Remain
+Mid d_t,1,195,218.7,97.4,32826,Synchronise
+High d_t,0,274.7,289.1,94.5,36722,Remain
+High d_t,1,268.7,267.8,98,40176,Synchronise

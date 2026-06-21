@@ -1,0 +1,4 @@
+term,est,se,t
+dt_std (non-pivotal slope),0.01808,0.00736,2.46
+dt_std:pivotal (extra slope when pivotal),-0.01371,0.00723,-1.9
+pivotal (level shift),0.13489,0.01516,8.9

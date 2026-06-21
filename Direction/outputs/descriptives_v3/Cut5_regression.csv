@@ -1,0 +1,4 @@
+spec,coef,se,n,t_stat
+"All intervals, no SRMC ctrl",-0.00185,0.00651,361,-0.28
+"All intervals, SRMC ctrl",0.01981,0.00709,361,2.79
+"Directed only, SRMC ctrl",0.01626,0.01259,180,1.29
