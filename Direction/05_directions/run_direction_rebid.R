@@ -8,7 +8,8 @@
 # Run from the Direction/ directory:  Rscript run_direction_rebid.R
 
 setwd("C:/Users/ericl/Documents/my-project/Direction")
-steps <- c("00_episodes.R", "A_depth_eventstudy.R", "B_rebid_runup.R")
+steps <- c("05_directions/00_episodes.R", "05_directions/A_depth_eventstudy.R",
+           "05_directions/B_rebid_runup.R")
 for (s in steps) {
   cat(sprintf("\n========== %s ==========\n", s))
   t0 <- Sys.time()

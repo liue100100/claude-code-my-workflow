@@ -3,12 +3,14 @@
 # Usage:  Rscript run_month.R YYYYMM
 # Exit 0 = success or already-done skip; Exit 1 = error (see logs/<M>.log).
 
-# Run from the script's own directory regardless of how it is invoked.
+# Anchor to the Direction root (this script lives in 00_data_spine/), so the
+# relative cache paths (./bid_cache, ./logs, ./extract_tmp) resolve correctly
+# regardless of how the script is invoked.
 {
   .args_full   <- commandArgs(trailingOnly = FALSE)
   .script_flag <- grep("^--file=", .args_full, value = TRUE)
   if (length(.script_flag))
-    setwd(dirname(normalizePath(sub("^--file=", "", .script_flag))))
+    setwd(dirname(dirname(normalizePath(sub("^--file=", "", .script_flag)))))
 }
 
 # ---------- parse + validate M ----------
@@ -38,8 +40,8 @@ if (file.exists(.done_flag) && all(file.exists(.rds_files))) {
 }
 
 # ---------- load dependencies ----------
-source("sa_directions_feasibility.R")
-source("extract_core.R")
+source("00_data_spine/sa_directions_feasibility.R")
+source("00_data_spine/extract_core.R")
 
 # ---------- manifest helper ----------
 .manifest_path <- file.path(CACHE, "manifest.csv")

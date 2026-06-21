@@ -4,11 +4,12 @@
 # is fully released between months and a crash/OOM kills only that month.
 # Re-running resumes automatically: run_month.R skips already-done months.
 
+# Anchor to the Direction root (this script lives in 00_data_spine/).
 {
   .args_full   <- commandArgs(trailingOnly = FALSE)
   .script_flag <- grep("^--file=", .args_full, value = TRUE)
   if (length(.script_flag))
-    setwd(dirname(normalizePath(sub("^--file=", "", .script_flag))))
+    setwd(dirname(dirname(normalizePath(sub("^--file=", "", .script_flag)))))
 }
 
 # Generate month vector with Date arithmetic -- avoids YYYYMM hand-rolled arithmetic
@@ -32,7 +33,7 @@ for (i in seq_along(months)) {
   M <- months[i]
   cat(sprintf("[%d/%d] %s ... ", i, length(months), M))
   flush.console()
-  exit_code <- system2(rscript, args = c("run_month.R", M))
+  exit_code <- system2(rscript, args = c("00_data_spine/run_month.R", M))
   if (exit_code == 0L) {
     status_vec[M] <- "done"
     # run_month.R already printed DONE or SKIP; no extra cat needed

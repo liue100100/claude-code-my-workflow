@@ -13,8 +13,8 @@
 suppressMessages({ library(data.table); library(duckdb); library(DBI) })
 
 setwd("C:/Users/ericl/Documents/my-project/Direction")
-source("sa_directions_feasibility.R")   # helpers + constants (guarded main block)
-source("extract_core.R")                # fetch_zip_paths, get_sa_duids, EXTRACT_DIR
+source("00_data_spine/sa_directions_feasibility.R")   # helpers + constants (guarded main block)
+source("00_data_spine/extract_core.R")                # fetch_zip_paths, get_sa_duids, EXTRACT_DIR
 
 CACHE <- "./bid_cache"
 
