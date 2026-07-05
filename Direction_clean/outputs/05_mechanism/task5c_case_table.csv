@@ -1,0 +1,11 @@
+pre,DUID,case,N,share
+quiet,TORRB2,2 floor-crossing,16,100
+pre-direction,TORRB2,2 floor-crossing,82,82.8
+pre-direction,TORRB2,1 trim headroom,17,17.2
+pre-direction,TORRB3,2 floor-crossing,94,94.9
+quiet,TORRB3,1 trim headroom,10,66.7
+pre-direction,TORRB3,1 trim headroom,5,5.1
+quiet,TORRB3,2 floor-crossing,5,33.3
+pre-direction,TORRB4,1 trim headroom,7,7.3
+pre-direction,TORRB4,2 floor-crossing,89,92.7
+quiet,TORRB4,2 floor-crossing,8,100

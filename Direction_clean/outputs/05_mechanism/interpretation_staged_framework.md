@@ -84,6 +84,20 @@ every year, with the market alternative NEGATIVE in 2023 (48.2% of directed MWh 
 spot prices). "Absence dominates commitment" is now quantitative. Both open checks are closed;
 the framework stands as amended (Amendment 1 only).
 
+## AMENDMENT 2 (2026-07-05, same day): the depth check upgrades Stage 3's pre-direction clause
+The depth check (`findings_task5c_depth_check.md`) resolves the last open item: the
+pre-direction evening withdrawal is **genuine hour-specific exit declaration** -- 90.1% of
+withdrawn evening hours are floor-crossings (265/294), from full capacity to zero (median
+200 MW -> 0), at 24x the quiet rate; 45 of 161 D-1 rewrite-days contain at least one. One
+geometric correction to the draft sentence: the crossings zero the evening/night LEADING INTO
+the direction window, not the direction-covered hours -- the accurate sentence is "ahead of a
+direction, the units extend their absence into evening hours they had been offering at full
+capacity." Stage 3's corrected clause now reads: *before directions, Torrens extends the
+absence into the run-up night with whole-unit exit declarations (well-powered, 24x background);
+before essentiality onsets, it re-times availability into the daytime stress block (n=29).*
+This STRENGTHENS the framework: the pre-direction behaviour is direction-relevant conduct, not
+bookkeeping. Both prior checks remain as resolved (Amendment 1; check (ii) passed).
+
 ## Where the evidence for each stage lives
 Stage 1: `findings_horizon_stance.md` (base rate, persistence), `findings_task3_part0.md`.
 Stage 2: `findings_task4_part3.md` §3 (steepness, fragile), `task5a3` addendum in
