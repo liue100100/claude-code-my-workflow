@@ -52,6 +52,31 @@ The results map onto four stages of a tight day:
 **Amendment rule:** if the re-timing is not present in Torrens alone, or absence is not
 dominant in dollars, this note is amended with what changed and why -- visibly, not silently.
 
+## AMENDMENT 1 (2026-07-05, same day; open check (i) resolved — the rule in action)
+The station-split table (`task5a4_*.csv`; counts: Torrens 161/136/110 rewrite-days at
+D-1/D-2/D-3, 29 at pre-essential-onset; PPCCGT 21/19/20/3) resolves check (i) with a PARTIAL
+PASS that changes two sentences of the framework, recorded here visibly:
+
+1. **Stage 3 held, with its shape corrected.** The re-timing IS present in Torrens's own
+   numbers, but it differs by event: before ESSENTIALITY ONSETS Torrens does exactly what the
+   framework says — availability out of the overnight (−13.6 MWh/hour, 00:00–06:00) and into
+   the daytime-and-evening stress block (+19 to +26 MWh/hour from 11:00, n=29 rewrite-days).
+   Before DIRECTIONS, Torrens does only the withdrawal half — evening availability pulled at
+   −22 to −32 MWh/hour (19:00–24:00, n=161) with NO daytime addition (≈0); the pooled
+   "into the day" component on direction approach was PPCCGT's (+376 MWh/day, n=21).
+   Stage 3's corrected sentence: *Torrens re-times into the stress window ahead of
+   essentiality onsets, and deepens the pre-direction night ahead of directions; the
+   daytime-add before directions is the CCGT's behaviour.*
+2. **Stage 2 downgraded from "suggestive" to "anecdotal, PPCCGT-only."** The onset band
+   repositioning (floor-band drain toward expensive bands) sits almost entirely in PPCCGT's
+   3 onset rewrite-days (−2,105 MWh/day from its −$999 band); Torrens's onset band nets are
+   small (+31 floor band, +77 band 9, −332 band 10, the last tracking its overnight MAXAVAIL
+   cut). Stage 2 should not be cited for Torrens at all.
+
+The framework's architecture (levers, stages, two-sided reading, policy-chosen-once) stands;
+the load-bearing Stage-3 claim survives in Torrens's own numbers with the event-specific shape
+above. Check (ii), Task B, remains open.
+
 ## Where the evidence for each stage lives
 Stage 1: `findings_horizon_stance.md` (base rate, persistence), `findings_task3_part0.md`.
 Stage 2: `findings_task4_part3.md` §3 (steepness, fragile), `task5a3` addendum in
