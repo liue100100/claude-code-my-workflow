@@ -2,67 +2,67 @@
 ############ SCOPE = whole ############
 
 ----- runup_withhold  (whole) -----
-                      Synchronise Remain_placebo
-Dependent Var.:    runup_withhold runup_withhold
-                                                
-depth_onset       -7.932. (4.178) -10.19 (8.665)
-d_t                -20.15 (16.84) -32.19 (31.16)
-depth_onset x d_t   5.987 (4.352)  10.24 (10.57)
-Fixed-Effects:    --------------- --------------
-duid                          Yes            Yes
-_________________ _______________ ______________
-S.E.: Clustered            by: ym         by: ym
-Observations                  669            380
-R2                        0.20407        0.49673
+                      Synchronise   Remain_placebo
+Dependent Var.:    runup_withhold   runup_withhold
+                                                  
+depth_onset       -10.12* (4.950) -24.07** (8.015)
+d_t               -25.83. (14.25)  -73.03* (26.99)
+depth_onset x d_t  11.09. (6.012)  26.64** (8.813)
+Fixed-Effects:    --------------- ----------------
+duid                          Yes              Yes
+_________________ _______________ ________________
+S.E.: Clustered            by: ym           by: ym
+Observations                  669              380
+R2                        0.28640          0.70687
 ---
 Signif. codes: 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
 ----- runup_abovesrmc  (whole) -----
-                         Synchronise    Remain_placebo
-Dependent Var.:      runup_abovesrmc   runup_abovesrmc
-                                                      
-depth_onset       -0.0194** (0.0055)  -0.0003 (0.0159)
-d_t                 0.0476. (0.0237) 0.1539** (0.0541)
-depth_onset x d_t   -0.0033 (0.0066) -0.0513* (0.0216)
-Fixed-Effects:    ------------------ -----------------
-duid                             Yes               Yes
-_________________ __________________ _________________
-S.E.: Clustered               by: ym            by: ym
-Observations                     669               380
-R2                           0.24903           0.38175
+                       Synchronise   Remain_placebo
+Dependent Var.:    runup_abovesrmc  runup_abovesrmc
+                                                   
+depth_onset       -0.0032 (0.0063)  0.0077 (0.0162)
+d_t                0.0068 (0.0227)  0.0461 (0.0510)
+depth_onset x d_t 2.73e-5 (0.0084) -0.0157 (0.0220)
+Fixed-Effects:    ---------------- ----------------
+duid                           Yes              Yes
+_________________ ________________ ________________
+S.E.: Clustered             by: ym           by: ym
+Observations                   669              380
+R2                         0.28350          0.58825
 ---
 Signif. codes: 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
 ############ SCOPE = onset ############
 
 ----- runup_withhold  (onset) -----
-                      Synchronise Remain_placebo
-Dependent Var.:    runup_withhold runup_withhold
-                                                
-depth_onset       -9.203* (3.635) -10.99 (9.238)
-d_t                -12.18 (15.51) -35.53 (32.12)
-depth_onset x d_t   3.860 (4.138)  11.58 (11.12)
-Fixed-Effects:    --------------- --------------
-duid                          Yes            Yes
-_________________ _______________ ______________
-S.E.: Clustered            by: ym         by: ym
-Observations                  669            380
-R2                        0.17850        0.49997
+                      Synchronise   Remain_placebo
+Dependent Var.:    runup_withhold   runup_withhold
+                                                  
+depth_onset       -11.01* (4.978) -25.35** (8.599)
+d_t               -29.19* (13.12) -82.40** (29.89)
+depth_onset x d_t  12.27* (6.005)  29.73** (9.617)
+Fixed-Effects:    --------------- ----------------
+duid                          Yes              Yes
+_________________ _______________ ________________
+S.E.: Clustered            by: ym           by: ym
+Observations                  669              380
+R2                        0.39495          0.73501
 ---
 Signif. codes: 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
 ----- runup_abovesrmc  (onset) -----
-                          Synchronise    Remain_placebo
-Dependent Var.:       runup_abovesrmc   runup_abovesrmc
-                                                       
-depth_onset       -0.0229*** (0.0059)  -0.0100 (0.0109)
-d_t                   0.0453 (0.0274) 0.1203** (0.0434)
-depth_onset x d_t    -0.0036 (0.0075) -0.0430* (0.0189)
-Fixed-Effects:    ------------------- -----------------
-duid                              Yes               Yes
-_________________ ___________________ _________________
-S.E.: Clustered                by: ym            by: ym
-Observations                      669               380
-R2                            0.24300           0.41525
+                       Synchronise   Remain_placebo
+Dependent Var.:    runup_abovesrmc  runup_abovesrmc
+                                                   
+depth_onset       -0.0034 (0.0067)  0.0018 (0.0140)
+d_t                0.0139 (0.0221)  0.0348 (0.0383)
+depth_onset x d_t -0.0001 (0.0080) -0.0075 (0.0175)
+Fixed-Effects:    ---------------- ----------------
+duid                           Yes              Yes
+_________________ ________________ ________________
+S.E.: Clustered             by: ym           by: ym
+Observations                   669              380
+R2                         0.32765          0.61688
 ---
 Signif. codes: 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
