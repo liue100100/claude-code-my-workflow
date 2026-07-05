@@ -74,4 +74,28 @@ result; a formal era-contrast or crisis-decomposition test would require a new
 pre-registration, and the Mar-May 2023 block plus the flat-gas window define what it would
 have to explain.
 
+## Addendum (requested): the lag-wedge window — gas down, prize still high
+The trailing-365-day construction creates a window where cost falls but the prize lags:
+**Oct 2022 – Jun 2023** (gas $12.6–18.6/GJ vs $27–30 before; d_t $298–350 — the maximum
+prize-over-cost wedge of the sample, ~$200+/MWh for ~8 months). The curve over it, TORRB2
+exemplar (`task11_monthly_curve.csv`), splits into two phases:
+
+- **Oct 2022 – Feb 2023 (wedge + need):** directions at their sample peak (7–15 episodes/
+  month) — and the posture NOT deeper than usual: zero-cheap interval share 66–82% (sample
+  mean ~77%), cheap tranche 10–46 MW (sample mean ~21; Oct–Nov ABOVE average). The units were
+  slightly MORE present than usual through the maximum-wedge need season.
+- **Mar – May 2023 (wedge, no need):** the sample's deepest absence — three months at exactly
+  zero cheap MW and zero availability — with ZERO directions and 1–3 essential days/month.
+  Maximal wedge, total absence, nothing harvested.
+
+The cross-season control: the comparable need season at LOW wedge (Sep–Oct 2024: 13–21
+essential days/month, d_t ~$220, gas ~$13) shows the DEEPEST in-season absence of the record
+(zero-cheap 95–99%, cheap tranche 1–5 MW) — the ordering is the reverse of the harvest
+prediction (deepest absence should sit in the high-wedge need season; it sits in the low-wedge
+one). Caveats stated: the 2024 comparison is confounded by closure wind-down (absence trends
+deeper as June 2026 approaches), and total direction REVENUE did peak in the wedge window —
+but through direction frequency (the system's need) at the mechanically high price, not
+through any measurable deepening of the posture. What the wedge window shows is the mechanism
+paying its maximum rates into an unchanged stance.
+
 **Descriptive examination complete.**
