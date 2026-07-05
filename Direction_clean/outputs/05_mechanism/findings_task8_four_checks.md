@@ -57,6 +57,33 @@ here: the N-1-only cancellation rate sits BELOW the ordinary rate (15.8 vs 22.5%
 sign to the noise-level N-0 row -- whether that survives the running-loss control is exactly
 what the registered regression exists to decide, and nothing about it is read until then.
 
+## Check 4a -- does the act track the envelope or the event? THE EVENT.
+Same population, split envelope x direction-approach window (within D-3..D-1 of any of the
+unit's direction starts; `task8_check4a.csv`):
+
+| | Inside approach window | Outside |
+|---|---|---|
+| Ordinary | 32.9% (56/170) | 14.6% (33/226) |
+| N-1 only | 25.7% (9/35) | 7.3% (3/41) |
+| N-0 | 12.5% (1/8) | 41.7% (5/12) |
+
+Two facts, read descriptively and not tested:
+1. **The event dominates.** Within every envelope tier, being inside a direction-approach
+   window roughly doubles-to-triples the cancellation rate (14.6 -> 32.9 ordinary;
+   7.3 -> 25.7 N-1-only). The N-0 cells are 8- and 12-day noise.
+2. **Holding the window fixed, the envelope adds nothing positive** -- N-1-only days cancel
+   LESS than ordinary days both outside (7.3 vs 14.6) and inside (25.7 vs 32.9). Check 4's
+   pooled 15.8%-below-22.5% pattern decomposes into this, not into composition.
+
+**Expectation set for the registered regression, before registration:** the approach-window
+variable CANNOT enter the regression (it is defined off subsequent direction starts, which
+cancellations themselves trigger -- the no-directions rule applies with full force), so the
+registered essential-day coefficient will pool these cells and should be EXPECTED to come out
+null-or-negative even before the loss control; the loss control then decides whether the
+event-timed cancellations are loss-avoidance. The committed readings in the pre-registration
+must be written against that expectation, not against a naive "essential means more exits"
+prior -- the descriptive record already says the act is event-timed, not envelope-timed.
+
 ## Verdict
 All four checks pass or resolve favourably: the label has usable structure (~450 effective
 days, 34 months), demonstrable validity (monotone trouble gradient), known contamination
