@@ -1,0 +1,81 @@
+cat,DUID,example
+other,TORRB3,010 Change in f/cast fuel consumpt~010 conserve gas for limits - MAP limit
+other,PPCCGT,Revised Tolling Nomination - SL
+other,PPCCGT,"Respond to 30 MPD, $172.00. PE 0330-0700"
+other,PPCCGT,Revised Tolling Nomination - SL
+other,TORRB3,12:31~F~001 Primary Response to D+1 Predispatch~P30 Published
+other,PPCCGT,update commissioning profile.SL
+other,TORRB2,001 Primary Response to D+1 Predispatch~P30 Published
+other,PPCCGT,Updated commissioning profile. SL.
+other,PPCCGT,Revised Tolling Nomination # 3495 - SL
+other,PPCCGT,Update Avail - SL
+other,PPCCGT,Energy - FCAS co-optimisation - SL
+other,PPCCGT,Primary Response to Predispatch D+1 - SL
+other,TORRB3,12:30~F~001 Primary Response to D+1 Predispatch
+other,PPCCGT,Revised Tolling Nomination #3780 - SL
+other,PPCCGT,Revised Tolling Nomination #3266 - SL
+other,TORRB3,001 Primary Response to D+1 Predispatch~P30 Published
+other,PPCCGT,Energy - FCAS co-optimisation - SL
+other,PPCCGT,Respond to SA AVG $419.89 DI1540- SL
+other,TORRB4,12:32~F~001 Primary Response to D+1 Predispatch
+other,PPCCGT,Update avail: revised commissioning plan. SL.
+direction/RTS,PPCCGT,Update RTS Profile
+direction/RTS,PPCCGT,Update RTS Profile - SL
+direction/RTS,PPCCGT,AEMO 5MPD vs 30MPD - SA Price Decrease $134.36 DI 15:50. SL.
+direction/RTS,TORRB3,010 AEMO direction~MN #119265
+direction/RTS,TORRB4,010 AEMO direction~MN #117384
+direction/RTS,TORRB2,17:00~A~010 AEMO direction~#102348
+direction/RTS,PPCCGT,Update RTS Profile-SL
+direction/RTS,TORRB2,010 AEMO direction~10 as per PN#96805
+direction/RTS,TORRB3,"010 AEMO direction~AEMO direction ended, redist portfolio"
+direction/RTS,TORRB3,010 AEMO direction~PN #106083
+direction/RTS,TORRB3,040 Chg in AEMO DISP~45 Price increase vs PD [SA] $826.36 15:05 vs $560 15:30
+direction/RTS,TORRB2,010 AEMO direction~PN#s 102785 & 102786
+direction/RTS,TORRB3,050 Chg in AEMO PD~50 PD AVAILABLEGENERATION decrease [MAINLAND] [130MW] PE1100-1600 in PD 1001
+direction/RTS,PPCCGT,Change in AEMO PD - SA Price Decrease $32.05 DI2300 vs D1 2232 for P30 0130-0230
+direction/RTS,TORRB3,010 AEMO direction~10 B3 119112 B4 119114
+direction/RTS,TORRB3,10:01~A~050 Chg in AEMO PD~50 PD availability decrease sa average 294MW 16:00 - 04:00
+direction/RTS,PPCCGT,Change in AEMO PD - SA Price Decrease AVG -$13.44 DI02:30-05:00 when comparing 16:02PD against 15:02
+direction/RTS,TORRB3,010 AEMO direction~PNs #120679 & #120680
+direction/RTS,TORRB4,010 AEMO direction~10 PN 108396
+direction/RTS,PPCCGT,Update RTS Profile. SL.
+plant/technical,TORRB4,010 Unexpected/plant limits~112 redist across portfolio - BARKIPS1
+plant/technical,TORRB4,050 Chg in unit operation~501 changed run up profile
+plant/technical,TORRB3,030 Increase in avail cap~303 outage schedule change - TORRB2
+plant/technical,TORRB4,050 Chg in unit operation~501 changed min load due to Seagas pipeline constraint
+plant/technical,PPCCGT,Update Avail: Current Ambient Temperature
+plant/technical,TORRB2,010 Unexpected/plant limits~113 Availability Statement
+plant/technical,PPCCGT,Update Avail: Current Ambient Temperature
+plant/technical,TORRB3,07:20~P~010 Unexpected/plant limits~112 redist across portfolio - TORRB2 remaining on
+plant/technical,PPCCGT,Update Avail: Current Ambient Temperature. SL
+plant/technical,TORRB4,010 Unexpected/plant limits~112 redist across portfolio - TIBS low SOC
+plant/technical,TORRB3,19:30~P~010 Unexpected/plant limits~stable load required on TORRB2 for spray water valve / redistrib
+plant/technical,TORRB4,050 Chg in unit operation~updating min load - valve limit
+plant/technical,PPCCGT,Update FCAS: Reflect technical characteristics-SL
+plant/technical,TORRB4,050 Chg in unit operation~Profile and ramp rate updated for unit sync
+plant/technical,TORRB4,"010 Unexpected/plant limits~112 redist across portfolio - TORRB3, TORRB4 and BIPS"
+plant/technical,TORRB3,030 Increase in avail cap~301 plant limit lifted
+plant/technical,TORRB2,010 Unexpected/plant limits~112 redist across portfolio/LYA1 1425
+plant/technical,PPCCGT,Unit failed start
+plant/technical,PPCCGT,Update Avail:  Ambient Temperature
+plant/technical,TORRB2,010 Unexpected/plant limits~106 Aux/Plant failure
+price/forecast,PPCCGT,Constraint Management: V::S_NIL_MAXG_1. SL
+price/forecast,PPCCGT,Constraint Management: V_S_HEYWOOD_UFLS. SL.
+price/forecast,PPCCGT,SA 15:40 Dispatch Price $149.97 Higher than 16:00 PD Price $70.02-SL
+price/forecast,PPCCGT,Constraint Management: V:S_600_HY_TEST_DYN. SL
+price/forecast,PPCCGT,Constraint Management: V_VS_LB_HY_50
+price/forecast,PPCCGT,Constraint Management: V^^N_NIL_1-SL
+price/forecast,PPCCGT,Constraint Management: V::S_NIL_MAXG_1 - SL
+price/forecast,PPCCGT,Constraint Management: SA_TBTU_A - SL
+price/forecast,PPCCGT,Constraint Management: :S_600_HY_TEST_DYN. SL
+price/forecast,PPCCGT,Constraint Management: S^^V_SETB_1. SL
+price/forecast,PPCCGT,Constraint Management: V>>NIL_MLGT_MLGT_R2. SL.
+price/forecast,PPCCGT,Constraint Management: S_PPT+SNPT+BLVR_410 - SL
+price/forecast,PPCCGT,Constraint Management: V::S_NIL_MAXG_SECP_2
+price/forecast,PPCCGT,Constraint Management: V::S_NIL_MAXG_1. SL.
+price/forecast,PPCCGT,Constraint Management: S>>TBTU_TBTU_TBMO  - SL
+price/forecast,PPCCGT,Response to market suspension-SL
+price/forecast,PPCCGT,In response to SA SPot price $4010.58 for DI06:10. SL
+price/forecast,PPCCGT,Constraint Management: S_PPT+SNPT+BLVR_220.. SL
+price/forecast,PPCCGT,In response to SA spot price $247 for DI12:05. SL
+price/forecast,PPCCGT,Constraint Management: V::S_DVRB_MG_CP_2. SL.

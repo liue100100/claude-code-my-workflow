@@ -140,6 +140,6 @@ The descriptive v3 diagnostic confirms:
 
 1. **Primary outcome:** `withheld_share` (from v3 panel) — ready.
 2. **Regression design:** Two-way FE (unit + month or unit × quarter), SRMC control, d_t as the continuous variable. The d_t exit month (202307) can be used as an event study anchor for robustness.
-3. **Robustness rows:** (a) `withheld_share_allin` (using static/all-in SRMC threshold instead of marginal); (b) revealed-cost SRMC for BARKIPS1 and TORRB (see srmc_inputs_heatrate_vom.md §7).
+3. **Robustness rows:** (a) `withheld_share_allin` (using static/all-in SRMC threshold instead of marginal); (b) ~~revealed-cost SRMC for BARKIPS1 and TORRB~~ — the revealed-cost anchor (§7) was tested (`gate_a_revealed_cost.R`) and **rejected**: offers are not gas-indexed cost bids [F3a], so engineering SRMC is maintained and the proxies stand.
 4. **Secondary outcomes:** rebid count per unit-day (measures strategic flexibility), share of time in the top two bands combined.
 5. **Identification concern to address:** d_t is not exogenous to the firm's strategy if the direction mechanism itself affects spot prices. The RKD/RDD using the trailing-365d 90th-pct formula as a discontinuity instrument is the preferred design; document the first-stage.

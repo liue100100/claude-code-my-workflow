@@ -1,8 +1,5 @@
 # =============================================================================
-# 05_figures.R — Figures → PDF and SVG.
-#
-# PDF for Beamer (crisp vector). SVG for Quarto slides (native browser render).
-# Both from the same ggplot object so there's one source of truth per figure.
+# 05_figures.R — Figures → PDF for manuscript inclusion.
 # =============================================================================
 
 if (!exists("df", inherits = FALSE)) {
@@ -27,13 +24,9 @@ if (!requireNamespace("ggplot2", quietly = TRUE)) {
   )
 }
 
-# svglite is OPTIONAL but documented. If absent, fail LOUDLY (warning + explicit
-# note in the output list) rather than silently skipping a promised artifact.
-has_svg   <- requireNamespace("svglite", quietly = TRUE)
 has_cairo <- tryCatch(capabilities("cairo"), error = function(e) FALSE)
 
 fig_main_pdf <- file.path(OUT_DIR, "fig_main.pdf")
-fig_main_svg <- file.path(OUT_DIR, "fig_main.svg")
 
 # Choose the best available PDF device. cairo_pdf gives nicer anti-aliasing
 # and font embedding but isn't compiled into every R build.
@@ -54,18 +47,3 @@ p <- ggplot(df, aes(x = factor(treated, labels = c("Control", "Treated")),
 
 ggsave(fig_main_pdf, p, width = 5, height = 3.5, device = pdf_device)
 message("Wrote ", fig_main_pdf)
-
-if (has_svg) {
-  ggsave(fig_main_svg, p, width = 5, height = 3.5, device = svglite::svglite)
-  message("Wrote ", fig_main_svg)
-} else {
-  # Loud skip — warning() not message() so it shows up in `summary(sessionInfo())`
-  # and in any CI log that collects warnings.
-  warning(
-    "05_figures.R: 'svglite' not installed — skipping fig_main.svg.\n",
-    "Quarto slides that expect the SVG will fail to render this figure.\n",
-    "Install with: install.packages('svglite')",
-    call. = FALSE
-  )
-  message("SKIPPED: ", fig_main_svg, " (svglite missing)")
-}

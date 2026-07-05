@@ -1,0 +1,11 @@
+instrument,RTS-26 rebid day (rebids at D; daily instruments at D+1),"closure announcement week (2022-11-24 +6d, Torrens)",direction END (rebids D; daily D+1),direction START (rebids D; daily D+1),mothball-like spell starts (full-exit runs >=14d),state transition day
+churn_total,MOVED,MOVED,MOVED,MOVED,flat,MOVED (BC)
+composite,MOVED,flat,flat,flat,flat,flat (BC)
+n_none,flat,flat,flat,flat,flat,flat
+n_nontag,flat,flat,flat,flat,flat,MOVED
+n_tag,MOVED,MOVED,MOVED,MOVED,flat,flat
+q_2xsrmc,flat,flat,flat,flat,flat,MOVED
+q_shoulder,flat,flat,flat,flat,flat,MOVED
+steep_iqr,MOVED,flat,flat,MOVED,untestable (n<10),flat
+top2_share,MOVED,MOVED,MOVED,MOVED,untestable (n<10),flat
+wmean_price,MOVED,MOVED,MOVED,MOVED,untestable (n<10),MOVED

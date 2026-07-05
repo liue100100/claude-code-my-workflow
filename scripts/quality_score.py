@@ -6,11 +6,10 @@ Calculates objective quality scores (0-100) based on defined rubrics.
 Enforces quality gates: 80 (commit), 90 (PR), 95 (excellence).
 
 Usage:
-    python scripts/quality_score.py Quarto/Lecture6_Topic.qmd
-    python scripts/quality_score.py Quarto/Lecture6_Topic.qmd --summary
-    python scripts/quality_score.py Quarto/*.qmd
-    python scripts/quality_score.py Slides/Lecture01_Topic.tex
-    python scripts/quality_score.py scripts/R/Lecture06_simulations.R
+    python scripts/quality_score.py manuscript/paper.tex
+    python scripts/quality_score.py manuscript/paper.tex --summary
+    python scripts/quality_score.py scripts/R/03_analyze.R
+    python scripts/quality_score.py scripts/python/02_clean.py
 """
 
 import sys
@@ -35,28 +34,6 @@ def _timeout(env_name: str, default: int) -> int:
 # SCORING RUBRIC (from .claude/rules/quality-gates.md)
 # ==============================================================================
 
-QUARTO_RUBRIC = {
-    'critical': {
-        'compilation_failure': {'points': 100, 'auto_fail': True},
-        'equation_overflow': {'points': 20},
-        'broken_citation': {'points': 15},
-        'typo_in_equation': {'points': 10},
-        'missing_plotly_chart': {'points': 10},
-    },
-    'major': {
-        'text_overflow': {'points': 5},
-        'tikz_label_overlap': {'points': 5},
-        'notation_inconsistency': {'points': 3},
-        'missing_box_separation': {'points': 2},
-        'color_contrast_low': {'points': 3},
-    },
-    'minor': {
-        'font_size_reduction': {'points': 1},
-        'missing_forward_ref': {'points': 1},
-        'missing_framing_sentence': {'points': 1},
-    }
-}
-
 R_SCRIPT_RUBRIC = {
     'critical': {
         'syntax_error': {'points': 100, 'auto_fail': True},
@@ -74,7 +51,7 @@ R_SCRIPT_RUBRIC = {
     }
 }
 
-BEAMER_RUBRIC = {
+LATEX_RUBRIC = {
     'critical': {
         'compilation_failure': {'points': 100, 'auto_fail': True},
         'undefined_citation': {'points': 15},
@@ -86,6 +63,20 @@ BEAMER_RUBRIC = {
     },
     'minor': {
         'font_size_reduction': {'points': 1},
+    }
+}
+
+PYTHON_SCRIPT_RUBRIC = {
+    'critical': {
+        'syntax_error': {'points': 100, 'auto_fail': True},
+        'hardcoded_path': {'points': 20},
+    },
+    'major': {
+        'missing_seed': {'points': 10},
+        'missing_output': {'points': 5},
+    },
+    'minor': {
+        'style_violation': {'points': 1},
     }
 }
 
@@ -101,29 +92,6 @@ THRESHOLDS = {
 
 class IssueDetector:
     """Detect common issues for quality scoring."""
-
-    @staticmethod
-    def check_quarto_compilation(filepath: Path) -> Tuple[Optional[bool], str]:
-        """Render the Quarto file. Returns True (ok), False (real failure), or
-        None (could-not-verify: timed out or tool missing — NOT a quality failure)."""
-        limit = _timeout("QUALITY_QUARTO_TIMEOUT", 120)
-        try:
-            # Run from the file's parent directory with just the filename,
-            # so relative paths inside the .qmd (themes, includes) resolve.
-            result = subprocess.run(
-                ['quarto', 'render', filepath.name, '--to', 'html'],
-                capture_output=True,
-                text=True,
-                timeout=limit,
-                cwd=filepath.parent
-            )
-            if result.returncode != 0:
-                return False, result.stderr
-            return True, ""
-        except subprocess.TimeoutExpired:
-            return None, f"compilation not verified — render exceeded {limit}s (raise QUALITY_QUARTO_TIMEOUT for large decks)"
-        except FileNotFoundError:
-            return None, "compilation not verified — Quarto not installed"
 
     @staticmethod
     def check_equation_overflow(content: str) -> List[int]:
@@ -214,20 +182,6 @@ class IssueDetector:
         return list(broken)
 
     @staticmethod
-    def check_plotly_widgets(html_file: Path, expected: int = None) -> Tuple[int, bool]:
-        """Check if plotly charts rendered in HTML."""
-        if not html_file.exists():
-            return 0, False
-
-        html_content = html_file.read_text(encoding='utf-8')
-        actual_count = html_content.count('htmlwidget')
-
-        if expected is None:
-            return actual_count, True
-
-        return actual_count, (actual_count >= expected)
-
-    @staticmethod
     def check_r_syntax(filepath: Path) -> Tuple[Optional[bool], str]:
         """Parse the R script. Returns True (ok), False (syntax error), or
         None (could-not-verify: timed out or Rscript missing — NOT a failure)."""
@@ -249,7 +203,7 @@ class IssueDetector:
 
     @staticmethod
     def check_hardcoded_paths(content: str) -> List[int]:
-        """Detect absolute paths in R scripts."""
+        """Detect absolute paths in R or Python scripts."""
         issues = []
         lines = content.split('\n')
 
@@ -259,6 +213,27 @@ class IssueDetector:
                     issues.append(i)
 
         return issues
+
+    @staticmethod
+    def check_python_syntax(filepath: Path) -> Tuple[Optional[bool], str]:
+        """Parse the Python script via py_compile. Returns True (ok),
+        False (syntax error), or None (could-not-verify: timed out or
+        python missing — NOT a failure)."""
+        limit = _timeout("QUALITY_PYTHON_TIMEOUT", 10)
+        try:
+            result = subprocess.run(
+                [sys.executable, '-m', 'py_compile', str(filepath)],
+                capture_output=True,
+                text=True,
+                timeout=limit
+            )
+            if result.returncode != 0:
+                return False, result.stderr
+            return True, ""
+        except subprocess.TimeoutExpired:
+            return None, f"syntax not verified — compile exceeded {limit}s (raise QUALITY_PYTHON_TIMEOUT)"
+        except FileNotFoundError:
+            return None, "syntax not verified — python not installed"
 
     @staticmethod
     def check_latex_syntax(content: str) -> List[Dict]:
@@ -313,23 +288,27 @@ class IssueDetector:
     def check_overfull_hbox_risk(content: str) -> List[int]:
         """Detect lines in LaTeX source likely to cause overfull hbox.
 
-        Checks for very long lines inside text and math environments
-        that are likely to overflow the slide width.
+        Checks for very long lines that are likely to overflow the page
+        width. Scoped to `\\begin{frame}...\\end{frame}` blocks if present
+        (Beamer); otherwise scans the whole document body (manuscript-style
+        `.tex` with no frame environments).
         """
         issues = []
         lines = content.split('\n')
-        in_frame = False
+        has_frames = r'\begin{frame}' in content
+        in_frame = not has_frames  # no frames at all -> scan the whole doc
 
         for i, line in enumerate(lines, 1):
             stripped = line.split('%')[0] if '%' in line else line
 
-            # Track frame environments for context
+            # Track frame environments for context, when present
             if r'\begin{frame}' in stripped:
                 in_frame = True
             elif r'\end{frame}' in stripped:
                 in_frame = False
 
-            # Flag very long content lines inside frames
+            # Flag very long content lines (inside frames if any exist,
+            # otherwise across the whole document)
             # Strip leading whitespace and LaTeX commands for length check
             if in_frame and len(stripped.strip()) > 120:
                 # Skip lines that are just comments or common long commands
@@ -341,45 +320,6 @@ class IssueDetector:
                 issues.append(i)
 
         return issues
-
-    @staticmethod
-    def check_quarto_citations(content: str, bib_file: Path) -> List[str]:
-        """Check Quarto-style citation keys against bibliography.
-
-        Supports patterns: @key, [@key], [@key1; @key2]
-        """
-        cited_keys = set()
-
-        # Pattern 1: [@key] or [@key1; @key2; ...]
-        bracket_pattern = r'\[([^\]]*@[^\]]+)\]'
-        for match in re.finditer(bracket_pattern, content):
-            inner = match.group(1)
-            # Extract individual @key references from within brackets
-            for key_match in re.finditer(r'@([\w:.#$%&\-+?<>~/]+)', inner):
-                cited_keys.add(key_match.group(1))
-
-        # Pattern 2: standalone @key (not inside brackets, not email addresses)
-        # Match @key that is preceded by start-of-line or whitespace or punctuation
-        # but NOT preceded by characters that indicate an email address
-        standalone_pattern = r'(?<![.\w])@([\w:.#$%&\-+?<>~/]+)'
-        for match in re.finditer(standalone_pattern, content):
-            key = match.group(1)
-            # Skip if it looks like a Quarto directive or special syntax
-            if key.startswith('{') or key in ('fig', 'tbl', 'sec', 'eq', 'lst'):
-                continue
-            cited_keys.add(key)
-
-        if not cited_keys:
-            return []
-
-        if not bib_file.exists():
-            return list(cited_keys)
-
-        bib_content = bib_file.read_text(encoding='utf-8')
-        bib_keys = set(re.findall(r'@\w+\{([^,]+),', bib_content))
-
-        broken = cited_keys - bib_keys
-        return list(broken)
 
 # ==============================================================================
 # QUALITY SCORER
@@ -399,72 +339,6 @@ class QualityScorer:
         }
         self.auto_fail = False
         self.unverified = []  # could-not-verify notes (timeouts, missing tools)
-
-    def score_quarto(self) -> Dict:
-        """Score Quarto lecture slides."""
-        content = self.filepath.read_text(encoding='utf-8')
-
-        # Check compilation. None = could-not-verify (timeout / tool missing):
-        # record a note and continue with static checks rather than scoring 0.
-        compiles, error = IssueDetector.check_quarto_compilation(self.filepath)
-        if compiles is False:
-            self.auto_fail = True
-            self.issues['critical'].append({
-                'type': 'compilation_failure',
-                'description': 'Quarto compilation failed',
-                'details': error[:200],
-                'points': 100
-            })
-            self.score = 0
-            return self._generate_report()
-        if compiles is None:
-            self.unverified.append(error)
-
-        # Check equation overflow (heuristic)
-        equation_overflows = IssueDetector.check_equation_overflow(content)
-        for line in equation_overflows:
-            self.issues['critical'].append({
-                'type': 'equation_overflow',
-                'description': f'Potential equation overflow at line {line}',
-                'details': 'Single equation line >120 chars may overflow slide',
-                'points': 20
-            })
-            self.score -= 20
-
-        # Check broken citations (LaTeX-style \cite patterns)
-        bib_file = self.filepath.parent.parent / 'Bibliography_base.bib'
-        broken_citations = IssueDetector.check_broken_citations(content, bib_file)
-
-        # Also check Quarto-style @key citations
-        quarto_broken = IssueDetector.check_quarto_citations(content, bib_file)
-        # Merge both sets, avoiding duplicates
-        all_broken = set(broken_citations) | set(quarto_broken)
-        for key in all_broken:
-            self.issues['critical'].append({
-                'type': 'broken_citation',
-                'description': f'Citation key not in bibliography: {key}',
-                'details': 'Add to Bibliography_base.bib or fix key',
-                'points': 15
-            })
-            self.score -= 15
-
-        # Check plotly widgets (if HTML exists)
-        html_file = self.filepath.parent.parent / 'docs' / 'slides' / self.filepath.with_suffix('.html').name
-        if html_file.exists():
-            widget_count, _ = IssueDetector.check_plotly_widgets(html_file)
-            expected_plotly = content.count('plotly::plot_ly')
-            if expected_plotly > 0 and widget_count < expected_plotly:
-                missing = expected_plotly - widget_count
-                self.issues['critical'].append({
-                    'type': 'missing_plotly_chart',
-                    'description': f'{missing} plotly chart(s) failed to render',
-                    'details': f'Expected {expected_plotly}, found {widget_count}',
-                    'points': 10 * missing
-                })
-                self.score -= 10 * missing
-
-        self.score = max(0, self.score)
-        return self._generate_report()
 
     def score_r_script(self) -> Dict:
         """Score R script quality."""
@@ -512,8 +386,54 @@ class QualityScorer:
         self.score = max(0, self.score)
         return self._generate_report()
 
-    def score_beamer(self) -> Dict:
-        """Score Beamer/LaTeX lecture slides."""
+    def score_python_script(self) -> Dict:
+        """Score Python script quality."""
+        content = self.filepath.read_text(encoding='utf-8')
+
+        # Check syntax. None = could-not-verify (timeout / python missing):
+        # record a note and continue rather than scoring 0.
+        is_valid, error = IssueDetector.check_python_syntax(self.filepath)
+        if is_valid is False:
+            self.auto_fail = True
+            self.issues['critical'].append({
+                'type': 'syntax_error',
+                'description': 'Python syntax error',
+                'details': error[:200],
+                'points': 100
+            })
+            self.score = 0
+            return self._generate_report()
+        if is_valid is None:
+            self.unverified.append(error)
+
+        # Check hardcoded paths
+        path_issues = IssueDetector.check_hardcoded_paths(content)
+        for line in path_issues:
+            self.issues['critical'].append({
+                'type': 'hardcoded_path',
+                'description': f'Hardcoded absolute path at line {line}',
+                'details': 'Use pathlib.Path + PROJECT_ROOT',
+                'points': 20
+            })
+            self.score -= 20
+
+        # Check for a seed if randomness detected
+        has_random = any(fn in content for fn in ['np.random', 'random.', 'rng.'])
+        has_seed = any(fn in content for fn in ['np.random.seed', 'random.seed', 'default_rng'])
+        if has_random and not has_seed:
+            self.issues['major'].append({
+                'type': 'missing_seed',
+                'description': 'Missing seed for reproducibility',
+                'details': 'Add np.random.seed(YYYYMMDD) or default_rng(YYYYMMDD) at top',
+                'points': 10
+            })
+            self.score -= 10
+
+        self.score = max(0, self.score)
+        return self._generate_report()
+
+    def score_latex(self) -> Dict:
+        """Score the LaTeX manuscript."""
         content = self.filepath.read_text(encoding='utf-8')
 
         # Check for LaTeX syntax issues (without compiling)
@@ -557,7 +477,7 @@ class QualityScorer:
             })
             self.score -= 10
 
-        # Check equation overflow (same heuristic as Quarto)
+        # Check equation overflow
         equation_overflows = IssueDetector.check_equation_overflow(content)
         for line_num in equation_overflows:
             self.issues['critical'].append({
@@ -705,23 +625,20 @@ def main():
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 Examples:
-  # Score a single Quarto file
-  python scripts/quality_score.py Quarto/Lecture6_Topic.qmd
-
-  # Score multiple files
-  python scripts/quality_score.py Quarto/*.qmd
-
-  # Score a Beamer/LaTeX file
-  python scripts/quality_score.py Slides/Lecture01_Topic.tex
+  # Score the LaTeX manuscript
+  python scripts/quality_score.py manuscript/paper.tex
 
   # Score an R script
-  python scripts/quality_score.py scripts/R/Lecture06_simulations.R
+  python scripts/quality_score.py scripts/R/03_analyze.R
+
+  # Score a Python script
+  python scripts/quality_score.py scripts/python/02_clean.py
 
   # Summary only (no detailed issues)
-  python scripts/quality_score.py Quarto/Lecture6.qmd --summary
+  python scripts/quality_score.py manuscript/paper.tex --summary
 
   # Verbose output (include minor issues)
-  python scripts/quality_score.py Quarto/Lecture6.qmd --verbose
+  python scripts/quality_score.py manuscript/paper.tex --verbose
 
 Quality Thresholds:
   80/100 = Commit threshold (blocks if below)
@@ -754,12 +671,12 @@ Exit Codes:
         try:
             scorer = QualityScorer(filepath, verbose=args.verbose)
 
-            if filepath.suffix == '.qmd':
-                report = scorer.score_quarto()
-            elif filepath.suffix == '.R':
+            if filepath.suffix == '.R':
                 report = scorer.score_r_script()
+            elif filepath.suffix == '.py':
+                report = scorer.score_python_script()
             elif filepath.suffix == '.tex':
-                report = scorer.score_beamer()
+                report = scorer.score_latex()
             else:
                 print(f"Error: Unsupported file type: {filepath.suffix}")
                 continue

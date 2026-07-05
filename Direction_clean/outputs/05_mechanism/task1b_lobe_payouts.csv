@@ -1,0 +1,3 @@
+lobe,n,comp_median,comp_p25,comp_p75,pct_comp_below_5k,gross_value_median,comp_over_grossvalue_median
+zero/negative excess (floor block >= directed output),121,82858,40699,259630,2.5,90455,0.93
+positive excess,150,116477,63043,274851,1.3,129874,0.93

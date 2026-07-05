@@ -11,23 +11,32 @@ B  <- function(d,t) body_add_par(d, paste0("•  ", t), style="Normal")
 N  <- function(d,t) body_add_par(d, paste0("Note. ", t), style="Normal")
 TBL<- function(d,df) body_add_table(d, df, style="table_template")
 SP <- function(d) body_add_par(d, "", style="Normal")
+FIG<- function(d,png,w,h) body_add_img(d, src=png, width=w, height=h)
+CAP<- function(d,t) body_add_par(d, t, style="Normal")
 
 ############################################################################
 ## 1. PROPOSAL
 ############################################################################
 doc <- read_docx()
 doc <- body_add_par(doc, "Strategic Withholding and System-Strength Directions in the South Australian Electricity Market", style="heading 1")
-doc <- P(doc, "Research proposal. Monash University. Draft 2026-06-20.")
+doc <- P(doc, "Research proposal. Monash University. Draft 2026-06-29.")
 doc <- P(doc, "Framing choices made for this draft (overridable): the unit of analysis is the South Australian (SA) synchronous generation fleet, with Torrens Island B (TIB) as the salient case; the primary outcome is the SRMC-relative withheld share; the third leg of the triple-difference is system-strength pivotality interacted with non-synchronous penetration. Empirical claims cite fact bullets [F#] in facts_memo.md; literature placeholders are marked [CITE].")
 
 doc <- H1(doc, "1. Motivation")
 doc <- P(doc, "South Australia runs the most renewables-intensive synchronous-thin grid in the National Electricity Market (NEM). To maintain system strength and security, the Australian Energy Market Operator (AEMO) frequently directs synchronous generators to run when the market would not dispatch them. A directed generator is compensated at the directed price d_t, a trailing-365-day 90th percentile of the regional spot price. Over 2022-2024 that price sat far above the directed units' short-run marginal cost: mean pre-exit margins of d_t over marginal cost ranged from roughly $78 to $148/MWh across units [F4], and the per-interval direction rent (d_t minus spot) was positive in more than 94% of directed intervals and rose monotonically with d_t, from about $126 to $269/MWh across the d_t distribution [F5].")
+doc <- P(doc, "The resulting compensation bill is large and persistent, and it does not move with directed volume. The quarters with the highest compensation are not the quarters with the most directed energy: a small directed volume in late 2022 and early 2023 produced the largest bills, because each megawatt-hour was paid the inflated, slow-moving directed price (Figure 1).")
+doc <- FIG(doc, "outputs/proposal_figures/F2_volume_cost.png", 6.2, 3.29)
+doc <- CAP(doc, "Figure 1. Energy generated under direction (bars) and total compensation paid (line), by quarter, 2021-2024. The highest-cost quarters are not the highest-volume quarters.")
 doc <- P(doc, "A large, reliable rent for being directed creates an incentive to be directed. This proposal asks whether SA synchronous generators act on that incentive by withholding capacity, and whether the behaviour is concentrated where it can actually work, namely in units that are pivotal for system strength. Preliminary descriptive evidence assembled for this proposal is affirmative and sharp: within a unit, being pivotal for system strength raises the share of capacity offered above marginal cost by 11 to 14 percentage points, a result that survives restriction to undirected market-facing intervals and holds for a pivotality measure constructed from rivals' availability alone [F14]. Pivotal units also actively rebid, withdrawing roughly 40 MW of available capacity intraday and moving 4 to 18 percentage points of capacity above marginal cost across the trading day [F16]. The pivotality state, not the size of the prize, is the dominant margin [F15].")
 
-doc <- H1(doc, "2. Institutional background: directions and the directed price")
+doc <- H1(doc, "2. Institutional background: directions, the directed price, and pivotality")
 doc <- P(doc, "Under National Electricity Rules clause 3.15.7(c), a directed participant providing energy is compensated by DCP = AMP x DQ. DCP is the directed-participant compensation, DQ is the counterfactual additional energy delivered because of the direction, and AMP is the directed price d_t: the price below which 90% of the relevant region's spot prices fell over the 12 months immediately preceding the trading day on which the direction was issued. Because d_t is a trailing percentile, it is predetermined relative to today's bidding decision.")
-doc <- P(doc, "This predetermination produces the project's identifying variation. The 2022 SA price spike pushed the trailing 90th percentile to a plateau of about $348-350/MWh across 2022Q3-2023Q1. As the spike intervals rolled out of the trailing window in mid-2023, d_t fell mechanically to about $180/MWh by late 2023 and a trough near $160/MWh in 2024, a 54% decline from peak, on a date computable in advance from price history alone [F1]. The reconstructed d_t series matches realised compensation (DCP/DQ) with a correlation of 0.984 over the sample and 0.997 once the trailing window is fully populated [F2]. Crucially, marginal cost shows no structural break at the d_t exit, so the variation is in the prize, not in cost [F3].")
-doc <- P(doc, "System strength is governed by AEMO's published set of acceptable minimum synchronous generator combinations for SA. At any non-synchronous penetration level, security requires that the online synchronous fleet satisfy at least one acceptable combination. This standard is the basis for the pivotality measure below: a unit is pivotal when no acceptable combination can be met without it, so AEMO must keep or direct it on.")
+doc <- P(doc, "This predetermination produces the project's identifying variation. The 2022 SA price spike pushed the trailing 90th percentile to a plateau of about $348-350/MWh across 2022Q3-2023Q1. As the spike intervals rolled out of the trailing window in mid-2023, d_t fell mechanically to about $180/MWh by late 2023 and a trough near $160/MWh in 2024, a 54% decline from peak, on a date computable in advance from price history alone [F1]. Because the directed price tracks the previous twelve months of prices rather than today's costs, it keeps paying near-2022 levels well after the units' fuel costs have fallen, so the gap between the directed price and fuel cost — the rent for being directed — is small during the 2022 fuel spike and large once fuel falls in 2023 (Figure 2). The reconstructed d_t series matches realised compensation (DCP/DQ) with a correlation of 0.984 over the sample and 0.997 once the trailing window is fully populated [F2]. Crucially, marginal cost shows no structural break at the d_t exit, so the variation is in the prize, not in cost [F3].")
+doc <- FIG(doc, "outputs/proposal_figures/F1_compensation_vs_fuel.png", 6.2, 3.29)
+doc <- CAP(doc, "Figure 2. The directed price d_t (a trailing-365-day 90th percentile of SA spot) against the Adelaide wholesale gas price. The slow-moving prize stays high after fuel costs fall, opening a small rent during the 2022 fuel spike and a large rent in 2023.")
+doc <- P(doc, "System strength in SA is governed by AEMO's published set of acceptable minimum combinations of synchronous units. Because the grid is synchronous-thin, secure operation requires that the synchronous generators online at any moment satisfy at least one acceptable combination; as non-synchronous wind and solar output rises, the admissible combinations become scarcer and stricter. We use this standard to define pivotality precisely: a unit is pivotal in a five-minute interval when no acceptable combination of the other available synchronous units can be formed without it, so the security requirement cannot be met unless that unit is kept on or directed on. We separate a unit that is pivotal given the fleet actually running from one that is pivotal to keep the system secure against the sudden loss of its single largest online unit (the N-1 standard AEMO operates to). Figure 3 shows this is the common case: 58% of directed unit-intervals are pivotal given the units actually running, a further 14% are pivotal to keep the system N-1 secure, and only 28% are non-pivotal. Most directions therefore fall on units that are genuinely essential rather than redundant — the precondition for the withholding-to-be-directed channel this proposal studies.")
+doc <- FIG(doc, "outputs/proposal_figures/F3_pivotal_composition.png", 6.2, 3.72)
+doc <- CAP(doc, "Figure 3. Composition of directed unit-intervals by how essential the directed unit was, 2022-2024. A unit is counted pivotal when no combination of the other available SA synchronous units could meet the system-strength requirement without it.")
 
 doc <- H1(doc, "3. Research question")
 doc <- P(doc, "Do SA synchronous generators strategically withhold energy, on both the price and quantity margins, to raise their probability of being directed and collecting d_t, and is the behaviour concentrated in units that are pivotal for system strength?")
@@ -41,35 +50,27 @@ doc <- B(doc, "System strength: AEMO acceptable minimum synchronous generator co
 doc <- B(doc, "Cost primitives: AER quarterly STTM Adelaide ex-ante gas prices; AEMO heat-rate workbook (incremental and static, HHV as-generated); Aurecon 2024 variable O&M by technology class.")
 doc <- N(doc, "June 2022 is a market-suspension and administered-price month; bidding was administrative, not strategic, and it is dummied or dropped.")
 
-doc <- H1(doc, "5. Identification")
-doc <- H2(doc, "5.1 Design 1: window-exit event study")
+doc <- H1(doc, "5. Descriptive evidence")
+doc <- P(doc, "Two preliminary patterns, assembled for this proposal from the 5-minute bid data, speak directly to conduct. Both use the pivotality measure defined above, and both express price withholding as the share of a unit's capacity offered above $300/MWh — a level well above these units' fuel cost of roughly $100/MWh, used here as a simple, model-free withholding threshold.")
+doc <- P(doc, "Bidding shifts with pivotality. Figure 4 compares three groups of unit-days: every day, days the unit was directed, and directed days on which the unit was pivotal. The number of intraday rebids is essentially flat across the three groups, and the intraday change in available capacity turns negative on direction days, mechanically, because a directed unit is required to add output. The informative margin is price: the share of capacity offered above $300/MWh rises from 77% on an average day to 82% on direction days and 84% on directed days when the unit is pivotal. Units price more of their capacity high precisely when they are essential.")
+doc <- FIG(doc, "outputs/proposal_figures/F4_rebidding_by_sample.png", 6.2, 2.59)
+doc <- CAP(doc, "Figure 4. Rebidding behaviour across three groups of unit-days for the pivotal-capable SA gas units: every day, direction days, and pivotal direction days. Averages per unit-day.")
+doc <- P(doc, "The repositioning precedes the direction. Figure 5 follows the offer for the directed intervals from a unit's first bid version to its last version submitted before the direction is issued, on a clock measured in hours before issue and expressed as the change since that first version. The share of capacity offered above $300/MWh rises by two to six percentage points over the run-up, for both Synchronise (start-up) and Remain (keep-running) directions and whether we use the whole directed window or only its first hour; the available-capacity margin is noisier. The pattern is consistent with units positioning their offers in anticipation of being directed, not merely responding once directed.")
+doc <- FIG(doc, "outputs/proposal_figures/F5_runup.png", 6.2, 3.78)
+doc <- CAP(doc, "Figure 5. Change in the offer for the directed intervals, from each direction episode's first bid version to its last version before the direction is issued (0 = issued). Rows: capacity offered and share offered above $300/MWh; columns: the full directed period and its first hour; lines: Synchronise versus Remain.")
+
+doc <- H1(doc, "6. Identification")
+doc <- H2(doc, "6.1 Design 1: window-exit event study")
 doc <- P(doc, "An event study of withheld share on event-time relative to the mid-2023 d_t exit, SA synchronous units, with unit and calendar-time fixed effects and d_t entered as the predetermined regressor. Identifying assumption: absent the d_t decline, treated units' withholding intensity would have followed its own pre-exit trend, so the only thing changing discontinuously at the window exit is the predetermined prize, not cost [F3] or the compensation formula (unchanged across 2021-2024). Main threat: the 2022 price regime moves d_t, marginal cost, and spot together; the raw d_t slope is sign-flipped by exactly this confound, and reverses to positive only once marginal cost is controlled [F7, F8]. Robustness: control SRMC and native 5-minute spot; pre-trend tests on event-time leads; Remain-directed intervals as a placebo for the Synchronise margin; drop June 2022.")
-doc <- H2(doc, "5.2 Design 2: triple-difference, d_t x pivotality x tightness")
+doc <- H2(doc, "6.2 Design 2: triple-difference, d_t x pivotality x tightness")
 doc <- P(doc, "The withholding-to-be-directed channel should bite hardest where the firm can swing the security outcome, namely where it is pivotal under a binding requirement. The headline design interacts predetermined d_t with unit pivotality and with non-synchronous penetration (system tightness). Pivotality is built and validated [F13]; AEMO directs units 1.5 to 2 times more often when they are pivotal. Identifying assumption: conditional on the lower-order interactions and fixed effects, the differential response across pivotal vs non-pivotal units in tight vs slack states is not driven by another factor varying on the same triple margin. Main threat: pivotality measured from a unit's own realised dispatch is endogenous to its own withholding. This is addressed by the ex-ante measure, which computes essentiality from rivals' availability alone and yields a larger effect [F14], and by the continuous, weather-driven non-synchronous penetration instrument, which independently predicts withholding [F14]. Falsification: the triple-difference should vanish for Remain events and for non-synchronous (wind and solar) units, which cannot execute the offline-to-directed channel; consistent with this, peakers are essentially never pivotal and show no pivotal-withholding response [F13, F14].")
 
-doc <- H1(doc, "6. Methodology")
+doc <- H1(doc, "7. Methodology")
 doc <- P(doc, "Reduced-form first. The estimators are two-way fixed-effects regressions of the withheld share (and, as secondary outcomes, rebid-based quantity withdrawal and price-band escalation) on d_t, pivotality, and their interaction, absorbing unit and time fixed effects and controlling marginal cost and spot. The full construction of every variable is documented in the companion methods document.")
 doc <- P(doc, "Inference accounts for few clusters in every dimension: 35 months, 11 to 12 units. Analytic cluster-robust standard errors are unreliable at this cluster count, so the primary inference is the wild-cluster bootstrap with Webb six-point weights and the small-cluster correction [CITE Cameron, Gelbach and Miller; CITE Roodman et al. boottest]. All headline coefficients will be reported with wild-cluster-bootstrap p-values and confidence intervals.")
 doc <- P(doc, "A structural extension is future work: a model of the unit's joint price-and-availability bidding under the system-strength constraint and the directed-price option, which would let the directed-price reform be evaluated counterfactually rather than only descriptively. It is not required for the reduced-form contribution.")
 
-doc <- H1(doc, "7. Contribution")
-doc <- B(doc, "First measurement of system-strength pivotality from AEMO's published minimum-combination standard, validated against realised directions [F13]; a portable method for any constrained synchronous-thin grid.")
-doc <- B(doc, "Evidence that withholding tracks the pivotality state, not merely the size of the directed-price prize [F15], and that it operates on both the price and quantity margins through active intraday rebidding [F16].")
-doc <- B(doc, "A clean, predetermined source of variation (the trailing-window d_t exit) and an exogenous pivotality instrument (rivals' availability and weather-driven non-synchronous penetration) that together address the endogeneity of withholding to market power [F14].")
-doc <- B(doc, "Direct policy relevance: AEMO has proposed replacing the 90th-percentile directed-price methodology; this work quantifies the conduct the current rule induces.")
-
-doc <- H1(doc, "8. Timeline (6 months)")
-tl <- data.frame(
-  Month = c("1","2","3","4","5","6"),
-  Activity = c(
-    "Finalise variable construction; requirement-active flag from the reason field; offline-but-available indicator.",
-    "Design 1 event study with rebuilt outcome; pre-trend tests; placebo on Remain.",
-    "Design 2 triple-difference; ex-ante pivotality and non-sync interactions; heterogeneity by unit.",
-    "Wild-cluster-bootstrap inference across all headline specifications; robustness (binary-station pivotality, lags, risk-island combinations).",
-    "Merge realised compensation dollars; quantify rent captured; TIB case study.",
-    "Draft paper; internal review; policy section on the directed-price reform."),
-  stringsAsFactors = FALSE)
-doc <- TBL(doc, tl)
+# (Contribution and Timeline sections dropped for this draft.)
 
 doc <- H1(doc, "References")
 doc <- P(doc, "[CITE] Cameron, A. C., Gelbach, J. B., and Miller, D. L. Bootstrap-based improvements for inference with clustered errors.")
@@ -158,7 +159,7 @@ al <- data.frame(
   Assumption_or_limitation = c(
     "Monthly trailing 90th percentile used operationally; per-issue-date variation within month suppressed.",
     "AEMO incremental vs static; PPCCGT/OSB-AG anomaly forces static for both measures.",
-    "BARKIPS1 heat rate and TORRB VOM are proxies, flagged; revealed-cost anchoring is a planned robustness.",
+    "BARKIPS1 heat rate and TORRB VOM are proxies, flagged; the revealed-cost anchor was tested (gate_a_revealed_cost.R) and rejected -- offers are not gas-indexed cost bids [F3a] -- so the proxies stand and engineering SRMC is maintained.",
     "Synchronised proxied by TOTALCLEARED > 0; units spinning at zero MW are treated as offline.",
     "Internal unit counts approximated from MW; bind only for combinations requiring two-plus of a single-DUID station.",
     "A combination applies at or below its non_sync_mw threshold; mapping to be checked against AEMO source. Rooftop solar (non-scheduled) is excluded from the penetration measure.",

@@ -1,0 +1,18 @@
+DUID,direction,lever,N
+OSB-AG,down,quantity reallocation,65
+OSB-AG,down,band-price change,1
+OSB-AG,up,availability cut,67
+OSB-AG,up,quantity reallocation,1
+PPCCGT,down,quantity reallocation,117
+PPCCGT,down,band-price change,1
+PPCCGT,up,availability cut,119
+PPCCGT,up,quantity reallocation,1
+TORRB2,down,quantity reallocation,104
+TORRB2,up,availability cut,84
+TORRB2,up,quantity reallocation,10
+TORRB3,down,quantity reallocation,133
+TORRB3,up,availability cut,109
+TORRB3,up,quantity reallocation,11
+TORRB4,down,quantity reallocation,103
+TORRB4,up,availability cut,88
+TORRB4,up,quantity reallocation,16

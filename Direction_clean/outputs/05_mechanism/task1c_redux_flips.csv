@@ -1,0 +1,70 @@
+episode_id,class_old,class_new
+337,signal then direction,signal then direction
+524,signal then direction,signal then direction
+525,signal then direction,no exit signal ever
+526,signal then direction,signal then direction
+532,no exit signal ever,no exit signal ever
+533,signal then direction,no exit signal ever
+536,signal then direction,signal then direction
+812,signal then direction,signal after direction
+817,signal then direction,signal then direction
+818,signal then direction,signal then direction
+820,signal then direction,signal then direction
+821,signal then direction,signal then direction
+822,signal then direction,signal after direction
+827,signal then direction,signal then direction
+829,signal then direction,signal then direction
+835,signal then direction,signal then direction
+840,signal then direction,signal then direction
+841,signal then direction,signal then direction
+842,signal then direction,signal then direction
+843,no exit signal ever,no exit signal ever
+844,signal then direction,signal then direction
+845,signal then direction,signal after direction
+846,signal then direction,signal after direction
+849,signal then direction,signal after direction
+854,signal then direction,signal then direction
+855,signal then direction,signal then direction
+858,signal then direction,signal then direction
+860,signal then direction,signal then direction
+872,signal then direction,signal then direction
+876,signal then direction,signal after direction
+880,signal then direction,signal then direction
+881,signal then direction,signal then direction
+882,signal then direction,signal then direction
+1134,signal then direction,signal then direction
+1138,signal then direction,signal after direction
+1139,signal then direction,signal after direction
+1143,signal then direction,signal then direction
+1154,signal then direction,signal then direction
+1159,no exit signal ever,no exit signal ever
+1160,signal then direction,signal then direction
+1165,signal then direction,signal then direction
+1166,signal then direction,signal then direction
+1175,signal then direction,signal then direction
+1184,signal then direction,signal then direction
+1185,signal then direction,signal then direction
+1204,no exit signal ever,no exit signal ever
+1205,signal then direction,signal then direction
+1207,signal after direction,signal after direction
+1209,signal then direction,signal then direction
+1217,signal then direction,signal then direction
+1420,signal then direction,signal after direction
+1423,signal then direction,signal then direction
+1428,signal then direction,signal after direction
+1431,signal then direction,signal after direction
+1432,signal then direction,signal then direction
+1433,signal then direction,signal then direction
+1434,signal then direction,signal then direction
+1436,signal then direction,signal then direction
+1444,no exit signal ever,signal then direction
+1445,signal then direction,signal then direction
+1446,signal then direction,signal then direction
+1450,signal then direction,signal then direction
+1452,signal then direction,signal then direction
+1461,signal then direction,signal then direction
+1473,signal then direction,signal then direction
+1477,signal then direction,no exit signal ever
+1485,signal then direction,signal then direction
+1486,signal then direction,signal then direction
+1490,signal then direction,signal then direction

@@ -1,0 +1,70 @@
+episode_id,duid,direction_instruction,market_notice,reason_report
+337,OSB-AG,Synchronise,MN115790,System security
+524,PPCCGT,Remain,MN 111661,System security
+525,PPCCGT,Remain,MN 113005,System security
+526,PPCCGT,Synchronise,MN115727,System security
+532,PPCCGT,Remain,MN117521,System security - voltage
+533,PPCCGT,Remain,No Market Notices were issued advising of a possible intervention. The latest time to intervene was as soon as practical at 1850 hrs on 22/09/2024.,System security - voltage
+536,PPCCGT,Remain,119409,System security - voltage
+812,TORRB2,Synchronise,MN110837,System security
+817,TORRB2,Remain,MN111106,System security
+818,TORRB2,Remain,MN 112110,System security
+820,TORRB2,Synchronise,MN 112318,System security
+821,TORRB2,Remain,MN 112380,System security
+822,TORRB2,Remain,MN 112422,System security
+827,TORRB2,Remain,MN115078,System security
+829,TORRB2,Remain,MN115217,System security
+835,TORRB2,Synchronise,MN115687,System security
+840,TORRB2,Remain,115989,System security
+841,TORRB2,Synchronise,116023,System security
+842,TORRB2,Synchronise,116023,System security
+843,TORRB2,Synchronise,116168,System security
+844,TORRB2,Synchronise,116186,System security
+845,TORRB2,Synchronise,116198,System security
+846,TORRB2,Synchronise,116219,System security
+849,TORRB2,Synchronise,116312,System security
+854,TORRB2,Synchronise,MN116469,System security
+855,TORRB2,Synchronise,MN116476,System security
+858,TORRB2,Remain,MN116632,System security
+860,TORRB2,Remain,MN116803,System security
+872,TORRB2,Synchronise,MN117789,System security - voltage
+876,TORRB2,Synchronise,118369,System security - voltage
+880,TORRB2,Synchronise,118451,System security - voltage
+881,TORRB2,Remain,118532,System security - voltage
+882,TORRB2,Remain,118541,System security - voltage
+1134,TORRB3,Remain,MN111070,System security
+1138,TORRB3,Synchronise,MN111626,System security
+1139,TORRB3,Remain,MN111635,System security
+1143,TORRB3,Synchronise,No Market Notices were issued advising of a possible intervention. The latest time to intervene was as soon as practical  at 1600 hrs on 26/12/2023.,System security
+1154,TORRB3,Synchronise,MN 113311,System security
+1159,TORRB3,Synchronise,MN115519,System security
+1160,TORRB3,Remain,MN115612,System security
+1165,TORRB3,Synchronise,116168,System security
+1166,TORRB3,Synchronise,116186,System security
+1175,TORRB3,Synchronise,MN116469,System security
+1184,TORRB3,Synchronise,MN117444,System security - voltage
+1185,TORRB3,Synchronise,MN117469,System security - voltage
+1204,TORRB3,Synchronise,118880,System security - voltage
+1205,TORRB3,Remain,118960,System security - voltage
+1207,TORRB3,Remain,119105,System security - voltage
+1209,TORRB3,Synchronise,119195,System security - voltage
+1217,TORRB3,Remain,120429,System security - voltage
+1420,TORRB4,Synchronise,MN110568,System security
+1423,TORRB4,Synchronise,MN110667,System security
+1428,TORRB4,Remain,MN111482,System security
+1431,TORRB4,Synchronise,MN111626,System security
+1432,TORRB4,Synchronise,MN 111661,System security
+1433,TORRB4,Synchronise,MN 111661,System security
+1434,TORRB4,Synchronise,MN 111927,System security
+1436,TORRB4,Remain,MN 112010,System security
+1444,TORRB4,Remain,MN114833,System security
+1445,TORRB4,Remain,MN114957,System security
+1446,TORRB4,Remain,MN115217,System security
+1450,TORRB4,Remain,MN116938,System security
+1452,TORRB4,Synchronise,MN117150,System security
+1461,TORRB4,Remain,MN117514,System security - voltage
+1473,TORRB4,Synchronise,118451,System security - voltage
+1477,TORRB4,Remain,A possible intervention notice was not issued due to rebidding activity. The latest time to intervene was as soon as practical at 1500 hrs on 10/10/2024.,System security - voltage
+1485,TORRB4,Synchronise,119643,System security - voltage
+1486,TORRB4,Synchronise,119873,System security - voltage
+1490,TORRB4,Synchronise,120360,System security - voltage

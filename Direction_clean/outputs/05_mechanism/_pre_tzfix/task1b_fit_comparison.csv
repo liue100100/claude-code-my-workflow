@@ -1,0 +1,5 @@
+model,coef,R2,joint_coefs
+gross: Q_gross x P,0.882775810311794,0.943,
+wedge: Q_wedge x P,0.902606504898656,0.888,
+DCP form: Q_gross x P - RTA,0.901728315636569,0.936,
+joint (wedge + gross),,0.945,0.127 / 0.767

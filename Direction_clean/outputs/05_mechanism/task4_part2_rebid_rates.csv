@@ -1,0 +1,5 @@
+event,n_days,tag,nontag,none,rr_tag,rr_nontag,rr_none
+RTS-26 day,26,2.23,0.27,0.73,4.3,0.2,0.5
+direction START day,673,2.02,0.94,0.84,3.9,0.7,0.6
+direction END day,699,1.96,1.11,0.92,3.8,0.8,0.7
+transition day,445,1.03,2.04,1.54,2,1.4,1.2

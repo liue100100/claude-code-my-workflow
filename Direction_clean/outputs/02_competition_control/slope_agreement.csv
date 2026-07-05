@@ -1,0 +1,4 @@
+grp,n,corr_direct20_kernel,corr_direct5_kernel,median_abs_diff_direct20_kernel,na_pct,zero_slope_pct
+osborne_gt_st,315648,0.979,0.81,0.374361,0.08,6.67
+pelican_point_gt,315648,0.98,0.814,0.227871,0.08,9.57
+torrens_island_b,315648,0.98,0.819,0.322083,0.08,6.7

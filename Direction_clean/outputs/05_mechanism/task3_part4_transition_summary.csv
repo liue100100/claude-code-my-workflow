@@ -1,0 +1,9 @@
+DUID,dir,n,gas_med,exp_loss_med,pct_exp_loss_pos,pct_dir_prior7d,pct_essential_pm3,pct_clean_day
+PPCCGT,ENTER absent state,76,12.8,58,82.9,7.9,5.3,97.4
+PPCCGT,EXIT absent state,76,12.8,57,82.9,13.2,3.9,94.7
+TORRB2,ENTER absent state,47,13.9,10.6,59.6,70.2,14.9,53.2
+TORRB3,EXIT absent state,54,13.9,36.2,74.1,87,20.4,38.9
+TORRB3,ENTER absent state,54,13.7,23.5,59.3,70.4,18.5,70.4
+TORRB4,EXIT absent state,46,15.2,31.4,67.4,82.6,21.7,37
+TORRB4,ENTER absent state,46,15.2,35.9,60.9,65.2,19.6,58.7
+TORRB2,EXIT absent state,46,13.9,17,63,80.4,13,37

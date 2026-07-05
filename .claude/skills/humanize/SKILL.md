@@ -155,7 +155,7 @@ Long chains of compound modifiers as a paragraph signature:
 
 1. **Identify files to audit:**
    - If `$ARGUMENTS` starts with a filename: audit that file only.
-   - If `$ARGUMENTS` is `all`: audit all `.qmd`, `.tex`, `.md` files in `Slides/`, `Quarto/`, root, and `master_supporting_docs/`.
+   - If `$ARGUMENTS` is `all`: audit all `.tex`, `.md` files in `manuscript/`, root, and `master_supporting_docs/`.
    - Skip `.bib`, `.R`, `.py`, code files, and any file under `scripts/`.
 
 2. **Parse `--severity` flag** (default: report all).

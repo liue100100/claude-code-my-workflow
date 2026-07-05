@@ -85,3 +85,13 @@ scripts/R/_outputs/
 # Output artifacts — uncomment lines below based on your preference
 # *.rds
 # output/**/*.rds
+
+# Raw AEMO download caches and bulky derived panels (regenerable from scripts)
+Direction_clean/_demand_ic_cache/
+Direction_clean/_capacity_cache/
+Direction_clean/outputs/05_mechanism/_task*.rds
+Direction_clean/outputs/05_mechanism/_task1c_cache.rds
+Direction_clean/outputs/05_mechanism/task2_interval_stance.rds
+Direction_clean/outputs/05_mechanism/task2_interval_pfloor.rds
+Direction_clean/outputs/05_mechanism/task2_stance_lodgement.rds
+Direction_clean/outputs/05_mechanism/task4_*.rds

@@ -77,6 +77,13 @@ The framework's architecture (levers, stages, two-sided reading, policy-chosen-o
 the load-bearing Stage-3 claim survives in Torrens's own numbers with the event-specific shape
 above. Check (ii), Task B, remains open.
 
+## CHECK (ii) RESOLVED (2026-07-05, same day): PASSED, no amendment required
+Task B (`findings_task5b.md`): the direction channel paid the three Torrens units $141.9M for
+625,635 directed MWh that would have earned $7.2M at spot -- a $134.7M gap, ~20:1, every unit,
+every year, with the market alternative NEGATIVE in 2023 (48.2% of directed MWh at negative
+spot prices). "Absence dominates commitment" is now quantitative. Both open checks are closed;
+the framework stands as amended (Amendment 1 only).
+
 ## Where the evidence for each stage lives
 Stage 1: `findings_horizon_stance.md` (base rate, persistence), `findings_task3_part0.md`.
 Stage 2: `findings_task4_part3.md` §3 (steepness, fragile), `task5a3` addendum in

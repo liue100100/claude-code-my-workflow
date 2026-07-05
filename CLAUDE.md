@@ -1,12 +1,7 @@
-# CLAUDE.MD -- Academic Project Development with Claude Code
+# CLAUDE.MD -- Empirical Economics Paper Project
 
-<!-- HOW TO USE: Replace [BRACKETED PLACEHOLDERS] with your project info.
-     Customize Beamer environments and CSS classes for your theme.
-     Keep this file under ~150 lines — Claude loads it every session.
-     See the guide at docs/workflow-guide.html for full documentation. -->
-
-**Project:** [YOUR PROJECT NAME]
-**Institution:** [YOUR INSTITUTION]
+**Project:** South Australian Electricity Market: AEMO Directions, Compensation, and Generator Bidding Behaviour
+**Institution:** Monash University
 **Branch:** main
 
 ---
@@ -14,10 +9,16 @@
 ## Core Principles
 
 - **Plan first** -- enter plan mode before non-trivial tasks; save plans to `quality_reports/plans/`
-- **Verify after** -- compile/render and confirm output at the end of every task
-- **Single source of truth** -- Beamer `.tex` is authoritative; Quarto `.qmd` derives from it
+- **Verify after** -- scripts run and the manuscript compiles; confirm output at the end of every task
 - **Quality gates** -- nothing ships below 80/100
 - **[LEARN] tags** -- when corrected, save `[LEARN:category] wrong → right` to [MEMORY.md](MEMORY.md)
+- **Contractor mode after plan approval** -- once a plan is approved, execute autonomously end-to-end; only interrupt for genuine ambiguity or a decision with real stakes (a methodological choice, an irreversible data operation, or a finding that contradicts an assumption in the plan). Do not pause for routine confirmations mid-execution.
+- **Fading check-in cadence** -- for the first several sessions on this project, check in more frequently (e.g., after each major phase) even within contractor mode, to calibrate to preferences; relax toward the standing contractor-mode default as corrections stop recurring.
+- **Language selection** -- choose the most efficient tool per task, and explain the choice when it's not obvious:
+  - **Python** -- scraping/API pulls, parsing large or messy raw AEMO files, heavy ETL
+  - **R** -- econometric estimation, regression tables (`fixest`, `modelsummary`), figures
+  - **LaTeX** -- the manuscript only, never analysis
+- **Writing style** -- plain declarative prose, no hedging, footnotes over in-text qualification. Applies to the manuscript and any written deliverable.
 
 Cross-session context lives in [MEMORY.md](MEMORY.md); past plans, specs, and session logs are in [quality_reports/](quality_reports/).
 
@@ -26,20 +27,23 @@ Cross-session context lives in [MEMORY.md](MEMORY.md); past plans, specs, and se
 ## Folder Structure
 
 ```
-[YOUR-PROJECT]/
+my-project/
 ├── CLAUDE.MD                    # This file
 ├── .claude/                     # Rules, skills, agents, hooks
 ├── Bibliography_base.bib        # Centralized bibliography
-├── Figures/                     # Figures and images
-├── Preambles/header.tex         # LaTeX headers
-├── Slides/                      # Beamer .tex files
-├── Quarto/                      # RevealJS .qmd files + theme
-├── docs/                        # GitHub Pages (auto-generated)
-├── scripts/                     # Utility scripts + R code
-├── quality_reports/             # Plans, session logs, merge reports, decision records
+├── manuscript/                  # LaTeX paper (single source of truth for the writeup)
+├── data/
+│   ├── raw/                     # Gitignored — original AEMO extracts
+│   └── processed/                # Cleaned data handed off from Python to R
+├── scripts/
+│   ├── R/                       # Estimation, regression tables, figures
+│   └── python/                  # Scraping, large-dataset cleaning/ETL
+├── output/                      # Tables and figures (publication-ready)
+├── quality_reports/             # Plans, session logs, decision records
 ├── explorations/                # Research sandbox (see rules)
 ├── templates/                   # Session log, quality report templates
-└── master_supporting_docs/      # Papers and existing slides
+├── master_supporting_docs/      # Background papers, AEMO documentation
+└── _archived-lecture-template/  # Archived Beamer/Quarto template (Slides/, Quarto/, Figures/, Preambles/, docs/) — not active, restore via git mv if a slide deck is needed later
 ```
 
 ---
@@ -47,26 +51,24 @@ Cross-session context lives in [MEMORY.md](MEMORY.md); past plans, specs, and se
 ## Commands
 
 ```bash
-# LaTeX (3-pass, XeLaTeX only)
-cd Slides && TEXINPUTS=../Preambles:$TEXINPUTS xelatex -interaction=nonstopmode file.tex
-BIBINPUTS=..:$BIBINPUTS bibtex file
-TEXINPUTS=../Preambles:$TEXINPUTS xelatex -interaction=nonstopmode file.tex
-TEXINPUTS=../Preambles:$TEXINPUTS xelatex -interaction=nonstopmode file.tex
+# LaTeX manuscript (3-pass, XeLaTeX)
+cd manuscript && xelatex -interaction=nonstopmode paper.tex
+bibtex paper
+xelatex -interaction=nonstopmode paper.tex
+xelatex -interaction=nonstopmode paper.tex
 
-# Deploy Quarto to GitHub Pages
-./scripts/sync_to_docs.sh LectureN
+# R pipeline
+Rscript scripts/R/00_run_all.R
+
+# Python pipeline
+python scripts/python/00_run_all.py
 
 # Quality score
-python scripts/quality_score.py Quarto/file.qmd
-
-# Palette sync (LaTeX ↔ SCSS)
-./scripts/check-palette-sync.sh
-
-# Surface-count sync (README ↔ CLAUDE.md ↔ guide ↔ landing page)
-./scripts/check-surface-sync.sh
+python scripts/quality_score.py manuscript/paper.tex
+python scripts/quality_score.py scripts/python/02_clean.py
 ```
 
-**Palette contract:** color names in `Preambles/header.tex` must match SCSS variables in `Quarto/theme-template.scss`. See [`Preambles/README.md`](Preambles/README.md).
+> On this machine `python` resolves to the Windows Store stub — use `py` (the Python launcher) or a project venv's `python.exe` instead.
 
 ---
 
@@ -78,7 +80,7 @@ python scripts/quality_score.py Quarto/file.qmd
 | 90 | PR | Ready for deployment |
 | 95 | Excellence | Aspirational |
 
-Enforced by `/commit` (halts + asks for override) **and** — once you run `./scripts/install-hooks.sh` — by a real git pre-commit hook (`.githooks/pre-commit`) that runs the surface-sync + quality (≥80) gates on every commit. Bypass sparingly with `SKIP_QUALITY_GATE=1` or `--no-verify`.
+Enforced by `/commit` (halts + asks for override) **and** — once you run `./scripts/install-hooks.sh` — by a real git pre-commit hook (`.githooks/pre-commit`) that runs the quality (≥80) gate on every commit. Bypass sparingly with `SKIP_QUALITY_GATE=1` or `--no-verify`.
 
 ---
 
@@ -86,40 +88,21 @@ Enforced by `/commit` (halts + asks for override) **and** — once you run `./sc
 
 The full table of all skills lives in [README.md](README.md#skills-claudeskills). Most-used, by workflow:
 
-- **Slides / teaching:** `/create-lecture` `/compile-latex` `/deploy` `/qa-quarto` `/slide-excellence` `/syllabus` `/teach-from-paper` `/scaffold-exercises`
-- **Papers / review:** `/review-paper` (`--peer`) `/seven-pass-review` `/respond-to-referees` `/verify-claims` `/proofread` `/humanize` `/submission-disclosures`
-- **Data / reproducibility:** `/data-analysis` `/did-event-study` `/simulation-study` `/audit-reproducibility` `/diagnose` `/replication-package` `/capture-environment` `/power-analysis` `/disclosure-check`
 - **Research / writing:** `/interview-me` `/lit-review` `/research-ideation` `/preregister` `/grant-proposal` `/data-management-plan`
+- **Data / reproducibility:** `/data-analysis` `/did-event-study` `/simulation-study` `/audit-reproducibility` `/diagnose` `/replication-package` `/capture-environment` `/power-analysis` `/disclosure-check`
+- **Papers / review:** `/review-paper` (`--peer`) `/seven-pass-review` `/respond-to-referees` `/verify-claims` `/proofread` `/humanize` `/submission-disclosures`
 - **Meta / workflow:** `/commit` `/learn` `/new-skill` `/checkpoint` `/context-status` `/deep-audit` `/coauthor-brief` `/triage-inbox`
 
-Stata (`/stata-replication`), R packages (`/r-package-check`), TikZ (`/extract-tikz`, `/new-diagram`), and more — see the README for the complete index.
-
----
-
-<!-- CUSTOMIZE: Replace placeholder rows ([your-env], [.your-class]) with your own.
-     Delete the rows marked "(example — delete)" once you've added yours. -->
-
-## Beamer Custom Environments
-
-| Environment | Effect | Use Case |
-| --- | --- | --- |
-| `[your-env]` | [Description] | [When to use] |
-| `keybox` | Gold background box | Key points *(example — delete)* |
-| `definitionbox[Title]` | Blue-bordered titled box | Formal definitions *(example — delete)* |
-
-## Quarto CSS Classes
-
-| Class | Effect | Use Case |
-| --- | --- | --- |
-| `[.your-class]` | [Description] | [When to use] |
-| `.smaller` | 85% font | Dense content *(example — delete)* |
-| `.positive` | Green bold | Good annotations *(example — delete)* |
+R packages (`/r-package-check`), Stata (`/stata-replication`, low priority — this project is R/Python), and more — see the README for the complete index. Lecture-slide skills are archived under `.claude/skills/_archived-lecture/`.
 
 ---
 
 ## Current Project State
 
-| Lecture | Beamer | Quarto | Key Content |
-| --- | --- | --- | --- |
-| HelloWorld *(sample — delete when ready)* | `HelloWorld.tex` | `HelloWorld.qmd` | Minimal deck to verify setup |
-| 1: [Topic] | `Lecture01_Topic.tex` | `Lecture1_Topic.qmd` | [Brief description] |
+| Phase | Status | Notes |
+| --- | --- | --- |
+| Research question / design | Not started | Next task after this config setup |
+| Data extraction | Not started | AEMO directions + bidding data |
+| Data cleaning | Not started | |
+| Econometric analysis | Not started | |
+| Manuscript draft | Not started | |

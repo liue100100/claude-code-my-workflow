@@ -1,0 +1,70 @@
+episode_id,duid,n_versions,class,class_any_cut,first_exit_rel_h,first_cut_rel_h,reversed,survivor
+337,OSB-AG,23,signal then direction,signal then direction,-30.5138888888889,32.0436111111111,FALSE,TRUE
+524,PPCCGT,8,signal then direction,signal then direction,-33.6522222222222,,FALSE,TRUE
+525,PPCCGT,9,signal then direction,signal then direction,-46.94,,FALSE,TRUE
+526,PPCCGT,10,signal then direction,signal then direction,-40.0338888888889,-21.1516666666667,FALSE,FALSE
+532,PPCCGT,4,no exit signal ever,no exit signal ever,,,FALSE,TRUE
+533,PPCCGT,5,signal then direction,signal then direction,-45.9377777777778,-15.2366666666667,FALSE,FALSE
+536,PPCCGT,12,signal then direction,signal then direction,-34.0297222222222,-5.26083333333333,FALSE,TRUE
+812,TORRB2,5,signal then direction,signal then direction,-9.87805555555556,,FALSE,FALSE
+817,TORRB2,5,signal then direction,signal then direction,-18.4680555555556,,FALSE,TRUE
+818,TORRB2,15,signal then direction,signal then direction,-19.9033333333333,-12.6275,FALSE,FALSE
+820,TORRB2,5,signal then direction,signal then direction,-10.055,,FALSE,FALSE
+821,TORRB2,6,signal then direction,signal then direction,-18.6113888888889,,FALSE,FALSE
+822,TORRB2,1,signal then direction,signal then direction,-9.81,,FALSE,TRUE
+827,TORRB2,11,signal then direction,signal then direction,-12.6516666666667,,FALSE,FALSE
+829,TORRB2,5,signal then direction,signal then direction,-17.2777777777778,-11.9027777777778,FALSE,TRUE
+835,TORRB2,7,signal then direction,signal then direction,-12.4777777777778,,FALSE,TRUE
+840,TORRB2,14,signal then direction,signal then direction,-13.8925,13.065,FALSE,TRUE
+841,TORRB2,13,signal then direction,signal then direction,-31.2813888888889,-12.2041666666667,FALSE,TRUE
+842,TORRB2,13,signal then direction,signal then direction,-14.7066666666667,12.3186111111111,FALSE,TRUE
+843,TORRB2,4,no exit signal ever,no exit signal ever,,,FALSE,TRUE
+844,TORRB2,7,signal then direction,signal then direction,-40.17,,FALSE,TRUE
+845,TORRB2,4,signal then direction,signal then direction,-9.51888888888889,,FALSE,TRUE
+846,TORRB2,3,signal then direction,signal then direction,-9.77611111111111,,FALSE,TRUE
+849,TORRB2,3,signal then direction,signal then direction,-9.72666666666667,,FALSE,TRUE
+854,TORRB2,7,signal then direction,signal then direction,-15.39,,FALSE,TRUE
+855,TORRB2,6,signal then direction,signal then direction,-13.4730555555556,,FALSE,TRUE
+858,TORRB2,10,signal then direction,signal then direction,-39.5027777777778,,FALSE,FALSE
+860,TORRB2,6,signal then direction,signal then direction,-14.2663888888889,,FALSE,TRUE
+872,TORRB2,4,signal then direction,signal then direction,-16.9475,,FALSE,FALSE
+876,TORRB2,5,signal then direction,signal then direction,-9.92305555555556,13.0616666666667,FALSE,TRUE
+880,TORRB2,8,signal then direction,signal then direction,-11.1633333333333,-11.1633333333333,TRUE,FALSE
+881,TORRB2,7,signal then direction,signal then direction,-32.6769444444444,,FALSE,FALSE
+882,TORRB2,9,signal then direction,signal then direction,-14.6666666666667,,FALSE,FALSE
+1134,TORRB3,3,signal then direction,signal then direction,-17.8955555555556,,FALSE,TRUE
+1138,TORRB3,5,signal then direction,signal then direction,-9.8875,,FALSE,FALSE
+1139,TORRB3,8,signal then direction,signal then direction,-9.95833333333333,,FALSE,FALSE
+1143,TORRB3,7,signal then direction,signal then direction,-19.1008333333333,,FALSE,FALSE
+1154,TORRB3,5,signal then direction,signal then direction,-11.1805555555556,,FALSE,TRUE
+1159,TORRB3,11,no exit signal ever,no exit signal ever,,,FALSE,TRUE
+1160,TORRB3,24,signal then direction,signal then direction,-13.3163888888889,-13.3163888888889,FALSE,FALSE
+1165,TORRB3,10,signal then direction,signal then direction,-18.2322222222222,,FALSE,FALSE
+1166,TORRB3,7,signal then direction,signal then direction,-40.17,,FALSE,FALSE
+1175,TORRB3,6,signal then direction,signal then direction,-15.39,,FALSE,TRUE
+1184,TORRB3,11,signal then direction,signal then direction,-40.1522222222222,,FALSE,TRUE
+1185,TORRB3,5,signal then direction,signal then direction,-15.3894444444444,,FALSE,TRUE
+1204,TORRB3,6,no exit signal ever,signal after direction,,2.97805555555556,FALSE,TRUE
+1205,TORRB3,6,signal then direction,signal then direction,-11.0219444444444,-11.0219444444444,TRUE,TRUE
+1207,TORRB3,2,signal after direction,signal after direction,13.615,,FALSE,TRUE
+1209,TORRB3,8,signal then direction,signal then direction,-15.8486111111111,,FALSE,TRUE
+1217,TORRB3,10,signal then direction,signal then direction,-40.7508333333333,-18.5447222222222,FALSE,FALSE
+1420,TORRB4,5,signal then direction,signal then direction,-9.94972222222222,,FALSE,FALSE
+1423,TORRB4,9,signal then direction,signal then direction,-15.965,,FALSE,FALSE
+1428,TORRB4,3,signal then direction,signal then direction,-9.92472222222222,,FALSE,TRUE
+1431,TORRB4,2,signal then direction,signal then direction,-9.82361111111111,,FALSE,TRUE
+1432,TORRB4,6,signal then direction,signal then direction,-16.8669444444444,,FALSE,TRUE
+1433,TORRB4,12,signal then direction,signal then direction,-20.5794444444444,,FALSE,TRUE
+1434,TORRB4,10,signal then direction,signal then direction,-17.3491666666667,17.0422222222222,FALSE,FALSE
+1436,TORRB4,5,signal then direction,signal then direction,-10.0016666666667,,FALSE,TRUE
+1444,TORRB4,4,no exit signal ever,no exit signal ever,,,FALSE,FALSE
+1445,TORRB4,3,signal then direction,signal then direction,-15.1963888888889,7.7275,FALSE,TRUE
+1446,TORRB4,7,signal then direction,signal then direction,-17.2777777777778,,FALSE,TRUE
+1450,TORRB4,5,signal then direction,signal then direction,-18.5825,,FALSE,TRUE
+1452,TORRB4,4,signal then direction,signal then direction,-15.4975,-9.96722222222222,FALSE,TRUE
+1461,TORRB4,7,signal then direction,signal then direction,-17.0261111111111,-12.9944444444444,FALSE,TRUE
+1473,TORRB4,15,signal then direction,signal then direction,-16.2583333333333,11.9527777777778,FALSE,TRUE
+1477,TORRB4,8,signal then direction,signal then direction,-6.06444444444445,-6.06444444444445,TRUE,FALSE
+1485,TORRB4,10,signal then direction,signal then direction,-14.765,6.7825,FALSE,TRUE
+1486,TORRB4,10,signal then direction,signal then direction,-18.5830555555556,13.1769444444444,FALSE,TRUE
+1490,TORRB4,9,signal then direction,signal then direction,-16.8222222222222,-16.8222222222222,TRUE,TRUE

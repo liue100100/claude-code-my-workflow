@@ -2,7 +2,7 @@
 # 04_tables.R — Regression tables → LaTeX.
 #
 # Reads fitted models from 03_analyze.R, writes publication-ready .tex files
-# to _outputs/. Beamer lectures \input these files directly.
+# to _outputs/. The manuscript \input's these files directly.
 # =============================================================================
 
 results_path <- file.path(OUT_DIR, "results.rds")

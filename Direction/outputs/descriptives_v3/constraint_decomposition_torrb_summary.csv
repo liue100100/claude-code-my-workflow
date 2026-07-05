@@ -1,0 +1,4 @@
+group,n_interval_duid,approx_unit_hours,pct_n0_satisf,pct_n1_secure,pct_inertia,pct_voltage_lowdem,pct_union,pct_residual
+TORRB_overall,186637,15553,64.9,86.4,0,14.3,87.2,12.8
+TORRB_pre_dt_drop,84141,7012,61.4,86.4,0,15.8,87.6,12.4
+TORRB_post_dt_drop,102496,8541,67.8,86.3,0,13,86.9,13.1

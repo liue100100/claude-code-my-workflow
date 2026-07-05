@@ -1,0 +1,28 @@
+grp,sub,N,share
+quiet,tolling/fuel,405,27.4
+quiet,price/dispatch response,809,54.8
+quiet,other,75,5.1
+quiet,RTS/direction,67,4.5
+pre-essential-onset D-1,tolling/fuel,3,10.3
+pre-essential-onset D-1,RTS/direction,6,20.7
+quiet,ambient/capability,15,1
+quiet,outage/plant,106,7.2
+pre-essential-onset D-1,price/dispatch response,17,58.6
+pre-essential-onset D-1,other,1,3.4
+D-3,price/dispatch response,91,69.5
+D-1,price/dispatch response,144,62.9
+D-2,tolling/fuel,11,8.7
+D-3,tolling/fuel,8,6.1
+D-2,price/dispatch response,90,70.9
+D-3,other,5,3.8
+D-1,tolling/fuel,12,5.2
+D-1,other,4,1.7
+D-1,ambient/capability,1,0.4
+D-2,other,2,1.6
+D-2,RTS/direction,18,14.2
+D-1,outage/plant,31,13.5
+D-1,RTS/direction,37,16.2
+D-3,RTS/direction,7,5.3
+D-3,outage/plant,20,15.3
+D-2,outage/plant,6,4.7
+pre-essential-onset D-1,outage/plant,2,6.9

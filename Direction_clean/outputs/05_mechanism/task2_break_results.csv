@@ -1,0 +1,2 @@
+status,n_ess_pre,n_ess_post,note
+infeasible,0,14,"MECHANICAL-BREAK CHECK INFEASIBLE AS REGISTERED: essential days in the matched sample = 0 (PRE 2023-01..05) / 14 (POST 2023-10..2024-02). The essential-day mass sits in 2022 and late 2024 (2023 holds ~7 essential station-days all year), so the fixed break windows have no PRE contrast at day grain. Reported as infeasible; no estimate forced. NB with RQ2 null on the full sample, the backstop is moot -- it guards a POSITIVE result against conduct drift."

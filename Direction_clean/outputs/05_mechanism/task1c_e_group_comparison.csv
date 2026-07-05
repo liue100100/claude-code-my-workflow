@@ -1,0 +1,3 @@
+group,n,med_dir7d,pct_dir7d_ge1,pct_dir1d_ge1,med_station7d,med_pre24_shortn1,med_pre24_pivn1
+positive-excess,202,2,81.2,23.8,4,0.495,0.731
+zero-excess,69,2,79.7,26.1,4,0.562,0.806

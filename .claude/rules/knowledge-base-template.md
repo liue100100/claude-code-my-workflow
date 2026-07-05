@@ -1,14 +1,14 @@
 ---
 paths:
-  - "Slides/**/*.tex"
-  - "Quarto/**/*.qmd"
+  - "manuscript/**/*.tex"
   - "scripts/**/*.R"
+  - "scripts/python/**/*.py"
 ---
 
-# Course Knowledge Base: [YOUR COURSE NAME]
+# Research Knowledge Base: South Australian Electricity Market / AEMO Directions
 
-<!-- Fill in the tables below with YOUR domain-specific content.
-     Claude reads this before creating/modifying any lecture content. -->
+<!-- Fill in the tables below as research questions and notation are finalized.
+     Claude reads this before creating/modifying analysis or manuscript content. -->
 
 ## Notation Registry
 
@@ -22,16 +22,16 @@ paths:
 |--------|---------|------------|
 | | | |
 
-## Lecture Progression
+## Section Progression
 
-| # | Title | Core Question | Key Notation | Key Method |
-|---|-------|--------------|-------------|------------|
+| # | Section | Core Question | Key Notation | Key Method |
+|---|---------|--------------|-------------|------------|
 | 1 | | | | |
 | 2 | | | | |
 
 ## Empirical Applications
 
-| Application | Paper | Dataset | Lecture(s) | Purpose |
+| Application | Paper | Dataset | Section(s) | Purpose |
 |------------|-------|---------|------------|---------|
 | | | | | |
 

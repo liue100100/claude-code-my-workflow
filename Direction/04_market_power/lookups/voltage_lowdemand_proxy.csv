@@ -1,0 +1,4 @@
+param,value,note
+method,nonsync_penetration_upper_tail,"Low-demand voltage condition proxied by high SA non-sync (wind+utility solar) penetration. AEMO's declared SA voltage-control gap binds under LOW DEMAND / high distributed-renewable conditions (2023 NSCAS Report). We do NOT use the AEMO directions 'reason' field: it is a report-template boilerplate constant within each report that steps strength(2021)->security(2021-11..2024-06)->voltage(2024-07+), perfectly time-confounded, NOT a per-direction physical cause."
+nonsync_mw_threshold,1500,"PLACEHOLDER absolute MW. voltage_lowdemand = nonsync_mw >= threshold. Tune against SA minimum-operational-demand records; refine with DISPATCHREGIONSUM.TOTALDEMAND once extracted."
+dt_drop_split_date,2023-07-01,"Pre/post split for the mid-2023 d_t drop used in the summary table. Editable."

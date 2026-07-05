@@ -1,7 +1,7 @@
 cut,residual,pct_of_P0
-P0: directed & base-non-pivotal,76489,100
-  - drop Remain (keep Synchronise),51042,66.7
-  - drop voltage reason (strength-relevant only),44661,58.4
-  - drop short_n1 (system not N-1 secure -> directed to restore it),31508,41.2
-  - drop N-1-pivotal unit (clean incumbency post-contingency),19339,25.3
-  - drop near-margin (<=2 combos survive); keep >=3,15711,20.5
+P0: directed & base-non-pivotal,76319,100
+  - drop Remain (keep Synchronise),50883,66.7
+  - drop voltage reason (strength-relevant only),44502,58.3
+  - drop short_n1 (system not N-1 secure -> directed to restore it),31316,41
+  - drop N-1-pivotal unit (clean incumbency post-contingency),19104,25
+  - drop near-margin (<=2 combos survive); keep >=3,15645,20.5

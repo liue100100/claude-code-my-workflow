@@ -1,8 +1,8 @@
 ---
 paths:
-  - "Slides/**/*.tex"
-  - "Quarto/**/*.qmd"
+  - "manuscript/**/*.tex"
   - "scripts/**/*.R"
+  - "scripts/python/**/*.py"
 ---
 
 # Quality Review & Scoring Rubrics
@@ -15,20 +15,6 @@ paths:
 - **90/100 = PR** -- ready for deployment
 - **95/100 = Excellence** -- aspirational
 
-## Quarto Slides (.qmd)
-
-| Severity | Issue | Deduction |
-|----------|-------|-----------|
-| Critical | Compilation failure | -100 |
-| Critical | Equation overflow | -20 |
-| Critical | Broken citation | -15 |
-| Critical | Typo in equation | -10 |
-| Major | Text overflow | -5 |
-| Major | TikZ label overlap | -5 |
-| Major | Notation inconsistency | -3 |
-| Minor | Font size reduction | -1 per slide |
-| Minor | Long lines (>100 chars) | -1 (EXCEPT documented math formulas) |
-
 ## R Scripts (.R)
 
 | Severity | Issue | Deduction |
@@ -39,7 +25,17 @@ paths:
 | Major | Missing set.seed() | -10 |
 | Major | Missing figure generation | -5 |
 
-## Beamer Slides (.tex)
+## Python Scripts (.py)
+
+| Severity | Issue | Deduction |
+|----------|-------|-----------|
+| Critical | Syntax errors | -100 |
+| Critical | Domain-specific bugs | -30 |
+| Critical | Hardcoded absolute paths | -20 |
+| Major | Missing seed (random/np.random) | -10 |
+| Major | Missing output artifact | -5 |
+
+## LaTeX Manuscript (.tex)
 
 | Severity | Issue | Deduction |
 |----------|-------|-----------|

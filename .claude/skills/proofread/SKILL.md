@@ -1,27 +1,27 @@
 ---
 name: proofread
-description: Read-only proofreading pass over lecture `.tex` or `.qmd` files. Checks grammar, typos, overflow, terminology consistency, and academic writing quality; produces a report without editing. Use when user says "proofread", "check for typos", "look for grammar issues", "copy-edit this", "any writing errors?", or before a lecture release.
+description: Read-only proofreading pass over the manuscript `.tex` file(s). Checks grammar, typos, overflow, terminology consistency, and academic writing quality; produces a report without editing. Use when user says "proofread", "check for typos", "look for grammar issues", "copy-edit this", "any writing errors?", or before a submission.
 argument-hint: "[filename or 'all']"
 allowed-tools: ["Read", "Grep", "Glob", "Write", "Task"]
 ---
 
-# Proofread Lecture Files
+# Proofread Manuscript Files
 
-Run the mandatory proofreading protocol on lecture files. This produces a report of all issues found WITHOUT editing any source files.
+Run the mandatory proofreading protocol on manuscript files. This produces a report of all issues found WITHOUT editing any source files.
 
 ## Steps
 
 1. **Identify files to review:**
    - If `$ARGUMENTS` is a specific filename: review that file only
-   - If `$ARGUMENTS` is "all": review all lecture files in `Slides/` and `Quarto/`
+   - If `$ARGUMENTS` is "all": review all `.tex` files in `manuscript/`
 
 2. **For each file, launch the proofreader agent** that checks for:
 
    **GRAMMAR:** Subject-verb agreement, articles (a/an/the), prepositions, tense consistency
    **TYPOS:** Misspellings, search-and-replace artifacts, duplicated words
-   **OVERFLOW:** Overfull hbox (LaTeX), content exceeding slide boundaries (Quarto)
+   **OVERFLOW:** Overfull hbox (LaTeX)
    **CONSISTENCY:** Citation format, notation, terminology
-   **ACADEMIC QUALITY:** Informal language, missing words, awkward constructions
+   **ACADEMIC QUALITY:** Informal language, missing words, awkward constructions, hedging/evaluative language (see CLAUDE.md "Writing Style")
 
 3. **Produce a detailed report** for each file listing every finding with:
    - Location (line number or slide title)

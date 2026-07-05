@@ -1,0 +1,6 @@
+duid,n_episodes,directed_output_mean,directed_output_median,observed_floor_p5,declared_minload_median,floor_block_median,excess_median,excess_p25,excess_p75,pct_within_10MW_of_minload
+TORRB2,197,42.2,40,40,,40,20,-8.6,41.7,
+TORRB3,260,45.5,40,40,,20,27.5,-2.4,45,
+TORRB4,226,36.4,40,40,,40,11.7,-40,40,
+PPCCGT,29,125.1,70,162.5,,0,39.9,0,74.8,
+OSB-AG,28,109,145,144,,144.5,2.6,-76.6,17.6,

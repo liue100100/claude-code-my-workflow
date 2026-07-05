@@ -1,0 +1,7 @@
+sample,Times the unit revised its offer during the day,Capacity pulled back during the day (MW; <0 = added),Share of capacity offered above $300/MWh (well above fuel cost),n
+"Every day
+(all units)",14.7261253041363,5.54016940016925,0.773867380376649,13152
+"Days the unit was
+directed on",14.5698005698006,-29.7863265235216,0.823944459752532,1755
+"Directed days when the
+unit was pivotal",13.9390797148412,-28.0144094936633,0.838195006740661,1543

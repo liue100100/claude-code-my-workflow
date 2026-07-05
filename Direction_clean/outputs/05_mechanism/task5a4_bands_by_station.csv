@@ -1,0 +1,101 @@
+grp,station,band,price_med,net,nd,net_per_day
+D-1,PPCCGT,1,-998,8956,21,426.5
+D-1,PPCCGT,2,78,360,21,17.1
+D-1,PPCCGT,3,98,-1354,21,-64.5
+D-1,PPCCGT,4,137,-29,21,-1.4
+D-1,PPCCGT,5,173,3006,21,143.1
+D-1,PPCCGT,6,298,6608,21,314.7
+D-1,PPCCGT,7,550,-475,21,-22.6
+D-1,PPCCGT,8,3896,912,21,43.4
+D-1,PPCCGT,9,12485,3170,21,151
+D-1,PPCCGT,10,16573,-21153,21,-1007.3
+D-1,Torrens,1,-1000,-2932,161,-18.2
+D-1,Torrens,2,0,-525,161,-3.3
+D-1,Torrens,3,100,-8984,161,-55.8
+D-1,Torrens,4,176,3816,161,23.7
+D-1,Torrens,5,230,6662,161,41.4
+D-1,Torrens,6,350,6845,161,42.5
+D-1,Torrens,7,561,-3000,161,-18.6
+D-1,Torrens,8,3998,11020,161,68.4
+D-1,Torrens,9,12919,-10068,161,-62.5
+D-1,Torrens,10,15491,-2834,161,-17.6
+D-2,PPCCGT,1,-998,-8937,19,-470.4
+D-2,PPCCGT,2,80,-25,19,-1.3
+D-2,PPCCGT,3,102,3999,19,210.5
+D-2,PPCCGT,4,137,-1796,19,-94.5
+D-2,PPCCGT,5,173,-3206,19,-168.7
+D-2,PPCCGT,6,298,-576,19,-30.3
+D-2,PPCCGT,7,550,448,19,23.6
+D-2,PPCCGT,8,3896,668,19,35.2
+D-2,PPCCGT,9,12485,525,19,27.6
+D-2,PPCCGT,10,16573,8901,19,468.5
+D-2,Torrens,1,-1000,2692,136,19.8
+D-2,Torrens,2,0,-505,136,-3.7
+D-2,Torrens,3,100,3398,136,25
+D-2,Torrens,4,176,-6890,136,-50.7
+D-2,Torrens,5,230,4611,136,33.9
+D-2,Torrens,6,350,-2815,136,-20.7
+D-2,Torrens,7,561,5757,136,42.3
+D-2,Torrens,8,6811,7432,136,54.6
+D-2,Torrens,9,12919,-10635,136,-78.2
+D-2,Torrens,10,15491,-3045,136,-22.4
+D-3,PPCCGT,1,-998,-16324,20,-816.2
+D-3,PPCCGT,2,85,-350,20,-17.5
+D-3,PPCCGT,3,100,-1395,20,-69.8
+D-3,PPCCGT,4,137,-1242,20,-62.1
+D-3,PPCCGT,5,173,176,20,8.8
+D-3,PPCCGT,6,298,-6956,20,-347.8
+D-3,PPCCGT,7,550,-2660,20,-133
+D-3,PPCCGT,8,3896,-290,20,-14.5
+D-3,PPCCGT,9,12485,-4275,20,-213.8
+D-3,PPCCGT,10,16573,33317,20,1665.8
+D-3,Torrens,1,-1000,1413,110,12.8
+D-3,Torrens,2,0,615,110,5.6
+D-3,Torrens,3,100,6075,110,55.2
+D-3,Torrens,4,176,3074,110,27.9
+D-3,Torrens,5,230,3002,110,27.3
+D-3,Torrens,6,350,-4418,110,-40.2
+D-3,Torrens,7,561,-586,110,-5.3
+D-3,Torrens,8,6811,-5752,110,-52.3
+D-3,Torrens,9,12919,-4082,110,-37.1
+D-3,Torrens,10,15491,658,110,6
+pre-essential-onset D-1,PPCCGT,1,-999,-6314,3,-2104.7
+pre-essential-onset D-1,PPCCGT,2,49,0,3,0
+pre-essential-onset D-1,PPCCGT,3,92,0,3,0
+pre-essential-onset D-1,PPCCGT,4,118,781,3,260.3
+pre-essential-onset D-1,PPCCGT,5,173,-3613,3,-1204.3
+pre-essential-onset D-1,PPCCGT,6,298,70,3,23.3
+pre-essential-onset D-1,PPCCGT,7,799,417,3,139
+pre-essential-onset D-1,PPCCGT,8,3938,0,3,0
+pre-essential-onset D-1,PPCCGT,9,12928,0,3,0
+pre-essential-onset D-1,PPCCGT,10,15080,8659,3,2886.3
+pre-essential-onset D-1,Torrens,1,-1000,905,29,31.2
+pre-essential-onset D-1,Torrens,2,0,0,29,0
+pre-essential-onset D-1,Torrens,3,100,828,29,28.6
+pre-essential-onset D-1,Torrens,4,176,-795,29,-27.4
+pre-essential-onset D-1,Torrens,5,230,2325,29,80.2
+pre-essential-onset D-1,Torrens,6,350,-1402,29,-48.3
+pre-essential-onset D-1,Torrens,7,561,2085,29,71.9
+pre-essential-onset D-1,Torrens,8,3998,3442,29,118.7
+pre-essential-onset D-1,Torrens,9,12920,2245,29,77.4
+pre-essential-onset D-1,Torrens,10,15491,-9634,29,-332.2
+quiet,PPCCGT,1,-998,6308,685,9.2
+quiet,PPCCGT,2,75,-872,685,-1.3
+quiet,PPCCGT,3,101,-2287,685,-3.3
+quiet,PPCCGT,4,149,10345,685,15.1
+quiet,PPCCGT,5,173,2108,685,3.1
+quiet,PPCCGT,6,298,7457,685,10.9
+quiet,PPCCGT,7,550,-2118,685,-3.1
+quiet,PPCCGT,8,3938,-4008,685,-5.9
+quiet,PPCCGT,9,12580,7280,685,10.6
+quiet,PPCCGT,10,15474,-24212,685,-35.3
+quiet,Torrens,1,-1000,275,1075,0.3
+quiet,Torrens,2,0,-70,1075,-0.1
+quiet,Torrens,3,100,-4666,1075,-4.3
+quiet,Torrens,4,176,-46,1075,0
+quiet,Torrens,5,230,-2395,1075,-2.2
+quiet,Torrens,6,350,5562,1075,5.2
+quiet,Torrens,7,561,1748,1075,1.6
+quiet,Torrens,8,9624,5518,1075,5.1
+quiet,Torrens,9,12919,-18008,1075,-16.8
+quiet,Torrens,10,16595,12084,1075,11.2

@@ -1,0 +1,37 @@
+cond,atype,atype_next,N
+no direction within 7d,partial,partial,424
+no direction within 7d,partial,full exit,126
+no direction within 7d,full exit,partial,79
+no direction within 7d,partial,"",125
+no direction within 7d,full exit,full exit,1070
+no direction within 7d,partial,priced-out,19
+no direction within 7d,priced-out,priced-out,61
+no direction within 7d,priced-out,full exit,4
+no direction within 7d,full exit,priced-out,3
+no direction within 7d,priced-out,partial,24
+between,partial,"",52
+between,partial,full exit,54
+direction within 2d,full exit,partial,115
+direction within 2d,partial,full exit,40
+no direction within 7d,full exit,"",4
+between,partial,partial,70
+direction within 2d,partial,partial,386
+direction within 2d,partial,"",14
+between,full exit,full exit,294
+between,full exit,partial,35
+direction within 2d,full exit,full exit,66
+direction within 2d,full exit,"",3
+between,partial,priced-out,49
+direction within 2d,priced-out,priced-out,54
+direction within 2d,priced-out,partial,106
+direction within 2d,full exit,priced-out,13
+between,priced-out,priced-out,126
+between,priced-out,"",33
+direction within 2d,partial,priced-out,110
+between,priced-out,partial,29
+direction within 2d,priced-out,"",10
+no direction within 7d,priced-out,"",16
+between,priced-out,full exit,7
+between,full exit,"",4
+between,full exit,priced-out,3
+direction within 2d,priced-out,full exit,2

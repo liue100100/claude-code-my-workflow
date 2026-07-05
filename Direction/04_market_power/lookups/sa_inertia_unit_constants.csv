@@ -1,0 +1,10 @@
+station,mva_per_unit,h_seconds,always_on_units,placeholder,source_note
+torrens_island_b,200,4.0,0,TRUE,PLACEHOLDER ~200MW/200MVA steam units H~4 — confirm vs AEMO registration
+pelican_point_gt,190,5.0,0,TRUE,PLACEHOLDER CCGT GT ~190MVA H~5 — confirm
+osborne_gt_st,110,4.0,0,TRUE,PLACEHOLDER cogen GT+ST per-unit ~110MVA — confirm
+quarantine_5,145,4.5,0,TRUE,PLACEHOLDER OCGT ~145MVA — confirm
+dry_creek,63,4.0,0,TRUE,PLACEHOLDER OCGT ~52MW/63MVA — confirm
+mintaro,110,4.5,0,TRUE,PLACEHOLDER OCGT ~90MW/110MVA — confirm
+bips,19,1.5,0,TRUE,PLACEHOLDER Barker Inlet recip engine ~16MW/19MVA low-H — confirm
+snapper_point,29,1.5,0,TRUE,PLACEHOLDER recip ~24MW/29MVA — confirm
+synchronous_condensers,100,15.0,4,TRUE,PLACEHOLDER 4x ElectraNet syncons w/ flywheel ~1500 MWs each (=6000 MWs total) always online post-2021 — confirm vs AEMO syncon ratings

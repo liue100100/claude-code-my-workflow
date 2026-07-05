@@ -1,0 +1,61 @@
+event,instrument,n,med_z,verdict
+RTS-26 rebid day (rebids at D; daily instruments at D+1),wmean_price,26,2.7,MOVED
+RTS-26 rebid day (rebids at D; daily instruments at D+1),q_2xsrmc,26,0,flat
+RTS-26 rebid day (rebids at D; daily instruments at D+1),q_shoulder,26,0,flat
+RTS-26 rebid day (rebids at D; daily instruments at D+1),top2_share,26,2.19,MOVED
+RTS-26 rebid day (rebids at D; daily instruments at D+1),steep_iqr,26,-5.04,MOVED
+RTS-26 rebid day (rebids at D; daily instruments at D+1),n_tag,26,2e+06,MOVED
+RTS-26 rebid day (rebids at D; daily instruments at D+1),n_nontag,26,0,flat
+RTS-26 rebid day (rebids at D; daily instruments at D+1),n_none,26,0,flat
+RTS-26 rebid day (rebids at D; daily instruments at D+1),churn_total,26,10.01,MOVED
+RTS-26 rebid day (rebids at D; daily instruments at D+1),composite,26,1,MOVED
+direction START (rebids D; daily D+1),wmean_price,607,1.77,MOVED
+direction START (rebids D; daily D+1),q_2xsrmc,672,0,flat
+direction START (rebids D; daily D+1),q_shoulder,672,0,flat
+direction START (rebids D; daily D+1),top2_share,607,1.41,MOVED
+direction START (rebids D; daily D+1),steep_iqr,607,-3.01,MOVED
+direction START (rebids D; daily D+1),n_tag,673,2e+06,MOVED
+direction START (rebids D; daily D+1),n_nontag,673,0,flat
+direction START (rebids D; daily D+1),n_none,673,0,flat
+direction START (rebids D; daily D+1),churn_total,672,34.79,MOVED
+direction START (rebids D; daily D+1),composite,672,0,flat
+direction END (rebids D; daily D+1),wmean_price,597,1.31,MOVED
+direction END (rebids D; daily D+1),q_2xsrmc,698,0,flat
+direction END (rebids D; daily D+1),q_shoulder,698,0,flat
+direction END (rebids D; daily D+1),top2_share,597,1.08,MOVED
+direction END (rebids D; daily D+1),steep_iqr,597,-0.3,flat
+direction END (rebids D; daily D+1),n_tag,699,2e+06,MOVED
+direction END (rebids D; daily D+1),n_nontag,699,0,flat
+direction END (rebids D; daily D+1),n_none,699,0,flat
+direction END (rebids D; daily D+1),churn_total,698,38.76,MOVED
+direction END (rebids D; daily D+1),composite,698,0,flat
+state transition day,wmean_price,351,0.52,MOVED
+state transition day,q_2xsrmc,445,4e+07,MOVED
+state transition day,q_shoulder,445,4e+07,MOVED
+state transition day,top2_share,351,0.28,flat
+state transition day,steep_iqr,351,-0.11,flat
+state transition day,n_tag,445,0,flat
+state transition day,n_nontag,445,1e+06,MOVED
+state transition day,n_none,445,0.25,flat
+state transition day,churn_total,445,48.24,MOVED (BC)
+state transition day,composite,445,0,flat (BC)
+"closure announcement week (2022-11-24 +6d, Torrens)",wmean_price,14,0.88,MOVED
+"closure announcement week (2022-11-24 +6d, Torrens)",q_2xsrmc,21,0,flat
+"closure announcement week (2022-11-24 +6d, Torrens)",q_shoulder,21,0,flat
+"closure announcement week (2022-11-24 +6d, Torrens)",top2_share,14,0.73,MOVED
+"closure announcement week (2022-11-24 +6d, Torrens)",steep_iqr,14,-0.2,flat
+"closure announcement week (2022-11-24 +6d, Torrens)",n_tag,21,2e+06,MOVED
+"closure announcement week (2022-11-24 +6d, Torrens)",n_nontag,21,0,flat
+"closure announcement week (2022-11-24 +6d, Torrens)",n_none,21,0,flat
+"closure announcement week (2022-11-24 +6d, Torrens)",churn_total,21,28.91,MOVED
+"closure announcement week (2022-11-24 +6d, Torrens)",composite,21,0,flat
+mothball-like spell starts (full-exit runs >=14d),wmean_price,0,,untestable (n<10)
+mothball-like spell starts (full-exit runs >=14d),q_2xsrmc,156,0,flat
+mothball-like spell starts (full-exit runs >=14d),q_shoulder,156,0,flat
+mothball-like spell starts (full-exit runs >=14d),top2_share,0,,untestable (n<10)
+mothball-like spell starts (full-exit runs >=14d),steep_iqr,0,,untestable (n<10)
+mothball-like spell starts (full-exit runs >=14d),n_tag,156,0,flat
+mothball-like spell starts (full-exit runs >=14d),n_nontag,156,0,flat
+mothball-like spell starts (full-exit runs >=14d),n_none,156,0,flat
+mothball-like spell starts (full-exit runs >=14d),churn_total,156,0,flat
+mothball-like spell starts (full-exit runs >=14d),composite,156,0,flat

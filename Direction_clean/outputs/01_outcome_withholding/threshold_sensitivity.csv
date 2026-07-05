@@ -1,0 +1,31 @@
+duid,definition,threshold,n,median_share,withheld_pct
+TORRB2,a_fixed,$150,315648,0,94.8
+TORRB2,a_fixed,$300 (default),315648,0,90.6
+TORRB2,a_fixed,$500,315648,0,86.3
+TORRB2,b_indexed,1.5xSRMC,315648,0,88.7
+TORRB2,b_indexed,2xSRMC (default),315648,0,87.3
+TORRB2,b_indexed,3xSRMC,315648,0,86.1
+TORRB3,a_fixed,$150,315648,0,93.5
+TORRB3,a_fixed,$300 (default),315648,0,86.4
+TORRB3,a_fixed,$500,315648,0,82.3
+TORRB3,b_indexed,1.5xSRMC,315648,0,85.3
+TORRB3,b_indexed,2xSRMC (default),315648,0,83.9
+TORRB3,b_indexed,3xSRMC,315648,0,82.5
+TORRB4,a_fixed,$150,315648,0,96
+TORRB4,a_fixed,$300 (default),315648,0,88.9
+TORRB4,a_fixed,$500,315648,0,86.6
+TORRB4,b_indexed,1.5xSRMC,315648,0,88.3
+TORRB4,b_indexed,2xSRMC (default),315648,0,87.6
+TORRB4,b_indexed,3xSRMC,315648,0,86
+PPCCGT,a_fixed,$150,315648,0.356,63.5
+PPCCGT,a_fixed,$300 (default),315648,0.485,53
+PPCCGT,a_fixed,$500,315648,0.49,52.4
+PPCCGT,b_indexed,1.5xSRMC,315648,0.356,60.1
+PPCCGT,b_indexed,2xSRMC (default),315648,0.431,55.8
+PPCCGT,b_indexed,3xSRMC,315648,0.481,53.6
+OSB-AG,a_fixed,$150,315648,0,71.2
+OSB-AG,a_fixed,$300 (default),315648,0,71.2
+OSB-AG,a_fixed,$500,315648,0,71.2
+OSB-AG,b_indexed,1.5xSRMC,315648,0,71.2
+OSB-AG,b_indexed,2xSRMC (default),315648,0,71.2
+OSB-AG,b_indexed,3xSRMC,315648,0,71.2

@@ -1,6 +1,5 @@
 ---
 paths:
-  - "Figures/**/*.R"
   - "scripts/**/*.R"
   - "explorations/**/*.R"
 ---
@@ -9,7 +8,7 @@ paths:
 
 **Standard:** Senior Principal Data Engineer + PhD researcher quality
 
-> **Scope:** These standards apply to **analysis scripts** — data work, simulations, figure generation (a top-level `set.seed()`, `library()` at the top, relative output paths). For R **package source** (`R/`, `tests/`, `DESCRIPTION`, `NAMESPACE`, `man/`), see [`r-package-conventions.md`](r-package-conventions.md), which has different rules (roxygen-generated `NAMESPACE`, no `library()` in `R/`, CRAN policy). The numerical discipline in §8 applies to both.
+> **Scope:** These standards apply to **analysis scripts** — data work, simulations, figure generation (a top-level `set.seed()`, `library()` at the top, relative output paths). For R **package source** (`R/`, `tests/`, `DESCRIPTION`, `NAMESPACE`, `man/`), see [`r-package-conventions.md`](r-package-conventions.md), which has different rules (roxygen-generated `NAMESPACE`, no `library()` in `R/`, CRAN policy). The numerical discipline in §8 applies to both. For Python ETL/scraping scripts, see [`python-code-conventions.md`](python-code-conventions.md). Use R for econometric estimation, regression tables, and figures; use Python for scraping and large-dataset cleaning — see CLAUDE.md "Language Selection."
 
 ---
 
@@ -55,7 +54,7 @@ theme_custom <- function(base_size = 14) {
 }
 ```
 
-### Figure Dimensions for Beamer
+### Figure Dimensions for Manuscript Inclusion
 ```r
 ggsave(filepath, width = 12, height = 5, bg = "transparent")
 ```

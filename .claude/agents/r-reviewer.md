@@ -71,11 +71,11 @@ Produce a thorough, actionable code review report. You do NOT edit files — you
 ### 6. FIGURE QUALITY
 - [ ] Consistent color palette (check your project's standard colors)
 - [ ] Custom theme applied to all plots
-- [ ] Transparent background for Beamer figures: `bg = "transparent"`
+- [ ] Transparent background for manuscript figures: `bg = "transparent"`
 - [ ] Explicit dimensions in `ggsave()`: `width`, `height` specified
 - [ ] Axis labels: sentence case, no abbreviations, units included
-- [ ] Legend position: bottom, readable at projection size
-- [ ] Font sizes readable when projected (base_size >= 14)
+- [ ] Legend position: readable at print size
+- [ ] Font sizes readable in print (base_size >= 11)
 - [ ] No default ggplot2 colors leaking through
 
 **Flag:** Missing transparent bg, default colors, hard-to-read fonts, missing dimensions.
@@ -85,9 +85,9 @@ Produce a thorough, actionable code review report. You do NOT edit files — you
 - [ ] RDS filenames are descriptive
 - [ ] Both raw results AND summary tables saved
 - [ ] File paths use `file.path()` for cross-platform compatibility
-- [ ] Missing `saveRDS()` means Quarto slides can't render — flag as HIGH severity
+- [ ] Missing `saveRDS()` means downstream scripts can't load precomputed results — flag as HIGH severity
 
-**Flag:** Missing `saveRDS()` for any object referenced by slides.
+**Flag:** Missing `saveRDS()` for any object referenced by downstream scripts or the manuscript.
 
 ### 8. COMMENT QUALITY
 - [ ] Comments explain **WHY**, not WHAT

@@ -1,0 +1,5 @@
+shape,coef,R2,share_of_dollars
+output payment: event MWh x directed price,0.998360370575902,1,1.001
+output payment: computed window MWh x price,0.826558346385161,0.161,0.154
+cost shape: flat $/hour of direction,7157.50830626962,0.941,
+cost channel: additional_compensation,1.45471256004341,0.666,0.537

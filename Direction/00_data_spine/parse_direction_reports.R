@@ -27,10 +27,14 @@ dir.create(OUT_DIR, showWarnings = FALSE, recursive = TRUE)
 # ---------------------------------------------------------------------------
 
 # Excel serial (Windows origin 1899-12-30) → POSIXct in AEMO market time (UTC+10, no DST)
+# FIXED 2026-07-05 (Task 1d): the previous version formatted the UTC-parsed instant in
+# Etc/GMT-10, which ADDED 10 hours to every timestamp (Excel cells are already market-time
+# clocks). Keep the clock as parsed and stamp the market timezone. Verification of the bug and
+# of this fix: Direction_clean/outputs/05_mechanism/findings_task1d.md (three independent lines).
 excel_to_posix <- function(x) {
   as.POSIXct((as.numeric(x) - 25569) * 86400,
              origin = "1970-01-01", tz = "UTC") |>
-    (\(dt) format(dt, tz = "Etc/GMT-10") |>
+    (\(dt) format(dt, tz = "UTC") |>
        as.POSIXct(tz = "Etc/GMT-10"))()
 }
 

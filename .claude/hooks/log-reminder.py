@@ -14,8 +14,8 @@ it appends a structured entry to today's session log
   - timestamp
   - changed files (git status --porcelain, capped)
   - active plan + status (most recent non-completed plan)
-  - compile-completion note: any Slides/*.tex or Quarto/*.qmd newer than
-    its compiled output (.pdf / .html). Non-blocking by default; set
+  - compile-completion note: any manuscript/*.tex newer than its compiled
+    .pdf. Non-blocking by default; set
     CLAUDE_COMPILE_GATE=block to turn the note into a Stop-block that asks
     Claude to compile before stopping.
 
@@ -87,19 +87,19 @@ def active_plan(project_dir: str) -> str | None:
 
 
 def uncompiled(project_dir: str) -> list[str]:
-    """Slides/*.tex newer than its .pdf, Quarto/*.qmd newer than its .html."""
+    """manuscript/*.tex newer than its .pdf."""
     flagged: list[str] = []
     root = Path(project_dir)
-    for src, out_ext in ((root / "Slides", ".pdf"), (root / "Quarto", ".html")):
-        if not src.is_dir():
+    src = root / "manuscript"
+    if not src.is_dir():
+        return flagged
+    for f in src.glob("*.tex"):
+        out = f.with_suffix(".pdf")
+        try:
+            if not out.exists() or f.stat().st_mtime > out.stat().st_mtime:
+                flagged.append(f"{f.relative_to(root)} → no fresh .pdf")
+        except Exception:
             continue
-        for f in src.glob("*.tex" if out_ext == ".pdf" else "*.qmd"):
-            out = f.with_suffix(out_ext)
-            try:
-                if not out.exists() or f.stat().st_mtime > out.stat().st_mtime:
-                    flagged.append(f"{f.relative_to(root)} → no fresh {out_ext}")
-            except Exception:
-                continue
     return flagged
 
 

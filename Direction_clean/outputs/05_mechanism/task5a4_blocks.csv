@@ -1,0 +1,31 @@
+grp,station,blk,net,nd,net_per_day
+D-1,PPCCGT,night 19-05h,3535.66666666667,21,168.4
+D-1,PPCCGT,morning 05-11h,2535.75,21,120.8
+D-1,PPCCGT,day 11-19h,7906.5,21,376.5
+D-1,Torrens,night 19-05h,-21171.6666666667,161,-131.5
+D-1,Torrens,morning 05-11h,-4525.66666666667,161,-28.1
+D-1,Torrens,day 11-19h,-16.9166666666667,161,-0.1
+D-2,PPCCGT,night 19-05h,-9577.5,19,-504.1
+D-2,PPCCGT,morning 05-11h,-2795.58333333333,19,-147.1
+D-2,PPCCGT,day 11-19h,875.5,19,46.1
+D-2,Torrens,night 19-05h,-6955.66666666667,136,-51.1
+D-2,Torrens,morning 05-11h,-3634.58333333333,136,-26.7
+D-2,Torrens,day 11-19h,-2184.5,136,-16.1
+D-3,PPCCGT,night 19-05h,-6290.25,20,-314.5
+D-3,PPCCGT,morning 05-11h,-4351.33333333333,20,-217.6
+D-3,PPCCGT,day 11-19h,-13233.5833333333,20,-661.7
+D-3,Torrens,night 19-05h,5999,110,54.5
+D-3,Torrens,morning 05-11h,6467.91666666667,110,58.8
+D-3,Torrens,day 11-19h,7488.5,110,68.1
+pre-essential-onset D-1,PPCCGT,night 19-05h,-3715,3,-1238.3
+pre-essential-onset D-1,PPCCGT,morning 05-11h,-1441,3,-480.3
+pre-essential-onset D-1,PPCCGT,day 11-19h,-3578.58333333333,3,-1192.9
+pre-essential-onset D-1,Torrens,night 19-05h,835,29,28.8
+pre-essential-onset D-1,Torrens,morning 05-11h,-936.416666666667,29,-32.3
+pre-essential-onset D-1,Torrens,day 11-19h,5832,29,201.1
+quiet,PPCCGT,night 19-05h,5511.5,685,8
+quiet,PPCCGT,morning 05-11h,3.75,685,0
+quiet,PPCCGT,day 11-19h,-5848.41666666667,685,-8.5
+quiet,Torrens,night 19-05h,-733.666666666667,1075,-0.7
+quiet,Torrens,morning 05-11h,-354.5,1075,-0.3
+quiet,Torrens,day 11-19h,1402,1075,1.3

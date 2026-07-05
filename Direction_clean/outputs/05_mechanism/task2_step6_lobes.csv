@@ -1,0 +1,6 @@
+lobe,class6,N
+zero/negative excess (floor block >= directed output),withdrawn (Component A),100
+positive excess,withdrawn (Component A),92
+positive excess,priced-out (floor MW > $300),58
+zero/negative excess (floor block >= directed output),priced-out (floor MW > $300),19
+zero/negative excess (floor block >= directed output),committed-cheap (<= $300),2
