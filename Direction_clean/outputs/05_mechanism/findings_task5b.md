@@ -42,6 +42,23 @@ formula-imputed early years are not driving the result. (Using actual compensati
 UNDERSTATES the direction channel: it nets off retained market revenue, whose median was
 negative in these windows.)
 
+## Addendum (requested): are there directed intervals where spot beats fuel cost?
+Interval-level distribution over all 187,216 directed Torrens intervals (corrected windows;
+`task14_profitable_intervals.R`, `task14_episode_profitability.csv`): **spot exceeds marginal
+fuel cost in 3.9% of intervals (7,219, ~600 unit-hours in three years).** The margin
+distribution is: median −$141/MWh, P75 −$82, P90 −$38, P95 −$11, P99 +$80 — 95% of directed
+intervals lose at least $11/MWh at marginal cost alone. The profitable moments are fleeting
+spikes, not runnable blocks: 1,873 consecutive-profitable runs with median length 10 MINUTES
+(2 intervals), P90 40 minutes; only 113 runs reach one hour and 12 reach four hours in the
+whole sample. They sit at the window edges (evening 18-24h: 7.9% profitable; midday direction
+core: 1.8%) and disproportionately inside "Remain" windows where the unit was already online
+(4.7% vs 2.8% in Synchronise windows). At the episode level, **11 of 683 directed windows
+(1.6%) had mean spot above fuel cost**, 362 (53%) contained not a single profitable interval,
+and 307 more were under one-quarter profitable. For a steam unit with start costs and
+multi-hour lead times, there is no forgone commercial running inside these windows to speak
+of: the loss-making character of directed hours holds interval-by-interval, not just on
+average.
+
 ## The interpretation-note check, closed
 The staged framework's economic core -- "given how the direction channel pays, absence
 dominates commitment across essentially all conditions, so there is nothing left to calibrate
