@@ -1,0 +1,166 @@
+% ------------------------------------------------------------------------------
+% §6 Results — drafted Phase C from:
+%   03_rq1_essentiality/findings.md + findings_3b.md; 04_rq2_compensation_price/findings.md
+%   Exhibits: T1, T2, Fig 5
+% ------------------------------------------------------------------------------
+\section{Results}\label{sec:results}
+
+\subsection{RQ1: essentiality moves conduct for the directed workhorse, and the
+competition control absorbs none of it}
+
+Table~\ref{tab:rq1} reports equation~\eqref{eq:rq1}. Pooled across the four
+test units, the essentiality coefficient is a precise null on the fixed-\$300
+definition ($-0.0045$, wild-cluster-bootstrap $p=0.85$) and negative but
+insignificant on the cost-indexed definition ($-0.048$, $p=0.21$). The informative
+comparison is across columns: adding the competition controls moves the
+essentiality coefficient by 6.2\% and 0.7\% on the two definitions.
+Whatever essentiality response exists, the energy-market competition channel
+explains essentially none of it.
+
+The pooled numbers average over opposing units. Torrens Island B --- the
+station the direction regime actually leans on --- withholds \emph{more} when
+essential: $-0.076$ on the cost-indexed definition ($p=0.04$), stable in sign
+across all 72 leave-one-month-out re-estimates
+(Section~\ref{sec:robustness}). Pelican Point's apparently positive response
+($+0.18$) is a one-month artifact --- dropping October 2023 alone flips its
+sign --- and is withdrawn as a finding; Table~\ref{tab:rq1} retains it,
+footnoted, for completeness.\footnote{The magnitude for Torrens: $-0.076$ of
+registered capacity is roughly 15~MW per 200-MW unit, on a station whose
+essential-interval cheap offering is already thin.}
+
+Two auxiliary results discipline the interpretation.
+
+\emph{Essentiality is not scarcity.} The competition control itself shows why
+the market-power reading of withholding-when-essential fails: essential
+intervals are measurably \emph{more} competitive than non-essential ones
+(residual-demand slope $-5.04$ versus $-3.31$ for Torrens). An
+energy-market-power account of the Torrens response requires essential
+periods to be tight;
+they are the opposite. The alternative fails on the sign of its conditions,
+not merely on magnitude.
+
+\emph{Conduct responds to regimes, not doses.} The one strong conduct
+correlate among the controls is the \emph{saturated} indicator: when rivals
+are locally saturated, the unit offers 3.2 percentage points less of its
+capacity cheaply ($p<0.001$), while the continuous slope carries nothing
+($p=0.99$). Conduct moves with the regime of facing no local competition, not
+with the degree of competition when some exists. The same shape appears on the
+essentiality margin: a response to the essential state. Whether conduct also
+scales with what the state \emph{pays} is exactly the RQ2 question, and under
+a regime-triggered (insurance) account of withholding the answer should be no.
+
+\subsection{RQ2: the withholding gap widens with the compensation price}
+
+It is not no. Table~\ref{tab:rq2} reports equation~\eqref{eq:rq2}: the
+essential $\times$ compensation-price interaction is $-0.051$ per \$100/MWh
+on the fixed definition (analytic $p=0.005$; wild-cluster-bootstrap $p=0.004$
+Rademacher, $0.004$ Webb) and $-0.055$ on the cost-indexed definition
+($p=0.007$; bootstrap $0.007$ and $0.006$). The essential-versus-matched gap in the cheap
+share widens by about 5.1 percentage points of registered capacity for every
+\$100/MWh of compensation price --- roughly 10~MW per Torrens unit --- and by
+about 13 percentage points across the observed \$121--378 range of $\dt$.
+
+\subsection{Decomposing the margin: the response is the eligibility choice}
+
+The share mixes two margins with different economics
+(Section~\ref{sec:design}): whether the minimum-stable quantum is within
+dispatch's reach at all --- the choice that averts or invites a direction
+--- and how much depth is offered when it is. Table~\ref{tab:decomposition}
+separates them, with interpretations committed in the project record before
+estimation. The dose response lives entirely on the eligibility margin: the
+probability that the floor is within reach falls by 8.6 percentage points
+per \$100/MWh on essential relative to matched intervals
+(wild-cluster-bootstrap $p=0.003$; randomization inference permuting the
+month-to-price assignment, $p=0.046$), against a base essential-interval
+reach rate of only 10\%. Conditional on the floor being offered, depth shows
+no response at all ($p=0.54$--$0.79$). The share coefficient of
+Table~\ref{tab:rq2} is this eligibility response diluted by unresponsive
+intensive variation --- and the eligibility measure is threshold-free, since
+the floor block, when offered, always sits at the $-\$1{,}000$ band. The
+same gradient survives aggregation to the month grain
+(Figure~\ref{fig:monthgap}): across the 19 essential-bearing months, the
+monthly gap moves $-0.096$ per \$100/MWh (HC1 $p=0.001$).
+
+\input{../output/tables/T5_decomposition}
+
+\begin{figure}[!htbp]\centering
+\includegraphics[width=0.85\textwidth]{fig6_month_gap_vs_price}
+\caption{The month-grain version of the dose response: the monthly
+essential-vs-matched gap in floor-reach against the compensation price,
+19 months with at least 30 essential unit-rows, point size proportional to
+essential mass. The fitted line is the essential-mass-weighted least-squares
+slope ($-0.096$ per \$100/MWh, HC1 $p=0.001$).}
+\label{fig:monthgap}
+\end{figure}
+
+Unlike the RQ1 level result, the interaction owes nothing to June 2022:
+across all four treatments of the crisis month the estimate sits between
+$-0.044$ and $-0.058$ with $p$-values of 0.001 to 0.029
+(Figure~\ref{fig:rq2stability}). The essential \emph{main effect} in
+Table~\ref{tab:rq2} is positive ($+0.089$): at low compensation prices,
+essential intervals show \emph{more} cheap capacity than matched ones ---
+these are winter-tight periods in which running pays --- and the gap
+crosses zero at $\dt\approx\$175$, visible directly in the month-grain
+scatter (Figure~\ref{fig:monthgap}). The dose response is not a deepening
+of an always-negative gap; it is a reversal, from relative presence when
+the direction channel pays little to relative absence as it pays more. Attenuation from realised-state
+classification biases $\theta$ toward zero, so the true payment-sensitivity is
+if anything larger.
+
+The channel ranking, under the interpretation committed before estimation,
+is then: energy-market power --- eliminated on the wrong sign of its
+conditions; pure presence-inelasticity with no payment sensitivity --- the
+insurance account of Section~\ref{sec:design} --- rejected, because it
+predicted a null here; payment-seeking --- the account most consistent with
+the data. One refinement of the regime-not-dose pattern survives
+alongside: conduct is regime-triggered on the \emph{competition} margin
+(saturation, not slope), while on the \emph{payment} margin the essential-state
+response scales with the prize.
+
+Two limitations are reported with the estimate, as committed with the
+design before estimation. The interaction is identified from cross-month
+variation; anything that widens the essential-versus-matched gap \emph{and}
+co-moves with the compensation price across months --- 2022H2 fuel-supply
+stress is the obvious candidate --- is not excluded by month effects.
+Section~\ref{sec:robustness} confronts this directly with the timing wedge
+the formula creates (gas fell nine months before the payment did) and a
+fuel horse race; the pure fuel story fails its point predictions there, but
+the sharpest formula-driven contrast is marginal, so this paper's causal
+language for the cross-month gradient is deliberately ``consistent with
+payment-seeking,'' not proof. And the essential mass is concentrated: 21
+effective month-clusters, half the mass in three of them. The estimate
+clears conventional significance under bootstrap inference designed for
+this cluster structure and under randomization inference
+(Table~\ref{tab:decomposition}), but the concentration stands as a stated
+limitation.
+
+A third limitation deserves its own statement: the treatment is not
+mechanically exogenous to the units that receive it. The compensation price
+is a percentile of past regional spot prices, and withholding that raises
+spot prices feeds, with a lag, the units' own future payment. Three facts
+bound the loop without eliminating it. Contemporaneously it is negligible
+by construction --- a month's own conduct enters its own $\dt$ only through
+that month's marginal contribution to a 365-day window. Dynamically, the
+loop requires the units' absence to move the \emph{top-decile} prices that
+set the percentile, and the record places their absence where prices are
+low: essential intervals are the market's more-competitive, cheap-energy
+periods (Section~\ref{sec:results}), not its price spikes. And the one
+large movement in $\dt$ over the sample --- the 2022 surge to \$349 ---
+tracked NEM-wide fuel costs (\$322/MWh at the focal units' own heat rates),
+a system event no three units authored. What survives as a caveat is the
+softer form: any residual own-price influence inflates the payment
+gradient's causal reading, and the paper's ``consistent with'' language is
+calibrated to that residual as well.
+
+\input{../output/tables/T1_rq1}
+\input{../output/tables/T2_rq2}
+
+\begin{figure}[!htbp]\centering
+\includegraphics[width=0.85\textwidth]{fig5_rq2_stability}
+\caption{The RQ2 interaction across June-2022 treatments and outcome
+definitions. Points are estimates of $\theta$ in
+equation~\eqref{eq:rq2}; bars are 95\% analytic confidence intervals,
+clustered by month. All eight estimates lie between $-0.044$ and $-0.058$ per
+\$100/MWh.}
+\label{fig:rq2stability}
+\end{figure}

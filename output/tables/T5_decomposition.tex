@@ -1,0 +1,30 @@
+\begin{table}[!htbp]\centering
+\caption{Decomposing the dose response: eligibility versus intensive margin}
+\label{tab:decomposition}
+\begin{adjustbox}{max width=\textwidth}
+\begin{threeparttable}
+\begin{tabular}{lcc}
+\toprule
+ & Floor within reach & Offered depth, given reach \\
+ & (eligibility margin) & (intensive margin) \\
+\midrule
+Essential $\times$ compensation price (\$100/MWh) & $-0.086^{***}$ & $0.005$ \\
+ & (0.025) & (0.019) \\
+Wild-cluster-bootstrap $p$ (Rademacher) & 0.003 & 0.789 \\
+Range across June-2022 treatments & $-0.088$ to $-0.076$ & $0.005$ to $0.036$ \\
+Randomization-inference $p$ (999 month-permutations) & 0.046 & --- \\
+Month-grain WLS slope (19 months, HC1 $p$) & $-0.096$ (0.0012) & --- \\
+Observations (base sample) & 140,259 & 28,555 \\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}\footnotesize
+\item The eligibility margin is an indicator for the unit's minimum-stable quantum (its frozen floor: 40~MW per Torrens unit) being offered within dispatch's reach; it is identical under both cheap thresholds because the floor block, when offered, sits at the $-\$1{,}000$ band. The intensive margin is the cheap-capacity share on the subsample with the floor in reach (a decomposition aid: it conditions on an outcome). Specification, matching, controls, clustering, and June-2022 treatments exactly as in Table~\ref{tab:rq2}. The cost-indexed intensive margin behaves identically (base $
+-0.019
+$, $p=
+0.55
+$). Interpretations for all cells were committed in the project record before estimation.
+\item $^{*}p<0.10$, $^{**}p<0.05$, $^{***}p<0.01$ (analytic).
+\end{tablenotes}
+\end{threeparttable}
+\end{adjustbox}
+\end{table}

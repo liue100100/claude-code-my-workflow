@@ -1,0 +1,6 @@
+station,duids,ess_intervals,n_directions,crit3_500rows,note
+quarantine_5,QPS1+QPS2+QPS3+QPS4+QPS5,39,55,FALSE,""
+dry_creek,DRYCGT1+DRYCGT2+DRYCGT3,27,54,FALSE,""
+mintaro,MINTARO,45,236,FALSE,""
+bips,BARKIPS1,39,26,FALSE,""
+snapper_point,SNAPPER1,0,0,FALSE,""

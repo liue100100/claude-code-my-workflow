@@ -1,0 +1,23 @@
+\begin{table}[!htbp]\centering
+\caption{Summary statistics, five-minute unit--interval panel, 2022--2024}
+\label{tab:sumstats}
+\begin{adjustbox}{max width=\textwidth}
+\begin{threeparttable}
+\begin{tabular}{lcccccc}
+\toprule
+ & Registered & Intervals & Mean cheap & Zero declared & Cheap share & Essential \\
+ & capacity (MW) & & share & availability (\%) & $<$0.10 (\%) & intervals (\%) \\
+\midrule
+TORRB2 & 200 & 315,648 & 0.117 & 60.4 & 77.4 & 1.29 \\
+TORRB3 & 200 & 315,648 & 0.164 & 43.8 & 69.1 & 1.29 \\
+TORRB4 & 200 & 315,648 & 0.136 & 56.1 & 74.4 & 1.29 \\
+PPCCGT & 478 & 315,648 & 0.429 & 39.6 & 41.9 & 0.08 \\
+OSB-AG & 180 & 315,648 & 0.280 & 70.2 & 71.0 & 0.01 \\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}\footnotesize
+\item Cheap share: capacity offered at or below \$300/MWh, capped at declared availability, over registered capacity (the fixed-threshold definition; the cost-indexed definition agrees on 96--100\% of intervals). Essential: the rivals-only flag of Section~\ref{sec:design}. OSB-AG is descriptive only throughout.
+\end{tablenotes}
+\end{threeparttable}
+\end{adjustbox}
+\end{table}

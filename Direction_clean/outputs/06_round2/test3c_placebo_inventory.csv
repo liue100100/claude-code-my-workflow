@@ -1,0 +1,71 @@
+DUID,in_cache,flag_available,note
+ADPBA1G,TRUE,FALSE,fails criterion 2: no rivals-only essentiality flag constructed
+ADPPV1,TRUE,FALSE,fails criterion 2: no rivals-only essentiality flag constructed
+AGLHAL,TRUE,FALSE,fails criterion 2: no rivals-only essentiality flag constructed
+ANGAST1,TRUE,FALSE,fails criterion 2: no rivals-only essentiality flag constructed
+BARKIPS1,TRUE,FALSE,fails criterion 2: no rivals-only essentiality flag constructed
+BLUFF1,TRUE,FALSE,fails criterion 2: no rivals-only essentiality flag constructed
+BNGSF1,TRUE,FALSE,fails criterion 2: no rivals-only essentiality flag constructed
+BNGSF2,TRUE,FALSE,fails criterion 2: no rivals-only essentiality flag constructed
+BOLIVPS1,TRUE,FALSE,fails criterion 2: no rivals-only essentiality flag constructed
+BOWWBA1G,TRUE,FALSE,fails criterion 2: no rivals-only essentiality flag constructed
+BOWWPV1,TRUE,FALSE,fails criterion 2: no rivals-only essentiality flag constructed
+CATHROCK,TRUE,FALSE,fails criterion 2: no rivals-only essentiality flag constructed
+CLEMGPWF,TRUE,FALSE,fails criterion 2: no rivals-only essentiality flag constructed
+CNUNDAWF,TRUE,FALSE,fails criterion 2: no rivals-only essentiality flag constructed
+DALNTH01,TRUE,FALSE,fails criterion 2: no rivals-only essentiality flag constructed
+DRYCGT1,TRUE,FALSE,fails criterion 2: no rivals-only essentiality flag constructed
+DRYCGT2,TRUE,FALSE,fails criterion 2: no rivals-only essentiality flag constructed
+DRYCGT3,TRUE,FALSE,fails criterion 2: no rivals-only essentiality flag constructed
+HALLWF1,TRUE,FALSE,fails criterion 2: no rivals-only essentiality flag constructed
+HALLWF2,TRUE,FALSE,fails criterion 2: no rivals-only essentiality flag constructed
+HDWF1,TRUE,FALSE,fails criterion 2: no rivals-only essentiality flag constructed
+HDWF2,TRUE,FALSE,fails criterion 2: no rivals-only essentiality flag constructed
+HDWF3,TRUE,FALSE,fails criterion 2: no rivals-only essentiality flag constructed
+HPRG1,TRUE,FALSE,fails criterion 2: no rivals-only essentiality flag constructed
+HVWWPV1,TRUE,FALSE,fails criterion 2: no rivals-only essentiality flag constructed
+LADBROK1,TRUE,FALSE,fails criterion 2: no rivals-only essentiality flag constructed
+LADBROK2,TRUE,FALSE,fails criterion 2: no rivals-only essentiality flag constructed
+LBBG1,TRUE,FALSE,fails criterion 2: no rivals-only essentiality flag constructed
+LGAPWF1,TRUE,FALSE,fails criterion 2: no rivals-only essentiality flag constructed
+LGAPWF2,TRUE,FALSE,fails criterion 2: no rivals-only essentiality flag constructed
+LKBONNY1,TRUE,FALSE,fails criterion 2: no rivals-only essentiality flag constructed
+LKBONNY2,TRUE,FALSE,fails criterion 2: no rivals-only essentiality flag constructed
+LKBONNY3,TRUE,FALSE,fails criterion 2: no rivals-only essentiality flag constructed
+LONSDALE,TRUE,FALSE,fails criterion 2: no rivals-only essentiality flag constructed
+MAPS2PV1,TRUE,FALSE,fails criterion 2: no rivals-only essentiality flag constructed
+MAPS3PV1,TRUE,FALSE,fails criterion 2: no rivals-only essentiality flag constructed
+MBPS2PV1,TRUE,FALSE,fails criterion 2: no rivals-only essentiality flag constructed
+MINTARO,TRUE,FALSE,fails criterion 2: no rivals-only essentiality flag constructed
+MTMILLAR,TRUE,FALSE,fails criterion 2: no rivals-only essentiality flag constructed
+MWPS1PV1,TRUE,FALSE,fails criterion 2: no rivals-only essentiality flag constructed
+MWPS2PV1,TRUE,FALSE,fails criterion 2: no rivals-only essentiality flag constructed
+MWPS3PV1,TRUE,FALSE,fails criterion 2: no rivals-only essentiality flag constructed
+MWPS4PV1,TRUE,FALSE,fails criterion 2: no rivals-only essentiality flag constructed
+NBHWF1,TRUE,FALSE,fails criterion 2: no rivals-only essentiality flag constructed
+OSB-AG,TRUE,TRUE,fails criterion 3: 18 essential unit-rows (<500); also directed in-sample
+PAREPS1,TRUE,FALSE,fails criterion 2: no rivals-only essentiality flag constructed
+PAREPW1,TRUE,FALSE,fails criterion 2: no rivals-only essentiality flag constructed
+POR01,TRUE,FALSE,fails criterion 2: no rivals-only essentiality flag constructed
+POR03,TRUE,FALSE,fails criterion 2: no rivals-only essentiality flag constructed
+PPCCGT,TRUE,TRUE,treatment set
+PTSTAN1,TRUE,FALSE,fails criterion 2: no rivals-only essentiality flag constructed
+QPS1,TRUE,FALSE,fails criterion 2: no rivals-only essentiality flag constructed
+QPS2,TRUE,FALSE,fails criterion 2: no rivals-only essentiality flag constructed
+QPS3,TRUE,FALSE,fails criterion 2: no rivals-only essentiality flag constructed
+QPS4,TRUE,FALSE,fails criterion 2: no rivals-only essentiality flag constructed
+QPS5,TRUE,FALSE,fails criterion 2: no rivals-only essentiality flag constructed
+SNAPPER1,TRUE,FALSE,fails criterion 2: no rivals-only essentiality flag constructed
+SNOWNTH1,TRUE,FALSE,fails criterion 2: no rivals-only essentiality flag constructed
+SNOWSTH1,TRUE,FALSE,fails criterion 2: no rivals-only essentiality flag constructed
+SNOWTWN1,TRUE,FALSE,fails criterion 2: no rivals-only essentiality flag constructed
+SNUG1,TRUE,FALSE,fails criterion 2: no rivals-only essentiality flag constructed
+STARHLWF,TRUE,FALSE,fails criterion 2: no rivals-only essentiality flag constructed
+TBSF1,TRUE,FALSE,fails criterion 2: no rivals-only essentiality flag constructed
+TORRB1,TRUE,FALSE,fails criterion 2: no rivals-only essentiality flag constructed
+TORRB2,TRUE,TRUE,treatment set
+TORRB3,TRUE,TRUE,treatment set
+TORRB4,TRUE,TRUE,treatment set
+WATERLWF,TRUE,FALSE,fails criterion 2: no rivals-only essentiality flag constructed
+WGWF1,TRUE,FALSE,fails criterion 2: no rivals-only essentiality flag constructed
+WPWF,TRUE,FALSE,fails criterion 2: no rivals-only essentiality flag constructed

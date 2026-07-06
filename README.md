@@ -1,4 +1,4 @@
-# My Claude Code Setup
+﻿# My Claude Code Setup
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Changelog](https://img.shields.io/badge/See-CHANGELOG-blue.svg)](CHANGELOG.md)
@@ -185,7 +185,7 @@ This workflow is designed as a **single hub for an entire research program** —
 ## What's Included
 
 <details>
-<summary><strong>11 active agents, 36 active skills, 26 active rules, 7 hooks</strong> (click to expand — 7 agents, 14 skills, and 6 rules from the original Beamer/Quarto lecture-slide template are archived under `_archived-lecture/` directories, not counted here)</summary>
+<summary><strong>11 active agents, 38 active skills, 26 active rules, 7 hooks</strong> (click to expand — the original Beamer/Quarto lecture-slide template's agents (7), skills (14), and rules (6) are archived under `_archived-lecture/` directories, not counted here)</summary>
 
 ### Agents (`.claude/agents/`)
 

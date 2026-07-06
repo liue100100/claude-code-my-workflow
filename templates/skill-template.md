@@ -1,4 +1,4 @@
-# Skill Creation Template
+﻿# Skill Creation Template
 
 **Use this template to create domain-specific skills for your academic workflow.**
 
@@ -452,4 +452,4 @@ When adapting this template to your domain:
 - **Purpose:** Starter for domain-specific skills
 - **Usage:** Copy to `.claude/skills/[name]/SKILL.md`, customize for your field
 
-For existing skills examples, see `.claude/skills/` directory (52 skills for LaTeX, R, Quarto, and research workflows).
+For existing skills examples, see `.claude/skills/` directory (38 skills for LaTeX, R, Quarto, and research workflows).

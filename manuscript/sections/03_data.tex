@@ -1,0 +1,80 @@
+% ------------------------------------------------------------------------------
+% §3 Data — drafted Phase C from:
+%   Direction_clean/README.md (reuse map); 00_inventory; 01_outcome findings;
+%   2026-07-06 F2 AEMO reconciliation session log; memory: project_aemo_qed_direction_cost
+% ------------------------------------------------------------------------------
+\section{Data}\label{sec:data}
+
+\subsection{Sources}
+
+All data are AEMO public archives, extracted for January 2022 through December
+2024 (36 months) unless noted.
+
+\emph{Bids.} The complete bid ladder for the focal units --- band prices
+(\texttt{BIDDAYOFFER}) and band quantities with declared availability
+(\texttt{BIDOFFERPERIOD}) --- for every bid version submitted, 1,578,240
+unit-interval rows at the five-minute grain. Each interval is resolved to the
+bid version in force at dispatch; the resolution joins cleanly, with zero
+intervals missing a price ladder.
+
+\emph{Directions.} AEMO's published direction reports, parsed to an event-level
+record of 1,638 directions: unit, instruction type (synchronise or remain),
+issue and effective times, and cancellation.\footnote{Direction report
+timestamps are published in a spreadsheet format whose parsing initially
+introduced a systematic $+10$-hour offset. The bug was found, fixed at the
+source, and every window-dependent result in this paper is computed on the
+corrected times; pre-correction outputs were archived and are cited nowhere.}
+Realised directed status is carried to the five-minute grain (375,264 directed
+unit-intervals). Direction costs and unit-level compensation dollars are
+available from October 2023, when the reporting format changed; before that,
+costs exist only as event-level recovery amounts.
+
+\emph{Compensation price.} The monthly $\dt$ series --- the trailing-365-day
+90th percentile of South Australian spot prices --- reconstructed from spot
+data and verified against AEMO's published values.
+
+\emph{Costs.} Generator short-run marginal cost (SRMC) is built from
+engineering primitives: AEMO ISP heat rates, Aurecon variable operating costs, and daily
+STTM Adelaide hub gas prices --- roughly \$120/MWh for the Torrens B units at
+mid-sample gas prices. Bids never enter the cost measure.\footnote{A
+revealed-cost alternative (backing cost out of the units' own offers) was
+tested and rejected on both margins: it implies a heat rate of 0.22~GJ/MWh
+against an engineering range of 7--11~GJ/MWh, and it barely moves when gas
+triples.
+The units' offers do not track their costs, which is itself an early sign of
+the conduct this paper studies.}
+
+\emph{Market state.} Regional demand, non-synchronous generation, spot
+prices, and interconnector flows (Heywood and Murraylink) for the
+residual-demand construction of Section~\ref{sec:design}.\footnote{AEMO
+tables \texttt{DISPATCHREGIONSUM}, \texttt{DISPATCHPRICE}, and
+\texttt{DISPATCHINTERCONNECTORRES}.} Registered capacities are taken from AEMO's
+registration tables: 200~MW per Torrens B unit, 478~MW for Pelican Point,
+180~MW for Osborne.
+
+\subsection{External validation against AEMO's published series}
+
+The parsed direction record is validated against AEMO's own published
+statistics. The share of time South Australia spent under an active direction,
+computed from the parsed events, reproduces the corresponding series in AEMO's
+\emph{Quarterly Energy Dynamics} to within 0.1 percentage points in six of nine
+overlapping quarters (worst deviation 2.3 points) \citep{AEMO2024_qed_q2}.
+Quarterly direction costs, summed from the parsed record under the Rules'
+recovery-amount definition, match AEMO's published value for the second
+quarter of 2023 to machine precision \citep{AEMO2024_qed_q2}. The event record underlying every direction-window calculation in
+this paper is, to measurement accuracy, the operator's own.
+
+\subsection{Panels}
+
+Three panels carry the analysis. The \emph{outcome panel} (1,578,240 rows)
+holds the withholding measures of Section~\ref{sec:design} for all five units.
+The \emph{regression panel} (1,261,576 rows) restricts to the four test units
+and adds essentiality, competition, and market-state controls. The \emph{RQ2
+matched panel} (140,259 rows in the base sample; 12,513 matched essential
+rows, of which 11,120 remain once the June-2022 suspension window is
+excluded) is the coarsened-exact-matched
+sample described in Section~\ref{sec:design}. All timestamps are handled in
+fixed UTC+10 market time; South Australia's civil daylight saving never enters.
+Table~\ref{tab:sumstats} reports unit-level summary statistics.
+
+\input{../output/tables/T0_sumstats}

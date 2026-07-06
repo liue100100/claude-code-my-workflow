@@ -1,0 +1,30 @@
+\begin{table}[!htbp]\centering
+\caption{Mechanism: the exit act is state-dependent; floor pricing is not}
+\label{tab:mechanism}
+\begin{adjustbox}{max width=\textwidth}
+\begin{threeparttable}
+\begin{tabular}{lcccc}
+\toprule
+ & \multicolumn{3}{c}{Exit act (evening offered share)} & Floor price (\$/MWh) \\
+\cmidrule(lr){2-4}\cmidrule(lr){5-5}
+ & (1) & (2) & (3) & (4) \\
+\midrule
+Essential ($N{-}1$) & $-0.162^{**}$ & $-0.124^{*}$ & & $45.3$ \\
+ & (0.066) & (0.065) & & (265.3) \\
+Essential ($N{-}1$) $\times$ expected loss & & $-0.001^{***}$ & & \\
+ & & (0.000) & & \\
+$N{-}1$ only (not $N{-}0$) & & & $-0.190^{***}$ & \\
+ & & & (0.061) & \\
+Directly pivotal ($N{-}0$, \textit{pex}) & & & $-0.001$ & \\
+ & & & (0.106) & \\
+\midrule
+Observations & 473 & 473 & 473 & 650 \\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}\footnotesize
+\item Day-level regressions on clean days (bids formed outside direction exposure), $N{-}1$ essentiality flag (Task~7 construction). Columns (1)--(3): outcome is the evening offered share (exit act); column (2) adds the expected foregone-loss control and its interaction; column (3) splits essentiality into tiers. Column (4): outcome is the offered floor price. Wild-cluster-bootstrap-based inference in the source analysis confirms column (1) at $p=0.017$. Standard errors clustered by month in parentheses. Both tests' interpretations were committed in the project record before estimation; the $N{-}1$ flag construction is Appendix~\ref{app:n1}.
+\item $^{*}p<0.10$, $^{**}p<0.05$, $^{***}p<0.01$ (analytic).
+\end{tablenotes}
+\end{threeparttable}
+\end{adjustbox}
+\end{table}

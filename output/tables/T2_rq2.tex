@@ -1,0 +1,34 @@
+\begin{table}[!htbp]\centering
+\caption{RQ2: The essential-interval withholding gap widens with the compensation price}
+\label{tab:rq2}
+\begin{adjustbox}{max width=\textwidth}
+\begin{threeparttable}
+\begin{tabular}{lccc}
+\toprule
+ & \multicolumn{2}{c}{Essential $\times$ compensation price (\$100/MWh)} & \\
+\cmidrule(lr){2-3}
+Sample treatment of June 2022 & Fixed \$300 & 2$\times$SRMC & $N$ \\
+\midrule
+Base (exclude June-2022 suspension window) & $-0.051^{***}$ & $-0.055^{***}$ & 140,259 \\
+ & (0.016) & (0.019) & \\
+(i) Exclude all June 2022 & $-0.051^{***}$ & $-0.058^{***}$ & 134,636 \\
+ & (0.016) & (0.016) & \\
+(ii) Include window at APC \$300 & $-0.044^{**}$ & $-0.050^{**}$ & 144,358 \\
+ & (0.019) & (0.020) & \\
+(iii) Base minus pre-suspension June & $-0.051^{***}$ & $-0.058^{***}$ & 135,269 \\
+ & (0.016) & (0.016) & \\
+\midrule
+Essential (main effect, base sample) & $0.089^{*}$ & $0.083$ & \\
+ & (0.049) & (0.058) & \\
+\midrule
+WCB $p$ (base row): Rademacher & 0.004 & 0.007 & \\
+\phantom{WCB $p$ (base row):} Webb & 0.004 & 0.006 & \\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}\footnotesize
+\item Coefficient on essential $\times$ compensation price (per \$100/MWh) on the CEM-matched sample (unit $\times$ month $\times$ non-synchronous quintile $\times$ hour block $\times$ competition bin). A coefficient of $-0.051$ means the essential-vs-matched gap in the cheap-capacity share widens by 5.1 percentage points of registered capacity per \$100/MWh. Analytic standard errors clustered by month in parentheses; specification and controls as in Table~\ref{tab:rq1} (M3). Wild cluster bootstrap $p$-values ($R=999$, 20 df) for the base sample. The interpretation of this test, including the reading of a null, was committed in the project record before estimation.
+\item $^{*}p<0.10$, $^{**}p<0.05$, $^{***}p<0.01$ (analytic).
+\end{tablenotes}
+\end{threeparttable}
+\end{adjustbox}
+\end{table}

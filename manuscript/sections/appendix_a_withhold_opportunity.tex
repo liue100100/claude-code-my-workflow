@@ -1,0 +1,46 @@
+% ------------------------------------------------------------------------------
+% Appendix A — drafted Phase C from Direction/outputs/withhold_opportunity/
+%   stage2/3/4/4b findings; Exhibit: T4
+% ------------------------------------------------------------------------------
+\section{An Earlier Opportunity-Set Design}\label{app:withhold_opportunity}
+
+Before the matched interval design of Section~\ref{sec:design}, the
+project's first, registered-in-advance pass at the payment-sensitivity question used
+an opportunity-set construction: flag intervals in which the unit's withholding
+could plausibly cause a direction (rivals near the security boundary), match
+them to comparison intervals by coarsened exact matching on system state, and
+test whether a binary withheld indicator interacts with the compensation
+price,
+\[
+\mathit{withheld}_{it} = \lambda\,(\dt \times \mathit{opp}_{it}) +
+\phi\,\mathit{opp}_{it} + \kappa\,\mathit{srmc}_{it} + \alpha_i +
+\eta_{q(it)} + \omega_{h(it)} + \varepsilon_{it},
+\]
+with unit, non-synchronous-quintile, and hour-block fixed effects, clustered
+by month.
+
+Table~\ref{tab:withhold_opp} reports the result: null. The pooled interaction
+is $0.00024$ ($t=1.55$, $p=0.14$), with only TORRB4 marginal ($p=0.07$) and
+the sister units on either side of zero. The June-2022 gap in the
+compensation-price series, 19\% of opportunity intervals, is handled by
+imputation at \$164.38/MWh as a robustness variant with the same conclusion.
+A sign-flip diagnostic confirms TORRB3's wrong-signed estimate is
+within-sample noise, not composition: the three Torrens units' opportunity
+sets are byte-identical (the essentiality state is a station-level object),
+so cross-unit differences on identical regressor sets are sampling variation.
+Pelican Point's cell is uninformative --- its opportunity intervals fall in a
+narrow calendar window with essentially no $\dt$ variation.
+
+Two design features explain why this test is superseded rather than pooled
+with Section~\ref{sec:results}. First, the outcome is a binary withheld
+indicator, and Torrens's withheld rate inside the matched strata is already
+high on both sides of the contrast (90--94\% in comparison intervals,
+97--99\% in opportunity intervals): the extensive margin is nearly saturated,
+so the test can only detect movement in a thin residual band. The interval design's
+continuous cheap-capacity share carries the intensive margin where the
+estimated response lives. Second, the opportunity flag conditions on rivals'
+proximity to the boundary more coarsely than the CEM competition bins.
+The null is nonetheless informative, and consistent with the mechanism
+picture: on the extensive margin the posture does not flex with the prize.
+
+\input{../output/tables/T4_withhold_opportunity}

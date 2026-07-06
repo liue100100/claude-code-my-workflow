@@ -6,7 +6,7 @@
 # Run from the Direction/ working directory.
 #
 #   F1  Compensation price vs gas price (slow-moving prize -> low / high rent)
-#   F2  Volume directed & total compensation paid (small volume can still cost a lot)
+#   F2  Volume directed & total direction cost to the market (small volume can still cost a lot)
 #   F3  How essential the directed units are (pivotality composition)
 #   F4  Rebidding across three groups of days (whole / direction / pivotal-direction)
 #
@@ -115,55 +115,163 @@ ggsave(file.path(OUT, "F1_compensation_vs_fuel.png"), p1, width = 9.8, height = 
 cat("  saved F1_compensation_vs_fuel.png\n")
 
 # ============================================================================
-# F2 — Volume directed (bars) and total compensation paid (line). A small
-#      directed volume in 2022Q4-2023Q1 still cost the most, because each unit
-#      of energy was paid the inflated, slow-moving compensation price (F1's high-rent period).
+# F2 — Volume directed (bars) and the total direction cost to the market
+#      (line). Cost = the NER 3.15.8 recovery amount (`cra` column):
+#      compensation + additional compensation + independent-expert fee, net of
+#      the unit's retained market earnings. This is the concept AEMO plots in
+#      Quarterly Energy Dynamics (grouping whole events by start quarter
+#      reproduces QED Q2-2024 Fig 85's Q2-23 value to the cent; we instead
+#      allocate pro-rata over each event's window, which shifts a few $m
+#      between neighbouring quarters but is temporally honest).
+#      The 2022Q4-2023Q1 window is the costliest per MWh: a small
+#      directed volume, but each MWh paid the inflated, slow-moving
+#      compensation price (F1's high-rent period).
 # ============================================================================
-cat("\n[F2] volume directed & compensation paid ...\n")
+cat("\n[F2] volume directed & direction cost ...\n")
 
-BOUNDARY <- "202310"   # cost data splits cleanly: event-level costs <=202309, per-DUID events >=202310
-dc <- as.data.table(readRDS(file.path(PARSE, "direction_costs.rds")))
-dc[, ym := format(direction_start, "%Y%m")]
-dc <- dc[ym < BOUNDARY & !is.na(directed_mwh),
-         .(ym, directed_mwh, compensation_payment, src = "costs (event-level)")]
-ev <- as.data.table(readRDS(file.path(PARSE, "direction_events.rds")))
-ev <- ev[source_format == "new" & region == "SA1" & !is.na(directed_mwh)]
-ev[, ym := format(issue_time, "%Y%m")]
-ev <- ev[ym >= BOUNDARY,
-         .(ym, directed_mwh, compensation_payment, src = "events (per-DUID)")]
-vc <- rbindlist(list(dc, ev))[ym >= "202101" & ym <= "202412"]
-vc[, qdate := ym_to_qdate(ym)]
+# The event-level cost reports cover 2021-01-01 -> 2023-10-27 16:30; the
+# per-DUID event records (new format) begin where they stop. Split at the
+# actual coverage seam — a month-label cut at 202310 drops Oct 1-27, 2023
+# (~$7m), because neither source then contributes it.
+fill_cra <- function(d) d[, cra := fifelse(
+  is.na(cra),
+  compensation_payment + fcoalesce(additional_compensation, 0) +
+    fcoalesce(ie_fee, 0) - fcoalesce(retained_trading_amount, 0),
+  cra)]
+dc <- fill_cra(as.data.table(readRDS(file.path(PARSE, "direction_costs.rds"))))
+dc <- dc[!is.na(directed_mwh),
+         .(w_start = direction_start, w_end = direction_end, directed_mwh,
+           comp = compensation_payment, cra, src = "costs (event-level)")]
+COSTS_END <- max(dc$w_end)
+ev <- fill_cra(as.data.table(readRDS(file.path(PARSE, "direction_events.rds"))))
+ev <- ev[source_format == "new" & region == "SA1" & !is.na(directed_mwh) &
+           effective_time >= COSTS_END,
+         .(w_start = effective_time, w_end = cancellation_time, directed_mwh,
+           comp = compensation_payment, cra, src = "events (per-DUID)")]
+ev[is.na(w_end) | w_end <= w_start, w_end := w_start + 1]
+vc <- rbindlist(list(dc, ev))
 
-f2 <- vc[, .(directed_gwh = sum(directed_mwh)/1e3,
-             comp_m       = sum(compensation_payment, na.rm=TRUE)/1e6,
-             src          = src[1]), by = qdate][order(qdate)]
-f2[, comp_per_mwh := comp_m * 1e6 / (directed_gwh * 1e3)]
+# Cost-report rows span up to several weeks; allocate volume and dollars to
+# quarters pro-rata by time in each quarter. (AEMO groups whole events by
+# quarter instead — that convention reproduces its Q2-23/Q4-22 values exactly
+# — but pro-rata places cost in the quarter the direction actually ran.)
+vc[, row_id := .I]
+qseq <- seq(as.Date("2021-01-01"), as.Date("2025-04-01"), by = "quarter")
+qcut <- as.numeric(as.POSIXct(paste(qseq, "00:00:00"), tz = "Etc/GMT-10"))
+alloc <- vc[, {
+  lo <- pmax(as.numeric(w_start), qcut[-length(qcut)])
+  hi <- pmin(as.numeric(w_end),   qcut[-1])
+  k  <- which(hi > lo)
+  .(qdate = qseq[k],
+    frac  = (hi[k] - lo[k]) / (as.numeric(w_end) - as.numeric(w_start)),
+    directed_mwh = directed_mwh, comp = comp, cra = cra, src = src)
+}, by = row_id]
+
+f2 <- alloc[qdate <= as.Date("2024-10-01"),
+            .(directed_gwh = sum(directed_mwh * frac) / 1e3,
+              cost_m       = sum(cra  * frac) / 1e6,
+              comp_m       = sum(comp * frac) / 1e6,
+              src          = paste(sort(unique(src)), collapse = " + ")),
+            by = qdate][order(qdate)]
+f2[, cost_per_mwh := cost_m * 1e6 / (directed_gwh * 1e3)]
+
+# Share of the quarter's time with at least one SA direction active (union of
+# effective->cancellation windows, both report formats). Reproduces AEMO's QED
+# "percentage of time of directions" series within ~0.1pp for most quarters
+# (worst: Q4-22 -2.3pp; edge conventions differ). Not drawn — the chart already
+# uses both axes — but kept in the CSV: time directed and cost tell different
+# stories (directed time peaks in Q4-23/Q1-24 while cost per MWh peaks a year
+# earlier, when the lagged compensation price was at its 2022 high).
+evt <- as.data.table(readRDS(file.path(PARSE, "direction_events.rds")))
+evt <- evt[region == "SA1" & !is.na(effective_time) & !is.na(cancellation_time) &
+             cancellation_time > effective_time,
+           .(s = as.numeric(effective_time), c = as.numeric(cancellation_time))]
+setorder(evt, s, c)
+evt[, cmax := cummax(shift(c, fill = first(c)))]   # max end time of all earlier windows
+evt[, grp := cumsum(s > cmax)]                     # new block when this start clears every earlier end
+u <- evt[, .(s = min(s), c = max(c)), by = grp]
+stopifnot(all(u$s[-1] > u$c[-nrow(u)]))            # union blocks must be disjoint
+qlo <- qcut[-length(qcut)]; qhi <- qcut[-1]
+pctdir <- data.table(
+  qdate = qseq[-length(qseq)],
+  pct_time_directed = vapply(seq_along(qlo), function(i)
+    sum(pmax(pmin(u$c, qhi[i]) - pmax(u$s, qlo[i]), 0)) / (qhi[i] - qlo[i]),
+    numeric(1)))
+f2 <- merge(f2, pctdir, by = "qdate", all.x = TRUE)
 fwrite(f2, file.path(OUT, "F2_volume_cost.csv"))
 cat("  quarters (low-volume high-cost = high $/MWh):\n"); print(f2)
 
-sc2 <- max(f2$directed_gwh, na.rm=TRUE) / max(f2$comp_m, na.rm=TRUE)
+sc2 <- max(f2$directed_gwh, na.rm=TRUE) / max(f2$cost_m, na.rm=TRUE)
 p2 <- ggplot(f2, aes(x = qdate)) +
   annotate("rect", xmin = as.Date("2022-09-15"), xmax = as.Date("2023-03-15"),
            ymin = -Inf, ymax = Inf, alpha = 0.08, fill = COL["prize"]) +
   annotate("text", x = as.Date("2023-01-01"), y = 150,
-           label = "Highest cost of the sample\nat a small volume — each MWh\npaid the inflated 2022 price\n(high-rent period, chart 1)",
+           label = "Costliest per unit of energy —\na small volume, but each MWh\npaid the inflated 2022 price\n(high-rent period, chart 1)",
            size = 2.7, colour = COL["prize"], lineheight = 0.95, vjust = 0.5) +
   geom_col(aes(y = directed_gwh, fill = "Energy generated under direction (bars)"),
            width = 70, alpha = 0.85) +
-  geom_line(aes(y = comp_m * sc2, colour = "Total compensation paid (line)"), linewidth = 1.1) +
-  geom_point(aes(y = comp_m * sc2, colour = "Total compensation paid (line)"), size = 1.8) +
+  geom_line(aes(y = cost_m * sc2, colour = "Total direction cost to the market (line)"), linewidth = 1.1) +
+  geom_point(aes(y = cost_m * sc2, colour = "Total direction cost to the market (line)"), size = 1.8) +
   scale_fill_manual(values = c("Energy generated under direction (bars)" = unname(COL["cost"]))) +
-  scale_colour_manual(values = c("Total compensation paid (line)" = unname(COL["prize"]))) +
+  scale_colour_manual(values = c("Total direction cost to the market (line)" = unname(COL["prize"]))) +
   scale_y_continuous(name = "Energy generated under direction\n(thousand MWh per quarter)",
-                     sec.axis = sec_axis(~ . / sc2, name = "Total compensation paid\n($ million per quarter)",
+                     sec.axis = sec_axis(~ . / sc2, name = "Total direction cost\n($ million per quarter)",
                                          labels = dollar_format())) +
   scale_x_date(date_breaks = "6 months", date_labels = "%b %Y") +
   labs(title = "A small directed volume can still cost a lot — when the compensation price is high",
-       subtitle = "Each bar is the energy generated because units were directed on; the line is the total compensation bill for that quarter.",
+       subtitle = paste0("Each bar is the energy generated because units were directed on; the line is what the quarter's directions cost the market:\n",
+                         "compensation plus additional claims and expert fees, net of the units' own market earnings (the amount recovered under NER 3.15.8,\n",
+                         "the same cost concept AEMO reports in Quarterly Energy Dynamics)."),
        x = NULL, fill = NULL, colour = NULL) +
   THEME + theme(legend.text = element_text(size = 8))
-ggsave(file.path(OUT, "F2_volume_cost.png"), p2, width = 9.8, height = 5.2, dpi = 300)
+ggsave(file.path(OUT, "F2_volume_cost.png"), p2, width = 9.8, height = 5.4, dpi = 300)
 cat("  saved F2_volume_cost.png\n")
+
+# ----------------------------------------------------------------------------
+# F2b — Does directed VOLUME move with directed TIME? Three stacked panels on
+#       a shared clock (no dual axis): the two series, then their ratio —
+#       average output while directed (MW = energy / directed hours). A flat
+#       ratio means the two series carry the same information; a level break
+#       means they do not.
+# ----------------------------------------------------------------------------
+cat("\n[F2b] volume vs share of time directed ...\n")
+
+f2b <- copy(f2)
+f2b[, q_hours := as.numeric(difftime(shift(qdate, type = "lead",
+                                           fill = as.Date("2025-01-01")),
+                                     qdate, units = "hours"))]
+f2b[, avg_mw := directed_gwh * 1e3 / (pct_time_directed * q_hours)]
+r_all  <- f2b[, cor(directed_gwh, pct_time_directed)]
+r_2224 <- f2b[qdate >= as.Date("2022-01-01"), cor(directed_gwh, pct_time_directed)]
+cat(sprintf("  corr(volume, share of time): full sample %.2f | 2022-24 %.2f\n", r_all, r_2224))
+fwrite(f2b[, .(qdate, directed_gwh, pct_time_directed, q_hours, avg_mw)],
+       file.path(OUT, "F2b_volume_vs_time.csv"))
+
+PANELS <- c("Energy generated under direction (thousand MWh)",
+            "Share of the quarter under an active direction (%)",
+            "Average output while directed (MW = energy / directed hours)")
+pan <- rbindlist(list(
+  f2b[, .(qdate, panel = PANELS[1], value = directed_gwh)],
+  f2b[, .(qdate, panel = PANELS[2], value = pct_time_directed * 100)],
+  f2b[, .(qdate, panel = PANELS[3], value = avg_mw)]))
+pan[, panel := factor(panel, levels = PANELS)]
+
+p2b <- ggplot(pan, aes(x = qdate, y = value, fill = panel)) +
+  geom_col(width = 70, alpha = 0.9, show.legend = FALSE) +
+  facet_wrap(~ panel, ncol = 1, scales = "free_y", strip.position = "top") +
+  scale_fill_manual(values = setNames(unname(COL[c("cost", "prize", "grey")]), PANELS)) +
+  scale_x_date(date_breaks = "6 months", date_labels = "%b %Y") +
+  labs(title = "Since 2022, directed volume is just directed time — before, it wasn't",
+       subtitle = sprintf(paste0(
+         "Top two panels: the two series (correlation %.2f from 2022 on; %.2f over the full sample). Bottom: their ratio.\n",
+         "In 2021 a directed hour produced 115-200 MW (several units pinned on); from 2022 it produces a steady 50-75 MW\n",
+         "(one or two units at minimum load) — so after the synchronous condensers entered, volume adds nothing beyond time."),
+         r_2224, r_all),
+       x = NULL, y = NULL) +
+  THEME + theme(strip.text = element_text(size = 9, hjust = 0),
+                panel.spacing.y = unit(0.8, "lines"))
+ggsave(file.path(OUT, "F2b_volume_vs_time.png"), p2b, width = 9.8, height = 7.6, dpi = 300)
+cat("  saved F2b_volume_vs_time.png\n")
 
 # ============================================================================
 # F3 — How ESSENTIAL the directed units are. A unit is "essential" in a 5-minute
@@ -459,7 +567,8 @@ readout <- c(
   "| Figure | File | Plain-language takeaway |",
   "|---|---|---|",
   "| F1 | F1_compensation_vs_fuel.png | The compensation price is fixed to the previous 12 months of electricity prices, so it keeps paying 2022 levels into 2024 — the margin over fuel cost (rent) is small in the 2022 fuel spike and large once fuel falls. |",
-  "| F2 | F2_volume_cost.png | A small directed volume in late-2022/early-2023 still cost the most, because each MWh was paid the inflated compensation price (F1's high-rent period). |",
+  "| F2 | F2_volume_cost.png | A small directed volume in late-2022/early-2023 was the costliest per MWh, because each MWh was paid the inflated compensation price (F1's high-rent period). Cost = the NER 3.15.8 recovery amount (compensation + additional compensation + expert fees, net of retained market earnings) — the same cost concept AEMO plots in QED. The CSV also holds pct_time_directed (share of the quarter under an active direction; reproduces AEMO's QED percentage-of-time series to ~0.1pp): directed time peaks in Q4-21 and Q4-23/Q1-24, not in the costliest-per-MWh window — cost tracks the lagged compensation price, not direction frequency. |",
+  "| F2b | F2b_volume_vs_time.png | Directed volume vs share of the quarter under direction, plus their ratio (average MW while directed). From 2022 on the two series are interchangeable (r = 0.98; a steady 50-75 MW whenever directed); in 2021 the same directed hour carried 115-200 MW. The regime break coincides with the synchronous condensers entering service. |",
   "| F3 | F3_pivotal_composition.png | Most directed units were pivotal: no combination of the other available SA units could meet the requirement without them. |",
   "| F4 | F4_rebidding_by_sample.png | As units go from ordinary days to direction days to pivotal-direction days, they offer a rising share of capacity at very high prices. |",
   "| F5 | F5_runup.png | In the run-up to a direction (first bid version -> last version before issue), units shift more of their offered capacity above $300/MWh; shown for the full directed period and its first hour, Synchronise vs Remain. |",

@@ -1,0 +1,35 @@
+\begin{table}[!htbp]\centering
+\caption{RQ1: Essentiality and the cheap-capacity share}
+\label{tab:rq1}
+\begin{adjustbox}{max width=\textwidth}
+\begin{threeparttable}
+\begin{tabular}{lcccccc}
+\toprule
+ & \multicolumn{2}{c}{M1} & \multicolumn{2}{c}{M2} & \multicolumn{2}{c}{M3} \\
+\cmidrule(lr){2-3}\cmidrule(lr){4-5}\cmidrule(lr){6-7}
+ & Fixed \$300 & 2$\times$SRMC & Fixed \$300 & 2$\times$SRMC & Fixed \$300 & 2$\times$SRMC \\
+\midrule
+\multicolumn{7}{l}{\emph{Panel A: pooled (four focal units)}} \\
+Essential & $-0.004$ & $-0.048$ & $-0.004$ & $-0.048$ & $-0.004$ & $-0.048$ \\
+ & (0.023) & (0.038) & (0.023) & (0.038) & (0.023) & (0.038) \\
+ & [0.847] & [0.208] & [0.847] & [0.207] & [0.857] & [0.207] \\
+Saturated (slope $=0$) & & & & & $-0.032^{***}$ & $-0.036^{***}$ \\
+ & & & & & (0.006) & (0.007) \\
+\midrule
+\multicolumn{7}{l}{\emph{Panel B: heterogeneity (M3 specification)}} \\
+Essential, Torrens Island B only & & & & & $-0.037$ & $-0.076^{**}$ \\
+ & & & & & (0.023) & (0.036) \\
+Essential, Pelican Point only\tnote{a} & & & & & $0.184^{*}$ & $0.128$ \\
+ & & & & & (0.099) & (0.084) \\
+\midrule
+Observations (pooled) & \multicolumn{6}{c}{1,261,576} \\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}\footnotesize
+\item Outcome: share of registered capacity offered below the cheap threshold (fixed \$300/MWh or 2$\times$ engineering SRMC), 5-minute unit--interval panel, 2022--2024. M1 adds demand, non-synchronous supply, SRMC, and price controls; M2 adds the residual-demand slope; M3 adds the saturated (zero-slope) indicator. Analytic standard errors clustered by month in parentheses; wild cluster bootstrap $p$-values (Rademacher, $R=999$, 35 df) in brackets for the essentiality coefficient. Panel B re-estimates M3 on the Torrens Island B and Pelican Point subsamples.
+\item[a] The Pelican Point coefficient is not robust: it flips sign when October 2023 is dropped (leave-one-month-out, Section~\ref{sec:robustness}) and is withdrawn as a finding.
+\item $^{*}p<0.10$, $^{**}p<0.05$, $^{***}p<0.01$ (analytic).
+\end{tablenotes}
+\end{threeparttable}
+\end{adjustbox}
+\end{table}

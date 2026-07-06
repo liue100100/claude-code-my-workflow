@@ -1,0 +1,86 @@
+% ------------------------------------------------------------------------------
+% §4 Descriptive evidence — drafted Phase C from:
+%   F1/F2/F2b readout + CSVs; findings_task11_supply_curve.md; findings_task12;
+%   Exhibits: Fig 1, Fig 2, Fig 3
+% ------------------------------------------------------------------------------
+\section{Descriptive Evidence: A Scheme That Pays for Presence}\label{sec:descriptives}
+
+Three descriptive facts organise everything the regressions then test: the
+compensation price detached from cost; the cost of the scheme tracked that
+detachment rather than the system's need; and the paid units' supply
+disappeared from the market on a scale no cost story explains.
+
+\subsection{The rent in the reference price}
+
+Figure~\ref{fig:rent} plots the compensation price $\dt$ against the focal
+units' engineering fuel cost. The trailing-365-day construction makes the
+wedge mechanical: through the 2022 fuel spike the backward-looking $\dt$
+lagged \emph{below} cost (the margin reached $-\$185$/MWh in April 2022), and
+once gas fell the same lag held $\dt$ at its crisis peak of \$348--350/MWh for
+a further year, opening a margin of up to $+\$211$/MWh (January 2023). A
+directed megawatt-hour in early 2023 was paid at more than twice its fuel
+cost --- by formula, not by anyone's decision.
+
+\begin{figure}[!htbp]\centering
+\includegraphics[width=0.9\textwidth]{fig1_compensation_rent}
+\caption{The compensation price $\dt$ (trailing-365-day 90th percentile of SA
+spot prices) against the focal units' engineering fuel cost, monthly,
+2022--2024. The shaded band is the margin between them.}
+\label{fig:rent}
+\end{figure}
+
+\subsection{The cost of the scheme tracked the lagged price, not the need}
+
+Figure~\ref{fig:costanatomy} shows the quarterly anatomy. Directed volumes
+after the synchronous condensers entered service are modest and stable ---
+49--77 average megawatts whenever directed, against 117--196 in 2021
+(bottom panel) --- and the underlying share of time under direction, the
+series validated against AEMO's published statistics in
+Section~\ref{sec:data}, peaks in late 2021 and again in late 2023. The recovery cost per directed
+megawatt-hour peaks somewhere else entirely: \$416/MWh in 2022Q3, then
+\$351--382 from late 2022 through the third quarter of 2023 --- the quarters
+when the lagged $\dt$ was paying crisis prices on small volumes. In 2021, three to four times the
+directed volume had cost \$85--134 per megawatt-hour. Cost tracked the
+formula's memory of last year's prices, not the quantity of security
+procured.
+
+\begin{figure}[!htbp]\centering
+\includegraphics[width=0.9\textwidth]{fig2_direction_cost_anatomy}
+\caption{Quarterly directed volume, recovery cost per directed MWh (the NER
+3.15.8 recovery amount, AEMO's own cost concept), and average MW online while
+directed, 2021--2024.}
+\label{fig:costanatomy}
+\end{figure}
+
+\subsection{The paid units left the market}
+
+Figure~\ref{fig:supplyhistory} plots, monthly, each station's offered
+availability and its cheap tranche (capacity offered at or below \$300/MWh).
+Pelican Point behaves like a merchant plant: what it offers, it offers
+cheaply, and its availability follows its commercial duty cycle. Torrens
+Island B is a different object. Against 600~MW of registered capacity across
+the three focal units, the station's offered availability averages well under
+200~MW, its cheap tranche under 100~MW; individual units' day-ahead stances declare exactly zero
+availability for 47--63\% of all five-minute intervals (in-force bids,
+which include within-day revisions and direction periods, show 44--60\%;
+Table~\ref{tab:sumstats}), and 2023 --- the peak
+of the compensation rent --- is the deepest year of absence, including three
+consecutive months (March--May 2023) at literally zero cheap megawatts.
+Section~\ref{sec:mechanism} examines what that absence responds to; the
+regression sections establish what it correlates with. But the raw scale
+deserves stating plainly: through the years in which being directed paid
+\$191--272 per megawatt-hour of presence, the direction regime's principal
+recipient offered the market as little as the security framework would
+tolerate --- and, as Section~\ref{sec:mechanism} shows, never less than
+it.\footnote{The roster-versus-requirement comparison finds zero days in 73
+opportunities on which the station's declared availability fell short of what
+the minimum-combination standard asked of it: absent from the market, the
+station remained continuously \emph{directable}.}
+
+\begin{figure}[!htbp]\centering
+\includegraphics[width=0.9\textwidth]{fig3_supply_history}
+\caption{Offered availability and the cheap tranche ($\leq$\$300/MWh),
+monthly means, 2022--2024. Torrens Island B is the station total across
+TORRB2/3/4 (registered capacity 600~MW).}
+\label{fig:supplyhistory}
+\end{figure}

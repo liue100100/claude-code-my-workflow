@@ -1,0 +1,106 @@
+% ------------------------------------------------------------------------------
+% §8 Robustness — drafted Phase C from:
+%   findings_3b.md (LOMO, June split); 03 findings (deviations, share row);
+%   04 findings (treatments); 01 findings (thresholds, audits); rq1_wcb.csv
+% ------------------------------------------------------------------------------
+\section{Robustness}\label{sec:robustness}
+
+\subsection{Leave-one-month-out}
+
+Both headline unit-level RQ1 results were re-estimated 72 times, dropping one
+month at a time under both outcome definitions. The Torrens coefficient is
+negative in all 72 re-estimates; every flagged month is a $p$-value crossing
+in the 0.03--0.15 band, never a sign change. Pelican Point fails the same
+diagnostic: dropping October 2023 alone flips its sign (from $+0.184$ to
+$-0.083$ fixed; $+0.128$ to $-0.105$ cost-indexed), and dropping two other
+months moves it across the 5\% threshold in the opposite direction. The
+asymmetry is the basis for the treatment in Section~\ref{sec:results}: Torrens
+is a stable borderline-significant response; Pelican Point's positive
+coefficient is a one-month artifact and is withdrawn.
+
+\subsection{June 2022}
+
+The crisis month is handled segment-by-segment using AEMO's own per-interval
+flags (suspension window 15--24 June; administered pricing from 5 June). For
+the RQ1 Torrens result: dropping the suspension window alone leaves the
+coefficient intact ($-0.068$, $p=0.054$ cost-indexed), as does dropping the
+pre-suspension fortnight alone ($-0.058$, $p=0.045$); only removing all of
+June --- 19\% of Torrens's essential unit-rows, with zero essential rows after
+the suspension --- degrades it to $p=0.13$. The dependence is on June's
+essential-interval mass, a statistical-power statement, not on
+suspension-era administered pricing, a confounding story. The RQ2 interaction
+needs no such parsing: all four June treatments give $-0.044$ to $-0.058$
+($p=0.001$--$0.029$; Figure~\ref{fig:rq2stability}).
+
+\subsection{The timing wedge: separating the payment from the fuel}
+
+The formula's memory creates a test the referee's fuel-confound story must
+pass: gas prices fell in October 2022, but the trailing-percentile $\dt$
+kept paying crisis rates until July 2023. If the essential-versus-matched
+gap were fuel-stress conduct wearing the payment's clothes, it should have
+collapsed with gas, nine months before the payment fell. It did not. With
+the sample split at the calendar boundaries fixed in advance --- early 2022
+($\dt\approx\$176$, a placebo-in-time), the crisis quarter (gas and $\dt$
+both high), the lag-wedge (gas low, $\dt\approx\$340$), and the
+post-roll-off period (both low, omitted) --- the eligibility-margin gap is
+$-0.100$ in the crisis quarter ($p=0.03$), $-0.075$ through the lag-wedge
+(bootstrap $p=0.089$), statistically indistinguishable from the crisis
+value, and zero in both low-payment regimes despite their opposite fuel
+conditions. The four period gaps order monotonically with the payment, not
+with gas. What keeps this supportive rather than decisive is power: the
+lag-wedge holds four essential-bearing months, and its contrast clears only
+the 10\% level --- hence the ``consistent with'' language maintained
+throughout this paper.
+
+A conditional horse race points the same way within its limits. Adding
+essential $\times$ gas alongside essential $\times$ $\dt$ (series
+correlated at 0.48 across months), the payment interaction retains its full
+magnitude and significance on the cheap-share outcome ($-0.054$, $p=0.013$)
+with the gas interaction at exactly zero ($p=0.85$); on the eligibility
+margin the two collinear series split the variance and neither is
+individually significant --- a limitation of conditioning, which is why the
+timing design above, not the horse race, carries the identification weight.
+
+A placebo unit --- often essential but outside the compensation channel ---
+does not exist in this market, for a reason that is itself informative:
+essentiality concentrates on precisely the units the direction channel
+pays. The candidate stations with constructed essentiality flags
+(Quarantine, Dry Creek, Mintaro, Barker Inlet, Snapper Point) have 0--45
+essential intervals in three years against Torrens's 4,083, and most are
+themselves directed. The treatment set and the missing placebo have the
+same cause.
+
+\subsection{Inference and measurement}
+
+Webb-weight bootstrap $p$-values match Rademacher throughout (RQ2 base case:
+0.0040 versus 0.0041 fixed; 0.0061 versus 0.0073 cost-indexed). Because the
+unrestricted wild bootstrap can be liberal with few unbalanced clusters,
+the eligibility-margin estimate was additionally subjected to randomization
+inference that imposes the null by construction --- permuting the
+month-to-price assignment across the 36 sample months, 999 draws --- giving
+$p=0.046$ (Table~\ref{tab:decomposition}); the null-imposed bootstrap
+proper requires a compilation toolchain unavailable in the analysis
+environment and remains a pre-submission upgrade. The two
+outcome definitions agree on 96--100\% of interval classifications and on
+every substantive conclusion. Threshold sweeps (\$150--\$500 fixed;
+$1.5\times$--$3\times$ SRMC) leave the Torrens classification in an 82--96\%
+band. The non-synchronous share specification (restricted to demand above
+500~MW, avoiding the zero-crossing) gives $-0.017$/$-0.064$ for the pooled
+essentiality coefficient --- same sign, same conclusion as the level
+specification. The essentiality flag survives its leakage audit
+($R^{2}\leq 0.0028$ on the unit's own behaviour) and its degeneracy audit
+(essential intervals include units bidding as usual).
+
+\subsection{An earlier design, reported not buried}
+
+Before the matched interval design of Section~\ref{sec:design}, this project
+ran a coarser opportunity-set version of the same question: does a withheld
+indicator interact with $\dt$ on intervals where withholding could plausibly
+cause a direction? That design is null (pooled interaction $t=1.55$,
+$p=0.14$; one unit marginal at $p=0.07$), and Appendix~\ref{app:withhold_opportunity}
+reports it in full. Two reasons it is superseded rather than averaged in: the
+binary withheld outcome discards the intensive margin where
+Section~\ref{sec:results}'s effect lives, and its opportunity flag conditions
+on system state less sharply than the CEM match. The null is consistent with
+the pattern in Section~\ref{sec:mechanism} --- the extensive-margin posture
+does not flex with the prize; its depth does.

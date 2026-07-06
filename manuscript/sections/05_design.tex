@@ -1,0 +1,202 @@
+% ------------------------------------------------------------------------------
+% §5 Empirical design — drafted Phase C from:
+%   Direction_clean/README.md (identification logic); 01_outcome findings;
+%   stage2_gate_report.md; 03 findings.md (spec, deviations, inference);
+%   04 findings.md (matching, power); findings_job2_contamination.md (clean-day rule)
+% ------------------------------------------------------------------------------
+\section{Empirical Design}\label{sec:design}
+
+\subsection{The outcome: cheap capacity as a share of registered capacity}
+
+The conduct of interest is how much capacity a unit makes available to the
+market at prices at which it could actually run. The outcome is the
+\emph{cheap-capacity share}: the megawatts a unit offers at or below a cheap
+threshold, capped at its declared availability, divided by its registered
+capacity. Two co-primary thresholds guard against threshold choice doing the
+work: a fixed \$300/MWh, and a cost-indexed $2\times$ the unit's engineering
+SRMC that month. The two definitions classify 96--100\% of intervals
+identically per unit (worst case 3.9\%, Pelican Point), and a sweep from \$150
+to \$500 and from $1.5\times$ to $3\times$ SRMC leaves the Torrens units'
+withheld-interval share in an 82--96\% band throughout. Higher values of the
+share mean \emph{less} withholding; a negative coefficient on any driver means
+more withholding.
+
+The share can fall through two channels with different regulatory treatment:
+\emph{capacity withdrawn} (declared availability cut below normal --- physical
+withholding) and \emph{capacity priced out} (availability normal, price above
+the threshold --- economic withholding). Physical withdrawal dominates for
+every unit (51--99\% of withheld intervals, rising to 91\% for Pelican Point),
+with a material secondary share (10--33\%) doing both. The Torrens units'
+unconditional distribution is bimodal: they sit at the zero-cheap floor in
+69--77\% of \emph{all} intervals. Withholding is these units' resting state;
+the empirical questions are whether the state deepens when the unit is
+essential (RQ1) and whether it tracks the payment for being essential (RQ2).
+Appendix~\ref{app:markup} reports the literature's markup lens on the same
+offers as a cross-check on this outcome choice.
+
+Three mechanical facts about this market discipline what the share can and
+cannot mean, and Section~\ref{sec:results} exploits them directly. First,
+the stance is indivisible: dispatch clears the cheapest offered megawatts
+first, and a steam unit cannot produce its hundredth megawatt without its
+first forty, so there is no bid in which the upper capacity is reachable
+while the minimum-stable block is not --- any cheap tranche anywhere on the
+ladder self-commits the whole unit. Second, self-commitment is what a
+direction pays \emph{against}: compensation covers directed output net of
+the counterfactual the unit's own bid establishes, so a unit whose bid
+offers nothing has a zero counterfactual and is paid gross, while the same
+megawatts offered cheaply would have run at (negative) spot. The one
+payoff-relevant object in the bid is therefore binary --- is the
+minimum-stable quantum within dispatch's reach, or not --- and the offered
+\emph{price} is a dead instrument away from that threshold, which is
+exactly how the units treat it (band prices change twice in roughly a
+thousand observed bid revisions). Third, the share is accordingly best read
+as a posture ruler: its zero point is the order-only stance (the unit runs
+only if directed), its distance from zero measures how much running the
+unit volunteers, and Section~\ref{sec:results} decomposes it into the
+eligibility threshold and the depth beyond it.
+
+\subsection{Essentiality: a rivals-only flag}
+
+A unit-interval is \emph{essential} ($\pex=1$) when no combination of the
+\emph{other} available South Australian synchronous units satisfies the minimum
+synchronous requirement --- the system needs this unit (for Torrens, the
+station) to complete a compliant combination. The flag is built exclusively
+from rivals' declared availability; the unit's own bidding and availability
+never enter. Two audits confirm the construction. A leakage audit regressing
+the flag on the unit's own availability and cheap capacity yields
+$R^{2}\in[0.0000, 0.0028]$: the flag is not a repackaging of the unit's own
+behaviour. A degeneracy audit confirms essential intervals are non-trivial:
+2--6\% of Torrens's and 66\% of Pelican Point's essential intervals still show
+the unit bidding as usual, so essential does not mean withheld by
+construction.
+
+Essentiality is classified on realised system state rather than the
+generator's bid-time forecast. Misclassification relative to the desk's
+information set attenuates every essentiality coefficient toward zero; the
+estimates below are lower bounds in this specific sense.\footnote{The
+direction of the bias follows from the structure of the error, not from
+assertion: the flag proxies the desk's expectation, and errors in it are
+nondifferential with respect to the outcome conditional on the desk's
+information --- realised-state surprises (a rival tripping after bids
+closed) are uncorrelated with a bid formed before them. Classical
+nondifferential misclassification of a binary regressor biases its
+coefficient, and interactions with it, toward zero. What would overturn
+this is misclassification correlated with the outcome through a third
+channel; the leakage audit ($R^{2}\leq 0.0028$ on the unit's own behaviour)
+bounds the obvious candidate.}
+
+\subsection{The competition control: residual-demand slope}
+
+Essentiality bundles two things: eligibility for direction compensation, and
+whatever ordinary market power comes with being needed. To separate them, every
+specification carries a direct measure of energy-market competition: the slope
+of the unit's residual demand curve near the clearing price, built from rivals'
+offer stacks net of interconnector imports. More negative slope means rivals
+supply more at nearby prices --- more competition; a slope of exactly zero
+means rivals are locally saturated --- maximum local market power. The zero
+point is a mass point (6.7\% of Torrens intervals), so it enters as a separate
+\emph{saturated} indicator alongside the continuous slope.
+
+Two facts about this control, established before any regression, do
+substantial interpretive work. First, competition and essentiality are nearly
+orthogonal (correlation $-0.036$ for Torrens, $-0.018$ pooled): the control
+cannot mechanically absorb the essentiality response. Second, their conditional
+relationship runs \emph{opposite} to the market-power story: Torrens's
+essential intervals average a residual-demand slope of $-5.04$~MW per \$/MWh
+against $-3.31$ in non-essential intervals. Essential periods carry more rival
+supply near the clearing price, not less, because essentiality is a
+system-security condition that fires in high-renewables, low-demand periods ---
+cheap-energy periods --- whereas energy-market scarcity fires elsewhere.
+Section~\ref{sec:results} returns to this as the wrong-sign-of-conditions
+result.
+
+\subsection{Specifications}
+
+\emph{RQ1.} The essentiality regression, at the unit-interval grain on the
+four test units (1,261,576 rows),
+\begin{equation}\label{eq:rq1}
+\cheap_{it} \;=\; \beta\,\pex_{it} \;+\; \gamma_{1}\,\mathit{slope}_{it}
+\;+\; \gamma_{2}\,\mathit{sat}_{it} \;+\; X_{it}'\delta \;+\; \alpha_{i}
+\;+\; \mu_{m(t)} \;+\; \varepsilon_{it},
+\end{equation}
+with unit and month fixed effects and controls $X$ for SRMC, regional demand,
+non-synchronous generation, and the spot price.\footnote{The contemporaneous
+spot price is itself downstream of conduct and is a bad control in the
+strict sense; it is retained because the committed specification included
+it. Its own coefficient is indistinguishable from zero in every estimated
+model ($p=0.77$--$0.96$ across Table~\ref{tab:rq1}'s specifications), so it
+is not doing quiet work.}\footnote{The specification
+originally called for the non-synchronous \emph{share} of demand; South
+Australian regional demand crosses zero in-sample (rooftop solar), the share
+explodes at the crossing, and with the broken control the essentiality
+coefficients were inflated roughly tenfold. The level enters instead, with the
+share version as a robustness row restricted to demand above 500~MW. The
+deviation and its consequences are documented in the analysis record.}
+Specification M1 omits the competition terms, M2 adds the slope, M3 adds the
+saturated indicator; the movement of $\hat\beta$ from M1 to M3 measures how
+much of the essentiality response the energy-market competition channel
+absorbs.
+
+\emph{RQ2.} The identifying test. Ordinary market power does not care what
+the compensation formula pays; payment-seeking does. On a
+coarsened-exact-matched (CEM) sample --- essential unit-intervals matched to
+comparison intervals within unit $\times$ month $\times$ non-synchronous
+quintile $\times$ hour block $\times$ competition bin cells (140,259 rows;
+12,513 essential, a 100\% match rate) --- the regression adds the interaction
+of essentiality with the compensation price,
+\begin{equation}\label{eq:rq2}
+\cheap_{it} \;=\; \theta\,\bigl(\pex_{it}\times \dt/100\bigr) \;+\;
+\beta\,\pex_{it} \;+\; \gamma' C_{it} \;+\; X_{it}'\delta \;+\; \alpha_{i}
+\;+\; \mu_{m(t)} \;+\; \varepsilon_{it}.
+\end{equation}
+$\dt$ is monthly, so month effects absorb its level; $\theta$ is identified
+from cross-month variation in the essential-versus-matched gap. A negative
+$\theta$ --- the gap in the cheap share widening as the payment rises --- is
+the payment-seeking signature; a null is the insurance signature, conduct
+triggered by the essential state but indifferent to what it pays. This mapping,
+including the reading of a null as an informative bound, was written and
+committed before estimation.
+
+\emph{June 2022.} The east-coast crisis month contains a market suspension
+window and an administered-price period, and holds 19\% of Torrens's essential
+unit-rows. Every RQ2 estimate is reported under four treatments: excluding the
+suspension window (base), excluding all of June, including the window at the
+administered \$300 cap, and excluding pre-suspension June.
+
+\emph{The estimand, stated precisely.} Because $\dt$ is monthly and the
+mechanism evidence of Section~\ref{sec:mechanism} shows the posture does not
+flex daily, $\theta$ is not a daily behavioural response. It is the
+cross-month gradient of a standing posture's \emph{coverage}: how much more
+of the essential intervals the order-only stance blankets, relative to
+matched intervals, in months when a direction pays more. A policy chosen at
+the operating-calendar frequency and tilted --- however it is decided ---
+toward the payment environment produces exactly this object, and no claim
+about interval-by-interval calibration is made or needed.
+
+\subsection{Inference and hygiene}
+
+Standard errors cluster by month. With 36 clusters (and effectively 21
+essential-bearing months in RQ2), analytic clustered inference is supplemented
+throughout by a wild cluster bootstrap ($R=999$; Rademacher weights primary,
+Webb weights as sensitivity).\footnote{The bootstrap is the unrestricted
+variant (\texttt{sandwich::vcovBS}); the null-imposed implementation could not
+be installed in the analysis environment. With few effective and unbalanced
+clusters the unrestricted variant can be liberal, so the headline estimate
+is additionally subjected to randomization inference that imposes the null
+by construction (Section~\ref{sec:robustness}), and the null-imposed
+bootstrap proper remains a pre-submission upgrade. Analytic and bootstrap
+$p$-values agree closely throughout, and every fixed-effects estimate was
+re-estimated by explicit-dummy least squares and confirmed numerically
+identical.} RQ2's power structure is reported with the
+result, not discovered after it: the essential mass spans 21 month-clusters
+with 50.8\% of it in the top three, and the compensation price varies across
+essential rows with a standard deviation of \$76.6 on a month-level range of
+\$121--378.
+
+One design rule, learned from this project's own record and applied to every
+day-grain test in Section~\ref{sec:mechanism}: conduct is measured only on
+bids formed \emph{outside} direction exposure. On 54\% of essential days the
+day-ahead bid was formed while a direction was running or pending, and a bid
+formed under direction mechanically shows availability --- treating those days
+as choices manufactures state-dependence that evaporates on clean days.
+Section~\ref{sec:mechanism} reports the artifact and the correction in full.

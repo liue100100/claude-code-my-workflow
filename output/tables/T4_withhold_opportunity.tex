@@ -1,0 +1,29 @@
+\begin{table}[!htbp]\centering
+\caption{Appendix: earlier opportunity-set design --- $d_t \times$ opportunity interaction (withheld indicator)}
+\label{tab:withhold_opp}
+\begin{adjustbox}{max width=\textwidth}
+\begin{threeparttable}
+\begin{tabular}{lccc}
+\toprule
+ & $d_t \times$ opp & $d_t^{robust} \times$ opp & $N$ \\
+\midrule
+Pooled & $0.00024$ & $0.00019$ & 177,854 \\
+ & (0.00016) & (0.00013) & \\
+TORRB2 & $0.00021$ & $0.00030$ & 57,677 \\
+ & (0.00027) & (0.00021) & \\
+TORRB3 & $-0.00018$ & $-0.00013$ & 57,677 \\
+ & (0.00027) & (0.00024) & \\
+TORRB4 & $0.00055^{*}$ & $0.00034$ & 57,677 \\
+ & (0.00029) & (0.00026) & \\
+PPCCGT\tnote{a} & $0.00061$ & $-0.00125$ & 4,823 \\
+ & (0.00129) & (0.00400) & \\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}\footnotesize
+\item Linear probability model: withheld $\sim d_t \times$ opportunity $+$ SRMC with unit, non-synchronous-quintile, and hour-block fixed effects on the CEM-matched sample, clustered by month. $d_t^{robust}$ imputes the June-2022 compensation-price gap at \$164.38/MWh. This earlier, coarser design is superseded by the specification of Section~\ref{sec:design}; it is reported for completeness.
+\item[a] PPCCGT is underpowered in this design (few opportunity intervals); estimates are unstable.
+\item $^{*}p<0.10$, $^{**}p<0.05$, $^{***}p<0.01$ (analytic).
+\end{tablenotes}
+\end{threeparttable}
+\end{adjustbox}
+\end{table}

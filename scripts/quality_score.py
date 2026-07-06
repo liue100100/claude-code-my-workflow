@@ -208,7 +208,12 @@ class IssueDetector:
         lines = content.split('\n')
 
         for i, line in enumerate(lines, 1):
-            if re.search(r'["\'][/\\]|["\'][A-Za-z]:[/\\]', line):
+            # Match Unix-absolute ("/home/...) and drive-letter ("C:/ or "C:\)
+            # forms only. A quote followed by a bare backslash is NOT treated
+            # as a path: in R/Python source that is an escape sequence ("\n")
+            # or emitted LaTeX ("\\begin{table}"), which produced systematic
+            # false positives on table-generating scripts (fixed 2026-07-06).
+            if re.search(r'["\']/(?=[A-Za-z])|["\'][A-Za-z]:[/\\]', line):
                 if not re.search(r'http:|https:|file://|/tmp/', line):
                     issues.append(i)
 

@@ -1,0 +1,106 @@
+% ==============================================================================
+% Paid to Be Absent: Direction Compensation and Capacity Withholding
+% in the South Australian Electricity Market
+%
+% Compile (from manuscript/): 3-pass XeLaTeX + BibTeX
+%   xelatex -interaction=nonstopmode paper.tex
+%   bibtex paper
+%   xelatex -interaction=nonstopmode paper.tex
+%   xelatex -interaction=nonstopmode paper.tex
+%
+% Bibliography: ../Bibliography_base.bib (repo root, single source)
+% Exhibits: \input from ../output/tables/, figures from ../output/figures/
+% ==============================================================================
+\documentclass[12pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath, amssymb}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{setspace}
+\usepackage{natbib}
+\usepackage{threeparttable}
+\usepackage{adjustbox}
+\usepackage[hidelinks]{hyperref}
+
+\graphicspath{{../output/figures/}}
+\bibliographystyle{plainnat}
+
+\onehalfspacing
+\captionsetup{font=small, labelfont=bf}
+
+% --- Notation macros (single source of truth for symbols) ---
+\newcommand{\dt}{d_t}                 % direction compensation price
+\newcommand{\pex}{\mathit{pex}}       % rivals-only ex-ante essentiality flag
+\newcommand{\cheap}{\mathit{cheap}}   % cheap-capacity share outcome
+
+\title{Paid to Be Absent: Direction Compensation and Capacity Withholding
+in the South Australian Electricity Market\thanks{Monash University.
+Draft --- do not cite.}}
+\author{Eric Liu}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+\noindent
+When South Australia's electricity market leaves the grid short of synchronous
+generation, the operator directs specific units to run and compensates them
+for their entire directed output at a backward-looking reference price --- the
+90th percentile of the trailing year of spot prices. Over 2022--2024 this
+scheme paid three gas steam units \$141.9 million for directed output worth
+\$7.2 million at spot. Using the complete bid ladder at five-minute
+resolution, I show that the directed units' withholding co-varies with the
+administered payment itself, on exactly the margin the payment operates:
+the probability that a unit keeps its minimum-stable quantum within
+dispatch's reach --- the act that averts a direction --- falls by 8.6
+percentage points per \$100/MWh of compensation price on essential relative
+to matched intervals (wild-cluster-bootstrap $p<0.01$; randomization
+inference $p=0.046$; interpretation committed before estimation), while
+offered depth conditional on that choice shows no response. Ordinary market
+power assigns no role to this margin, and essential periods are measurably
+more competitive than ordinary ones, so the market-power alternative fails
+on the sign of its own conditions; the gap also held through nine months of
+cheap fuel while the backward-looking formula still paid crisis rates,
+though that timing contrast is marginal ($p=0.09$), so the cross-month
+pattern is reported as consistent with payment-seeking rather than proof of
+it. Mechanism
+evidence locates the conduct in a standing absent posture rather than daily
+calibration: directed output equals the units' operating floor, evening
+exits are event-timed rather than need-timed, and an earlier day-grain
+finding of state-dependent withdrawal is shown to be an artifact of bids
+formed under direction. The conduct is a property of the mechanism's design --- a gross
+payment at a stale scarcity price to units whose market alternative is
+loss-making --- and each design defect maps to a standard repair.
+\end{abstract}
+
+\medskip
+\noindent\textbf{Keywords:} electricity markets; capacity withholding;
+out-of-market directions; compensation design; system security\\
+\textbf{JEL codes:} L94; L51; D22; Q41
+
+\clearpage
+
+\input{sections/01_introduction}
+\input{sections/02_setting}
+\input{sections/03_data}
+\input{sections/04_descriptives}
+\input{sections/05_design}
+\input{sections/06_results}
+\input{sections/07_mechanism}
+\input{sections/08_robustness}
+\input{sections/09_discussion}
+
+\clearpage
+\bibliography{../Bibliography_base}
+
+\clearpage
+\appendix
+\input{sections/appendix_a_withhold_opportunity}
+\input{sections/appendix_b_markup}
+\input{sections/appendix_c_n1_essentiality}
+
+\end{document}

@@ -1,0 +1,33 @@
+% ------------------------------------------------------------------------------
+% Appendix B — drafted Phase C from stage2_gate_report.md (markup numerics + trim)
+% ------------------------------------------------------------------------------
+\section{Markup Cross-Check}\label{app:markup}
+
+The literature's standard conduct object is the markup of price over marginal
+cost \citep{Wolfram1999_duopoly, BorensteinBushnellWolak2002_california,
+HortacsuPuller2008_ercot}. This paper's conduct object is different by
+design: the strategic margin here is how much capacity is made available at
+all, not how offered capacity is priced against energy-market competition.
+This appendix reports the markup lens on the same data, and why it is a
+cross-check rather than a co-primary outcome.
+
+An implied markup constructed from the residual-demand slope
+($-RD/(P \cdot \partial RD/\partial P)$, the inverse-semi-elasticity form)
+is numerically ill-behaved exactly where this market lives: the slope has a
+mass point at zero (rivals saturated) and a long near-zero shoulder, where the
+implied markup explodes --- 37.5\% of finite values exceed 100 in absolute
+value, and untrimmed correlations are degenerate. Trimmed to
+$|\text{markup}| \leq 10$ --- a generous band that still excludes 63--67\% of
+intervals, reported rather than hidden --- the markup's correlation with
+essentiality is $+0.076$ for Torrens and $+0.041$ pooled: essential intervals
+carry, if anything, slightly \emph{higher} implied competitive pressure, the
+same wrong-sign-for-market-power pattern as the slope itself
+(Section~\ref{sec:results}).
+
+The construction's fragility is the substantive point. A markup lens presumes
+the unit is participating in the energy market and asks how hard it presses
+its advantage; a unit that declares zero availability in half of all
+intervals is invisible to that lens. For conduct that operates on the
+availability margin, the markup benchmark is not wrong but beside the point
+--- which is why the cheap-capacity share, not the markup, carries this
+paper's analysis.

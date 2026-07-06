@@ -1,0 +1,99 @@
+% ------------------------------------------------------------------------------
+% §2 Institutional setting — drafted Phase C from:
+%   Direction_clean/README.md; findings_task1b.md (gross payment, post-fix);
+%   F1/F2b readout; memory: project_sa_regime_exit_2025, project_aemo_qed_direction_cost
+% ------------------------------------------------------------------------------
+\section{Institutional Setting}\label{sec:setting}
+
+\subsection{Directions in the National Electricity Market}
+
+The Australian National Electricity Market (NEM) is an energy-only gross pool:
+generators submit offer curves --- up to ten price bands with quantities revisable
+until dispatch\footnote{Rebidding is regulated: since 2016, offers must not
+be false or misleading and late rebids require contemporaneous records
+\citep{AEMC2015_goodfaith}. The conduct studied in this paper operates
+through availability declarations and band quantities, which are and remain
+freely revisable.} --- and a security-constrained dispatch engine clears the market
+every five minutes. South Australia is the NEM's high-renewables frontier. Wind
+and rooftop solar routinely supply most of regional demand, and on sunny, windy
+days the energy market has no commercial work for the state's gas-fired
+synchronous generators.
+
+The energy market clears energy; it does not clear system security. South
+Australia's grid requires a minimum complement of synchronous machines online to
+provide system strength and inertia, codified as a set of minimum synchronous
+generator combinations that the Australian Energy Market Operator (AEMO) must
+maintain. When market dispatch leaves the requirement unmet --- typically in
+exactly those high-renewables, low-price periods --- AEMO issues a
+\emph{direction}: an instruction to a specific generating unit to synchronise,
+or to remain synchronised, outside the normal dispatch process. A direction
+compels presence, not output. A directed unit must be online; it typically runs
+at its minimum stable loading.\footnote{Section~\ref{sec:mechanism} measures
+this directly: directed output equals the unit's operating floor almost
+exactly, with 55.9\% of resolved direction episodes delivering zero or negative
+output in excess of the floor block.}
+
+\subsection{Compensation: a gross payment at a backward-looking reference price}
+
+A directed participant is entitled to compensation under clause 3.15.7 of
+the National Electricity Rules (NER), with the cost recovered from market
+participants under clause 3.15.8 \citep{AEMC2024_ner}. The reference price --- the
+\emph{compensation price} $\dt$ throughout this paper --- is the 90th percentile
+of South Australian spot prices over the trailing 365 days. Two design features
+matter for everything that follows.
+
+First, the payment is effectively \emph{gross}: compensation tracks the unit's
+entire directed output valued at $\dt$, not the increment over what the unit
+would have produced anyway. On the 271 direction episodes for which
+unit-level dollars are observable, compensation fits
+$0.95 \times \text{directed MWh} \times \dt$ with $R^{2}=0.99$; a
+wedge-over-counterfactual model fits at $R^{2}=0.36$ and its contribution is
+driven out entirely once the gross term enters.\footnote{Unit-episode dollars
+exist only from October 2023, when AEMO's reporting format changed. The
+gross-payment characterisation extends to 2022--2023 by the unchanged
+compensation methodology, not by direct measurement.} Because a directed unit's
+counterfactual market revenue in these hours is near zero --- directions fire
+when prices are low --- the gross structure means a direction pays the unit
+roughly $\dt$ per MWh for energy the market values at almost nothing.
+
+Second, the reference price looks backward. A trailing-365-day percentile
+embeds last year's scarcity in this year's payment. The 2022 east-coast gas
+crisis pushed South Australian spot prices, and therefore $\dt$, to
+\$348--350/MWh by mid-2022; $\dt$ then remained at that level until mid-2023 --- while gas prices fell
+from \$29.85/GJ (mid-2022) to \$12.59/GJ (early 2023) --- because the crisis
+stayed inside the trailing window. The margin
+of $\dt$ over the focal units' fuel cost swung from $-\$185$/MWh in April 2022
+to $+\$211$/MWh in January 2023 (Figure~\ref{fig:rent}). The scheme spent 2023
+paying 2022 scarcity prices into a cheap-fuel world.
+
+\subsection{The direction regime in South Australia, 2021--2025}
+
+Directions were once near-continuous: by this paper's event record ---
+which reproduces AEMO's published share-of-time-directed statistics
+(Section~\ref{sec:data}) --- South Australia spent 86\% of the final quarter
+of 2021 under an active direction. Four high-inertia synchronous
+condensers commissioned by the transmission operator entered service across
+late 2021, and the direction regime changed shape: the average megawatts online
+under direction fell from 117--196~MW in 2021 to a stable 49--77~MW from 2022
+onward, as directions shifted from bulk system-strength procurement to
+targeting the marginal synchronous unit needed to complete a minimum
+combination. The 2022--2024 sample window used throughout this paper covers
+this mature regime: directions are frequent (1,638 direction events), targeted,
+and dominated by a small set of units.
+
+Three of those units anchor the analysis: TORRB2, TORRB3, and TORRB4, the
+200-MW gas steam units of AGL's Torrens Island B station, the workhorses of the
+direction regime and its compensation. Pelican Point (PPCCGT, 478~MW), the
+state's most efficient gas plant, serves as the primary comparison unit; it is
+directed rarely and runs commercially. Osborne (OSB-AG, 180~MW) is
+near-must-run and enters descriptively only.\footnote{Barker Inlet is excluded:
+it offers no cheap tranche even in fully competitive intervals, so the
+withholding precondition fails by construction.}
+
+The regime has since ended. In September 2025 the minimum synchronous
+requirement was cut to one unit, with a target of zero once the second stage of
+the Project EnergyConnect interconnector completes. The 2022--2024 window is
+therefore not an arbitrary sample: it brackets the years in which a
+backward-looking gross-payment scheme, a binding synchronous requirement, and a
+fleet of otherwise-unprofitable steam units coexisted. Section~\ref{sec:discussion}
+returns to the exit.

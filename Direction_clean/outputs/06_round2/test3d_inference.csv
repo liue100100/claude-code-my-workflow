@@ -1,0 +1,2 @@
+method,weights,estimate,p,ci_lo,ci_hi
+randomization inference (month-price permutation),uniform month permutation,-0.0855212674475338,0.046,,

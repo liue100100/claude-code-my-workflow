@@ -50,8 +50,10 @@ SURFACES = [
     REPO / "README.md",
     REPO / "CLAUDE.md",
     REPO / "guide/workflow-guide.qmd",
-    REPO / "docs/workflow-guide.html",
-    REPO / "docs/index.html",
+    # docs/ moved into the archived lecture template (see CLAUDE.md folder
+    # structure); the rendered surfaces still exist there and can still drift.
+    REPO / "_archived-lecture-template/docs/workflow-guide.html",
+    REPO / "_archived-lecture-template/docs/index.html",
     REPO / "templates/skill-template.md",
 ]
 

@@ -1,0 +1,133 @@
+% ------------------------------------------------------------------------------
+% §7 Mechanism — drafted Phase C from:
+%   interpretation_staged_framework.md (+ amendments); findings_job2_contamination.md;
+%   findings_task1.md / task1b.md (post-fix); findings_task5b.md; findings_task9/10;
+%   Exhibits: T3
+% ------------------------------------------------------------------------------
+\section{Mechanism: A Standing Posture, Not a Daily Calibration}\label{sec:mechanism}
+
+The regression results say that withholding deepens with the compensation
+price where the scheme's eligibility bites. This section opens the conduct up
+at the level of individual bids, days, and direction episodes. The picture
+that emerges is specific: the absence is a \emph{standing posture} --- chosen
+at the day-block level, indifferent to the daily security envelope and to the
+daily prize --- and the compensation mechanism pays gross rates into that
+posture whenever the system's need makes the unit essential. The section ends
+with the two findings that discipline any stronger claim: a state-dependence
+result this project itself withdrew after a contamination audit, and the
+grain at which the dose response does and does not appear.
+
+\subsection{What a direction buys, and what it pays}
+
+Across the 740 direction episodes with a resolved in-force bid, directed
+output equals the unit's operating floor almost exactly: median directed
+output 40~MW per Torrens unit --- the floor block itself --- with 55.9\% of
+episodes delivering zero or negative excess over the floor and 80.8\% within
+25~MW (Figure~\ref{fig:floor}). A direction buys presence, not energy.
+
+It pays as if it bought energy at scarcity prices. Compensation reconciles to
+$0.95 \times \text{directed MWh} \times \dt$ with $R^{2}=0.99$
+(Section~\ref{sec:setting}), and the aggregate consequence over 2022--2024 is
+the mechanism's headline economics: the direction channel paid the three
+Torrens units \$141.9M for 625,635 directed MWh --- their 683 episodes of
+the 740 above --- that would have earned \$7.2M
+at spot prices over the same windows --- a \$134.7M gap, a ratio of roughly
+20 to 1 that holds for every unit in every year. In 2023 the market value of the directed output
+was \emph{negative} for all three units: 48.2\% of directed megawatt-hours
+were delivered into negative spot prices. Nor is the comparison distorted by
+averaging: at the interval level, spot exceeds marginal fuel cost in 3.9\% of
+directed intervals, the median directed interval loses \$141/MWh at fuel cost
+alone, and only 11 of 683 episodes (1.6\%) were profitable on average. There
+is no commercial running inside these windows to forgo. Given these relative
+payment rates, a standing absent posture is not a puzzle to be explained ---
+it is the only stance an informed desk would hold.
+
+\subsection{The posture is standing, not state-dependent}
+
+Three tests --- each with its interpretation committed in the project
+record before estimation --- all on bids formed outside direction exposure
+(the clean-day rule of Section~\ref{sec:design}), locate the choice; the
+broader $N-1$ essentiality flag they require is constructed and validated in
+Appendix~\ref{app:n1}.
+
+\emph{The base rate.} The units' day-ahead bids withhold or price out the
+floor megawatts on 76--80\% of all clean days --- essential or not. Absence is
+the resting state, held in multi-day blocks (median unavailability spell 2--4
+days, maxima up to 100 days), total rather than partial (when the units withdraw
+they declare zero, not a derating: sub-floor positive declarations are 0.2\%
+of intervals), and organised as a rotating one-to-two-of-three station roster
+(all three Torrens units are on offer together on 4\% of days, and unit
+availabilities are deliberately anti-correlated).
+
+\emph{The exit act is event-timed, not need-timed.} On clean days when a
+Torrens unit has an evening on offer, cancelling it is \emph{less} likely ---
+by 16 percentage points off a 22.5\% base ($p=0.02$, bootstrap $p=0.017$;
+Table~\ref{tab:mechanism}, column 1) --- when the system is one contingency
+from needing the unit. A loss-timing account fails alongside: cancellations
+are less likely, not more, when the previous day's prices imply running
+losses (column 2, wrong sign at $p=0.005$). The evening exits that precede
+directions sit in the direction run-up itself, not in the security calendar
+or the loss calendar.
+
+\emph{The price of presence does not move either.} When the units offer their
+floor megawatts at all, they offer them at the floor-band price ---
+essentially $-\$1{,}000$ --- in essential hours, in ordinary hours, and on
+ordinary days alike: the essential-day effect on the offered floor price is
++\$45 ($p=0.86$; column 4), and Pelican Point's within-day essential-hour
+effect is exactly zero. The pricing margin
+joins the availability margin: the posture is set by the day-block and does
+not respond to the envelope.
+
+\input{../output/tables/T3_mechanism}
+
+\begin{figure}[!htbp]\centering
+\includegraphics[width=0.8\textwidth]{fig4_output_vs_floor}
+\caption{Directed output relative to the unit's operating floor, for the 740
+direction episodes with a resolved in-force bid, 2022--2024. The mass at zero
+is the institutional design: a direction compels presence at minimum stable
+load.}
+\label{fig:floor}
+\end{figure}
+
+\subsection{A withdrawn result: the contamination audit}
+
+An earlier day-grain version of the essentiality test in this project found
+what looked like clean state-dependence: units withdrew 12.7 percentage
+points more on essential days ($p<0.001$). The finding did not survive its
+own audit, and the correction is reported here as part of the result. On 54\%
+of essential days, the day-ahead bid was formed while a direction was running
+or pending; a bid formed under direction mechanically shows availability. On
+the 80 essential days with cleanly formed bids the withdrawal effect is
+$-0.015$ ($p=0.71$): the apparent state-dependence was the direction itself
+sitting in the measured bids. What survives on the clean record is the
+standing posture --- and the fact that 95.4\% of the 280 clean-day first
+directions arrived at a day-ahead stance that had already withdrawn (71.8\%)
+or priced out (23.6\%) the floor megawatts. The system directs into a posture
+that predates its need.
+
+\subsection{Reconciling the grains}
+
+The clean-day, day-grain dose-response test is null (49 essential days over
+14 months; all interactions $p=0.50$--$0.96$), while the interval-grain
+matched test of Section~\ref{sec:results} finds $-0.051$ per \$100/MWh at
+$p<0.01$. These are not in tension; they are different instruments pointed at
+the same object. The day-grain test conditions on clean essential days ---
+which the contamination audit shows are scarce precisely because the
+direction regime blankets essential periods --- and its wide confidence
+intervals cannot exclude effects several times the interval estimate. The
+interval-grain test pools 12,513 essential unit-intervals against matched
+comparisons with 300 times the observations. The honest summary is a powered
+estimate and an uninformative bound, not a conflict. What the day-grain
+record does add is the shape of the response: the posture does not flex
+day-to-day with the envelope or the prize (this section), while its depth
+across months tracks what essentiality pays (Section~\ref{sec:results}).
+Both are what a policy chosen once --- and paid gross whenever the system's
+need arrives --- would produce.\footnote{The daily activity around the
+standing choice is stage-appropriate housekeeping, not repositioning:
+document-revision activity ramps into directions (a vigilance signature), but
+net availability and price-ladder movement around direction issue is
+approximately zero. A desk that watches the weather and a desk that watches
+the direction calendar are watching the same clock in this system; the staged
+pattern shows the desk is informed, and this paper deliberately does not use
+it to establish motive. The economic content is in the mechanism's design, not in generator
+sophistication.}

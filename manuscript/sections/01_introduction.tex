@@ -1,0 +1,151 @@
+% ------------------------------------------------------------------------------
+% §1 Introduction — drafted last, Phase C
+% ------------------------------------------------------------------------------
+\section{Introduction}\label{sec:intro}
+
+When an electricity market cannot keep the lights on by itself, the system
+operator reaches outside it: a \emph{direction} orders a generator to run for
+system security, and a compensation rule decides what that order pays.
+Between 2022 and 2024, South Australia's direction scheme paid three gas
+steam units at Torrens Island \$141.9 million for directed output the energy
+market valued at \$7.2 million --- twenty dollars through the direction
+channel for every dollar of market value. This paper asks whether that
+transfer was an unfortunate price for security, or whether the scheme's own
+design induced the scarcity it paid to relieve. The evidence supports the
+second reading: the units' capacity withholding responds to the size of the
+administered compensation price itself --- a margin to which no ordinary
+market-power story assigns any role.
+
+The setting has three ingredients that together make it a clean laboratory
+for studying how out-of-market payments shape in-market conduct. First, a
+\emph{security requirement}: South Australia's renewables-dominated grid
+needs a minimum set of synchronous machines online, and when market dispatch
+leaves the set incomplete, the operator directs specific units online. Second, a
+\emph{gross payment}: a directed unit is compensated for its entire directed
+output at a regulated reference price --- measured in this paper's data,
+compensation is $0.95 \times$ directed MWh $\times$ the reference price, with
+$R^{2}=0.99$ --- regardless of what it would have earned otherwise. Third, a
+\emph{backward-looking price}: the reference price is the 90th percentile of
+the trailing year of spot prices, so the 2022 energy crisis mechanically
+paid itself forward into 2023--2024, holding the payment near \$350/MWh while
+fuel costs halved. A unit that is loss-making in the energy market --- spot
+exceeded fuel cost in 3.9\% of directed intervals --- faces a stark
+choice between committing capacity to a market that will not cover its costs
+and being absent, essential, directed, and paid gross at last year's scarcity
+price.
+
+The paper's empirical object is the availability margin of conduct: the
+share of registered capacity a unit offers at prices at which it could
+actually run. Two questions structure the analysis. RQ1: do units withhold
+more when they are \emph{essential} --- when no combination of rival units
+satisfies the security requirement without them? RQ2, the identifying
+question: conditional on essentiality, does withholding respond to the
+\emph{size} of the compensation price? The distinction carries the
+identification. Being essential bundles compensation-eligibility with
+whatever ordinary market power comes with being needed, and both predict
+withholding-when-essential. But ordinary market power is indifferent to the
+compensation formula; payment-seeking is not. A dose response to the
+administered price, specific to essential intervals, is a signature only the
+payment channel produces.
+
+The answers. On RQ1, the directed workhorse station withholds more when
+essential ($-0.076$ of registered capacity, stable in sign across all 72
+leave-one-month-out re-estimates), and a direct control for energy-market
+competition absorbs essentially none of the response --- indeed the
+market-power alternative fails on the sign of its own conditions, because
+essential periods are measurably \emph{more} competitive than ordinary ones,
+not tighter. On RQ2, the essential-versus-matched withholding gap widens by
+5.1 percentage points of registered capacity per \$100/MWh of compensation
+price (wild-cluster-bootstrap $p<0.01$ on both outcome definitions), an
+estimate whose interpretation was committed before it was run, and stable
+across every treatment of the June 2022 crisis month. Decomposing the
+outcome sharpens the finding onto the margin the mechanism actually pays:
+the entire response is the probability that the unit's minimum-stable
+quantum is within dispatch's reach --- the self-commitment choice that
+averts or invites a direction --- which falls by 8.6 percentage points per
+\$100/MWh (randomization-inference $p=0.046$), while offered depth
+conditional on that choice responds not at all. The causal reading is
+disciplined by the formula's own timing: gas prices fell nine months before
+the payment did, and the gap tracked the payment, not the fuel, through
+that wedge --- though the sharpest such contrast rests on four months and
+clears only the 10\% level, so this paper's claim for the cross-month
+gradient is ``consistent with payment-seeking,'' stated exactly.
+
+Mechanism evidence locates the conduct precisely. The absence is a
+\emph{standing posture}, not a daily calibration: the units' day-ahead bids
+withhold or price out their floor megawatts on 76--80\% of all cleanly
+observed days, in multi-day blocks, organised as a rotating station roster
+that never once --- in 73 opportunities --- declared less than the security
+standard required. Day-level tests, their interpretations committed in
+advance and run on bids formed
+outside direction exposure, find the posture indifferent to the daily
+security envelope (evening exits are event-timed, not need-timed) and to the
+daily prize (the offered floor price does not move on essential days). What
+the direction buys is presence: directed output equals the units' operating
+floor, with 55.9\% of episodes delivering zero or negative excess energy
+over it. And the
+paper reports its own correction: an earlier day-grain finding of
+state-dependent withdrawal ($-12.7$ points on essential days, $p<0.001$) was
+a contamination artifact --- 54\% of essential days had bids formed while a
+direction was running or pending --- and vanishes on clean days. What
+survives decontamination is the standing posture, its gross payment, and the
+cross-month dose response.
+
+The paper contributes to three literatures. The empirical market-power
+literature in electricity measures conduct on the pricing margin: markups
+over marginal cost \citep{Wolfram1999_duopoly,
+BorensteinBushnellWolak2002_california}, bidding in multi-unit auctions
+against theoretical benchmarks \citep{vonderFehrHarbord1993_spot,
+HortacsuPuller2008_ercot}, pivotal-supplier ability and incentive
+\citep{Wolak2003_unilateral, McRaeWolak2014_unilateral}, and physical
+withholding --- as an input to price manipulation
+\citep{JoskowKahn2002_california} or disguised as plant failures
+\citep{FogelbergLazarczyk2019_failures,
+BerglerHeimHuschelrath2017_failures}. The conduct documented here operates
+on a margin that the literature treats as exogenous --- whether capacity is
+offered at all --- and responds to a price that appears in none of its
+models: the administered compensation rate. The nearest analytical
+neighbour is the inc-dec gaming literature, in which units position in the
+energy market in anticipation of out-of-market redispatch payments
+\citep{HirthSchlecht2020_incdec}; this paper supplies field evidence of
+that mechanism's signature, in a setting where the payment rate moves
+through a mechanical formula. Second, the out-of-market payments
+literature: \citet{BushnellWolak1999_rmr} argued that the design of
+California's reliability-must-run contracts created serious incentive
+problems and distorted bidding, and \citet{TeirilaRitz2019_capacity}
+document market power in an administered capacity auction; this paper
+supplies the payment-gradient evidence that debate never had. Third, the
+capacity-mechanism design literature
+\citep{CramtonOckenfelsStoft2013_capacity, Fabra2018_capacity}: the episode
+is a natural experiment in what happens when an availability payment is
+grossed up, backward-indexed, and layered onto an energy-only market ---
+the design pays for absence, and absence is what it gets. Against all
+three, one innocent account deserves naming early: start-up costs and
+unit-commitment frictions rationalise block-level absence for steam units
+\citep{Reguant2014_complex}, and this paper's mechanism evidence is fully
+consistent with commitment costs shaping the posture's \emph{form}. What
+commitment costs cannot produce is the posture's \emph{price sensitivity}
+--- there is no unit-commitment reason for the self-commitment margin to
+track a compensation formula --- which is exactly the object the paper's
+identifying tests isolate.
+
+The findings' scope is stated as carefully as their content. Nothing here
+establishes daily intent: in this system the weather clock and the direction
+clock are the same clock, and a desk watching either looks identical. The
+claim is about the mechanism, not the desk's state of mind --- under this
+payment structure a standing absent posture dominates commitment across
+essentially all conditions, so rational conduct converges on exactly what the
+data show, whatever its motive. That is an indictment of the design, and the
+design is the policy lever: Section~\ref{sec:discussion} maps each defect
+(gross payment, backward-looking price, unpriced presence) to a standard
+repair, and notes the epilogue --- in September 2025 the synchronous
+requirement was cut to one unit, closing the regime this paper studies.
+
+Section~\ref{sec:setting} details the institutions; Section~\ref{sec:data}
+the data and their validation against the operator's published statistics;
+Section~\ref{sec:descriptives} the descriptive anatomy of the scheme;
+Section~\ref{sec:design} the outcome, the essentiality flag, and the two
+specifications; Section~\ref{sec:results} the regression results;
+Section~\ref{sec:mechanism} the mechanism evidence and the contamination
+correction; Section~\ref{sec:robustness} robustness;
+Section~\ref{sec:discussion} concludes with design implications.
