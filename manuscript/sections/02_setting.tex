@@ -39,7 +39,7 @@ A directed participant is entitled to compensation under clause 3.15.7 of
 the National Electricity Rules (NER), with the cost recovered from market
 participants under clause 3.15.8 \citep{AEMC2024_ner}. The reference price --- the
 \emph{compensation price} $\dt$ throughout this paper --- is the 90th percentile
-of South Australian spot prices over the trailing 365 days. Two design features
+of South Australian spot prices over the trailing 365 days. Three design features
 matter for everything that follows.
 
 First, the payment is effectively \emph{gross}: compensation tracks the unit's
@@ -65,6 +65,20 @@ stayed inside the trailing window. The margin
 of $\dt$ over the focal units' fuel cost swung from $-\$185$/MWh in April 2022
 to $+\$211$/MWh in January 2023 (Figure~\ref{fig:rent}). The scheme spent 2023
 paying 2022 scarcity prices into a cheap-fuel world.
+
+Third, the formula payment is a floor, not a ceiling. Clause 3.15.7B entitles a
+directed participant to additional compensation --- loss of revenue and net
+direct costs above the formula amount, assessed by an independent expert --- so
+a direction cannot pay less than the unit's cost of complying. The effective
+payment is approximately $\max(\dt, c)$ for unit cost $c$, and the net prize a
+direction carries is at most $\max(\dt - c, 0)$.\footnote{Additional-compensation
+claims are observable only from October 2023; they appear in 190 of 271
+unit-episodes but are immaterial in magnitude, because $\dt$ far exceeded cost
+throughout that window and the floor never bound. In the months where the floor
+binds --- fuel cost above $\dt$ from April to June 2022 for the Torrens units ---
+the channel is unmeasured, and the make-whole characterisation rests on the
+rule, not on observed payments. Section~\ref{sec:robustness} reprices the RQ2
+dose under this assumption.}
 
 \subsection{The direction regime in South Australia, 2021--2025}
 

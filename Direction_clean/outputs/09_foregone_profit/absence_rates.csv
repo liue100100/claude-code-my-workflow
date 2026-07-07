@@ -1,0 +1,10 @@
+calibration,region,n,absent_rate,absent50_rate,calib
+base,A,1987,0.566,0.669,region_base
+base,B,136,0.338,0.426,region_base
+base,C,673,0.297,0.345,region_base
+pess,A,2034,0.566,0.667,region_pess
+pess,B,81,0.321,0.407,region_pess
+pess,C,681,0.283,0.336,region_pess
+fix,A,1987,0.566,0.669,region_fix
+fix,B,114,0.342,0.439,region_fix
+fix,C,695,0.298,0.345,region_fix

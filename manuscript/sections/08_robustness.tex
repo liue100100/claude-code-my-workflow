@@ -70,6 +70,47 @@ essential intervals in three years against Torrens's 4,083, and most are
 themselves directed. The treatment set and the missing placebo have the
 same cause.
 
+\subsection{Repricing the dose: the make-whole floor}
+
+Clause 3.15.7B makes the formula payment a floor (Section~\ref{sec:setting}):
+the effective payment is $\max(\dt, c)$ and the net prize $\max(\dt - c, 0)$,
+so in months where cost exceeds $\dt$ a direction makes the unit whole and
+leaves no rent. Repricing the RQ2 dose accordingly --- unit-specific all-in
+SRMC as the floor, the full Section~\ref{sec:design} machinery otherwise
+unchanged, registered before estimation --- the floor binds in ten unit-months
+(the Torrens units April--June 2022, Pelican Point April 2022), which hold
+9.6\% of the essential base rows and include the sample's lowest-$\dt$
+essential month. The gross payment $\max(\dt, c)$ reproduces the headline in
+full: $-0.093$ on the eligibility margin (wild-cluster $p<0.001$,
+randomization inference $p=0.011$, month-grain slope $-0.114$ at $p=0.0001$),
+stable across all four June-2022 treatments. The net prize
+$\max(\dt - c, 0)$ produces no dose response: $-0.039$ ($p=0.67$;
+randomization inference $p=0.65$; month-grain slope $+0.026$, $p=0.81$).
+
+Two registered diagnostics locate the failure. Subtracting the cost series
+destroys the dose's identifying variation --- the prize has an interquartile
+range of \$12/MWh across essential rows against \$153 for $\dt$ --- and an
+unrestricted horse race (essential $\times$ $\dt$ plus essential $\times$
+cost) rejects the make-whole restriction that the two enter with equal and
+opposite signs ($p\leq 0.007$ on every outcome): both interactions are
+\emph{negative}. Months that pay more and months that cost more are both
+months with a wider essential-versus-matched gap, so inside
+$\dt - c$ the two channels cancel. The repricing therefore does not
+overturn the payment gradient; it shows the payment gradient and the cost
+gradient are not separable once the compensation rule is taken to make
+directed units whole. If 3.15.7B top-ups are complete where they bind, the
+compensated prize is not separately identified in this sample; if they are
+partial, delayed, or contested, the gross payment remains the relevant dose
+and the estimates above carry unchanged. Either way the finding reinforces,
+and does not relax, the ``consistent with payment-seeking'' framing used
+throughout.\footnote{The repricing check is conservative by construction:
+high gas lowers the prize, so fuel-stress conduct pushes the prize
+coefficient toward positive. A modest true payment response masked by the
+fuel channel is consistent with the observed $-0.039$, but the design cannot
+demonstrate it. Registration, script, and outputs:
+\texttt{07\_round3/test4\_preregistration.md}, \texttt{test4\_payoff\_dose.R},
+\texttt{outputs/07\_round3/}.}
+
 \subsection{Inference and measurement}
 
 Webb-weight bootstrap $p$-values match Rademacher throughout (RQ2 base case:
